@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stack.h": "c",
-        "vector.h": "c"
+        "vector.h": "c",
+        "checker.h": "c"
     }
 }

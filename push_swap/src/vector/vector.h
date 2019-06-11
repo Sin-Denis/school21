@@ -24,9 +24,5 @@ void			vector_push_back(t_vector *v, vector_type val);
 int				vector_length(t_vector *v);
 void			vector_print(t_vector *v);
 void			vector_quick_sort(t_vector *v);
-void			vector_merge_sort(t_vector *v);
-void			vector_shell_sort(t_vector *v);
-void			vector_heap_sort(t_vector *v);
-void			vector_bubble_sort(t_vector *v);
 
 #endif
