@@ -3,8 +3,7 @@
 
 #define INCREASE_SIZE 2
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "../Libftprintf/libftprinf.h"
 
 typedef int vector_type;
 

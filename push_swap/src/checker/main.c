@@ -10,9 +10,9 @@ int			main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (arguments_parse(stack_a, argc, argv) == -1)
-		write(2, "Error\n", 6);
+		ft_printf("Error\n");
 	if (strstr(argv[1], "-v"))
-		mode_debag(stack_a, stack_b);
+		mode_debug(stack_a, stack_b);
 	else if (strstr(argv[1], "-c"))
 		mode_color(stack_a, stack_b);
 	else
