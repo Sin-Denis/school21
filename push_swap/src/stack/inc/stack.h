@@ -1,7 +1,7 @@
 #ifndef STACK_H_
 #define STACK_H_
 
-#include "../../Libftprintf/libftprinf.h"
+#include "../../Libftprintf/libftprintf.h"
 
 typedef struct		s_node
 {
@@ -18,6 +18,9 @@ typedef struct		s_stack
 	int				size;
 }					t_stack;
 
+t_node				*node_create(int value);
+void				node_destroy(t_node **node);
+
 t_stack				*stack_create(void);
 void				stack_push_back(t_stack *s, int elem);
 void				stack_push_front(t_stack *s, int elem);
@@ -33,5 +36,6 @@ void				stack_simultaneous_swap(t_stack *a, t_stack *b);
 void				stack_simultaneous_rotate(t_stack *a, t_stack *b);
 void				stack_simultaneous_reverse_rotate(t_stack *a, t_stack *b);
 void				stack_print(t_stack *s);
+void				stack_clean(t_stack *s);
 
 #endif

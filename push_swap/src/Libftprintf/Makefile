@@ -83,7 +83,8 @@ LIBFT_SRC :=	ft_memset.c\
 				ft_lstlen.c\
 				ft_abs.c\
 				ft_choice_sort.c\
-				ft_assert.c
+				ft_assert.c\
+				get_next_line.c
 
 LIBFT_OBJ := $(addprefix $(LIBFT_DIR)/obj/,$(LIBFT_SRC:.c=.o))
 

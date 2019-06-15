@@ -4,6 +4,8 @@ void			stack_reverse_rotate(t_stack *s)
 {
 	t_node		*node;
 
+	if (s->size <= 1)
+		return ;
 	node = s->barrier->next;
 	node->next->prev = s->barrier;
 	s->barrier->next = node->next;

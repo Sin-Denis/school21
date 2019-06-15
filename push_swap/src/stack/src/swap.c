@@ -6,7 +6,10 @@ void			stack_swap(t_stack *s)
 	t_node		*prev_top;
 
 	if (s->size <= 1)
-		return ;
+	{
+		write(0, "Error\n", 6);
+		exit(1);
+	}
 	top = s->barrier->prev;
 	prev_top = top->prev;
 	prev_top->next = top->next;

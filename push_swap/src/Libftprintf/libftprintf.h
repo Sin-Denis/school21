@@ -2,8 +2,11 @@
 // Created by Sin Denis on 2019-06-13.
 //
 
-#ifndef LIBFTPRINF_H
-#define LIBFTPRINF_H
+#ifndef LIBFTPRINTF_H
+#define LIBFTPRINTF_H
+
+#define MAX_INT 2147483647
+#define	MIN_INT -2147483648
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -82,7 +85,7 @@ size_t			ft_lstlen(t_list *lst);
 int				ft_abs(int n);
 int				ft_assert(char const *actual, char const *expected);
 int				*ft_choice_sort(int *arr, size_t size);
-
+int				get_next_line(int fd, char **line);
 int				ft_printf(char *format, ...);
 
 #endif

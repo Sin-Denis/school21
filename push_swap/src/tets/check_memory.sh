@@ -1,1 +1,0 @@
-docker run -ti -v $PWD:/test memory-test:0.1 bash -c "cd /test/; gcc ./vector/create.c ./vector/destroy.c ./vector/length.c ./vector/print.c ./vector/get_elem.c ./vector/set_elem.c ./vector/resize.c ./vector/test.c && valgrind --leak-check=full --track-origins=yes ./a.out"

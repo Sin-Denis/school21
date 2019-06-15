@@ -14,8 +14,10 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
+
+# define BUFF_SIZE 32
 
 int				ft_tolower(int ch);
 int				ft_toupper(int ch);
@@ -89,5 +91,6 @@ size_t			ft_lstlen(t_list *lst);
 int				ft_abs(int n);
 int				ft_assert(char const *actual, char const *expected);
 int				*ft_choice_sort(int *arr, size_t size);
+int				get_next_line(int fd, char **line);
 
 #endif
