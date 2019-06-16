@@ -1,11 +1,11 @@
 #include "../inc/stack.h"
 
-void			stack_reverse_rotate(t_stack *s)
+int				stack_reverse_rotate(t_stack *s)
 {
 	t_node		*node;
 
 	if (s->size <= 1)
-		return ;
+		return (-1);
 	node = s->barrier->next;
 	node->next->prev = s->barrier;
 	s->barrier->next = node->next;
@@ -13,4 +13,5 @@ void			stack_reverse_rotate(t_stack *s)
 	node->prev = s->barrier->prev;
 	node->next = s->barrier;
 	s->barrier->prev = node;
+	return (0);
 }

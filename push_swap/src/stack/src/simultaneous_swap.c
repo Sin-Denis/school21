@@ -1,7 +1,8 @@
 #include "../inc/stack.h"
 
-void			stack_simultaneous_swap(t_stack *a, t_stack *b)
+int	stack_simultaneous_swap(t_stack *a, t_stack *b)
 {
-	stack_swap(a);
-	stack_swap(b);
+	if (stack_swap(a) == -1 || stack_swap(b) == -1)
+		return (-1);
+	return (0);
 }

@@ -17,10 +17,10 @@ int			main(int argc, char **argv) {
 	}
 	if (ft_strcmp(argv[1], "-v") == 0)
 		mode_debug(stack_a, stack_b);
-	else if (strstr(argv[1], "-c"))
-		ft_printf("Handler this flag");
+	else if (ft_strcmp(argv[1], "-c"))
+		ft_printf("Handler this flag\n");
 	else
-		mode_default(stack_a, stack_b);
+		ft_printf("Mode default\n");
 	stack_destroy(&stack_a);
 	stack_destroy(&stack_b);
 	return (0);

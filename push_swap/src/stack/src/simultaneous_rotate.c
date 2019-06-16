@@ -1,7 +1,8 @@
 #include "../inc/stack.h"
 
-void			stack_simultaneous_rotate(t_stack *a, t_stack *b)
+int	stack_simultaneous_rotate(t_stack *a, t_stack *b)
 {
-	stack_rotate(a);
-	stack_rotate(b);
+	if (stack_rotate(a) == -1 || stack_rotate(b) == -1)
+		return (-1);
+	return (0);
 }

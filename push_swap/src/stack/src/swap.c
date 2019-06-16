@@ -1,15 +1,12 @@
 #include "../inc/stack.h"
 
-void			stack_swap(t_stack *s)
+int				stack_swap(t_stack *s)
 {
 	t_node		*top;
 	t_node		*prev_top;
 
 	if (s->size <= 1)
-	{
-		write(0, "Error\n", 6);
-		exit(1);
-	}
+		return (-1);
 	top = s->barrier->prev;
 	prev_top = top->prev;
 	prev_top->next = top->next;
@@ -18,4 +15,5 @@ void			stack_swap(t_stack *s)
 	top->next = prev_top;
 	prev_top->prev = top;
 	s->barrier->prev = prev_top;
+	return (0);
 }
