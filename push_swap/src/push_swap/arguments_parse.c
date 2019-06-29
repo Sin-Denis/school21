@@ -1,4 +1,4 @@
-#include "checker.h"
+#include "push_swap.h"
 
 static int		is_integer_number(char *str)
 {
@@ -35,12 +35,9 @@ int				arguments_parse(t_stack *a, int argc, char **argv)
 	int			flag;
 	t_vector	*v;
 
-	i = (ft_strcmp(argv[1], "-v") == 0 || ft_strcmp(argv[1], "-c") == 0) ? 1 : 0;
+    i = 0;
 	flag = 0;
 	v = vector_create(0);
-	if (ft_strcmp(argv[1], "-v") != 0 && ft_strcmp(argv[1], "-c") != 0 &&
-	!is_integer_number(argv[1]))
-		return (-1);
 	while (++i < argc && flag == 0)
 	{
 		if (!is_integer_number(argv[i]))
@@ -56,3 +53,4 @@ int				arguments_parse(t_stack *a, int argc, char **argv)
 	}
 	return (0);
 }
+
