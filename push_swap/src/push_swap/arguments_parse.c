@@ -4,14 +4,22 @@ static int		is_integer_number(char *str)
 {
 	long long	res;
 	int			i;
+	int 		sign;
 	size_t		len;
 
 	res = 0;
-	i = -1;
+	sign = 0;
+	i =  -1;
 	len = ft_strlen(str);
+	if (str[0] == '-')
+	{
+		++i;
+		sign = -1;
+	}
 	while (++i < len)
 	{
-		if (!ft_isdigit(str[i]) || res > MAX_INT || res < MIN_INT)
+		if (!ft_isdigit(str[i]) ||
+		(sign == -1 && res < MIN_INT) || (sign == 0 && res > MAX_INT))
 			return (0);
 		res *= 10;
 		res += str[i] + '0';
