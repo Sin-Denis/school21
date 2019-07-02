@@ -66,7 +66,7 @@ void		operations_calculate(t_stack *a, t_stack *b)
 					ft_abs(iter_a->self_deep) + 2;
 		else if (j > a->size / 2 && iter_b->self_deep > 0)
 			iter_b->operations_amount = ft_abs(iter_a->self_deep) * 2 + ft_abs(iter_b->self_deep) + 2;
-		iter_b->appropriate_deep = iter_a->self_deep;
+		iter_b->appropriate_deep = (j == a->size) ? a->size : iter_a->self_deep;
 		iter_b = iter_b->prev;
 	}
 }
@@ -94,7 +94,23 @@ void		choose_elem(a, b)
 	t_node	*elem_with_min_operations;
 
 	elem_with_min_operations = get_elem_with_min_operations(b);
-	if (elem_with_min_operations->self_deep > 0 && elem_with_min_operations->appropriate_deep > 1)
+	if (elem_with_min_operations->appropriate_deep == a->size)
+		handler1(a, b, elem_with_min_operations);
+	else if (elem_with_min_operations->appropriate_deep == 0)
+		handler2(a, b, elem_with_min_operations);
+	else if (((elem_with_min_operations->appropriate_deep == a->size / 2 + 1 && a->size % 2 == 1) ||
+	elem_with_min_operations->appropriate_deep <= a->size / 2) && elem_with_min_operations->self_deep >= 0)
+		handler3(a, b, elem_with_min_operations);
+	else if (elem_with_min_operations->appropriate_deep <= a->size / 2 &&
+	elem_with_min_operations->self_deep < 0)
+		handler4(a, b, elem_with_min_operations);
+	else if (((elem_with_min_operations->appropriate_deep == a->size / 2 + 1 && a->size % 2 == 1) ||
+	elem_with_min_operations->appropriate_deep > a->size / 2) && elem_with_min_operations->self_deep < 0)
+		handler5(a, b, elem_with_min_operations);
+	else if (elem_with_min_operations->appropriate_deep > a->size / 2 &&
+	elem_with_min_operations->self_deep > 0)
+		handler6(a, b, elem_with_min_operations);
+
 }
 
 void    sort(t_stack *a, t_stack *b)
