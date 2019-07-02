@@ -54,10 +54,18 @@ void		operations_calculate(t_stack *a, t_stack *b)
 			iter_b->operations_amount = 2 + ft_abs(iter_b->self_deep);
 		else if (j == 0)
 			iter_b->operations_amount = 1 + ft_abs(iter_b->self_deep);
-		else if (j <= a->size / 2)
-			iter_b->operations_amount = iter_a->self_deep * 2 + ft_abs(iter_b->self_deep);
-		else
-			iter_b->operations_amount = (ft_abs(iter_a->self_deep) + 1) * 2 + ft_abs(iter_b->self_deep);
+		else if (((j == a->size / 2 + 1 && a->size % 2 == 1) || j <= a->size / 2) &&
+				iter_b->self_deep >= 0)
+			iter_b->operations_amount = ft_max(ft_abs(iter_b->self_deep), ft_abs(iter_a->self_deep) + 1) +
+					2 + ft_abs(iter_a->self_deep) - 1;
+		else if (j <= a->size / 2 && iter_b->self_deep < 0)
+			iter_b->operations_amount = (iter_a->self_deep - 1) * 2 + ft_abs(iter_b->self_deep) + 2;
+		else if (((j == a->size / 2 + 1 && a->size % 2 == 1) || j > a->size / 2) &&
+			iter_b->self_deep < 0)
+			iter_b->operations_amount = ft_max(ft_abs(iter_a->self_deep), ft_abs(iter_b->self_deep)) +
+					ft_abs(iter_a->self_deep) + 2;
+		else if (j > a->size / 2 && iter_b->self_deep > 0)
+			iter_b->operations_amount = ft_abs(iter_a->self_deep) * 2 + ft_abs(iter_b->self_deep) + 2;
 		iter_b->appropriate_deep = iter_a->self_deep;
 		iter_b = iter_b->prev;
 	}
@@ -66,7 +74,7 @@ void		operations_calculate(t_stack *a, t_stack *b)
 t_node		*get_elem_with_min_operations(t_stack *s)
 {
 	int		i;
-	t_node	min_node;
+	t_node	*min_node;
 	t_node	*iter;
 
 	i = 0;
@@ -74,7 +82,7 @@ t_node		*get_elem_with_min_operations(t_stack *s)
 	iter = s->barrier->prev->prev;
 	while (++i < s->size)
 	{
-		if (iter->operations_amount < min_node.operations_amount)
+		if (iter->operations_amount < min_node->operations_amount)
 			min_node = iter;
 		iter = iter->prev;
 	}
@@ -93,6 +101,7 @@ void    sort(t_stack *a, t_stack *b)
 {
     shift_all_without_three(a, b);
 	sort_three_elem(a);
+	operations_calculate(a, b);
     while (!stack_is_empty(b))
     {
         operations_calculate(a, b);

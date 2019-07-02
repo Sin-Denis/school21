@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 18:01:02 by jblue-da          #+#    #+#             */
-/*   Updated: 2018/12/14 15:27:52 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/02 13:28:08 by sindenis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void			*ft_memchr(const void *s, int c, size_t n);
 void			*ft_memalloc(size_t size);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 size_t			ft_strlen(const char *s);
+int				ft_max(int a, int b);
 
 typedef struct	s_list
 {
