@@ -160,8 +160,25 @@ void	state_print(t_stack *a, t_stack *b)
 	ft_printf("\n");
 }
 
+int         stack_is_sort(t_stack *s)
+{
+	int     i;
+	t_node  *iter;
+
+	i = -1;
+	iter = s->barrier->prev;
+	while (++i < s->size - 1)
+	{
+		if (iter->value > iter->prev->value)
+			return (0);
+	}
+	return (1);
+}
+
 void    sort(t_stack *a, t_stack *b)
 {
+	if (stack_is_sort(a) && stack_is_empty(b))
+		return ;
     shift_all_without_three(a, b);
 	sort_three_elem(a);
 	operations_calculate(a, b);
