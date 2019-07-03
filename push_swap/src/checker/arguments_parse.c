@@ -35,13 +35,39 @@ int				vector_has_duplicate(t_vector *v)
 			return (1);
 	}
 	return (0);
-}			
+}
+
+void			arguments_parse_body(t_stack *s, t_vector *v, char **args, int *flag)
+{
+	int 		j;
+
+	j = -1;
+	while (args[++j] != NULL)
+	{
+		if (!is_integer_number(args[j]))
+			--(*flag);
+		vector_push_back(v, ft_atoi(args[j]));
+		stack_push_front(s, ft_atoi(args[j]));
+	}
+}
+
+void			arr_str_destroy(char ***arr)
+{
+	int			i;
+
+	i = -1;
+	while ((*arr)[++i])
+		free((*arr)[i]);
+	free(*arr);
+	*arr = NULL;
+}
 
 int				arguments_parse(t_stack *a, int argc, char **argv)
 {
 	int			i;
 	int			flag;
 	t_vector	*v;
+	char		**args;
 
 	i = (ft_strcmp(argv[1], "-v") == 0 || ft_strcmp(argv[1], "-c") == 0) ? 1 : 0;
 	flag = 0;
@@ -51,10 +77,9 @@ int				arguments_parse(t_stack *a, int argc, char **argv)
 		return (-1);
 	while (++i < argc && flag == 0)
 	{
-		if (!is_integer_number(argv[i]))
-			--flag;
-		vector_push_back(v, ft_atoi(argv[i]));
-		stack_push_front(a, ft_atoi(argv[i]));
+		args = ft_strsplit(argv[i], ' ');
+		arguments_parse_body(a, v, args, &flag);
+		arr_str_destroy(&args);
 	}
 	if (flag == -1 || vector_has_duplicate(v))
 	{
@@ -62,5 +87,6 @@ int				arguments_parse(t_stack *a, int argc, char **argv)
 		stack_clean(a);
 		return (-1);
 	}
+	vector_destroy(&v);
 	return (0);
 }
