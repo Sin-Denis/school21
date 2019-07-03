@@ -13,10 +13,15 @@ void		sort_three_elem_body(t_stack *a, t_node *n1, t_node *n2, t_node *n3)
 		stack_swap(a);
 		ft_printf("sa\n");
 	}
-	else if (n2->order_idx == 0 || (n3->order_idx == 0 && n1->order_idx < n2->order_idx))
+	else if (n2->order_idx == 0)
 	{
 		stack_rotate(a);
 		ft_printf("ra\n");
+	}
+	else if (n3->order_idx == 0 && n1->order_idx < n2->order_idx)
+	{
+		stack_reverse_rotate(a);
+		ft_printf("rra\n");
 	}
 	else if (n3->order_idx == 0)
 	{

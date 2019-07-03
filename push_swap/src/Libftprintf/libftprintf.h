@@ -67,6 +67,7 @@ void			*ft_memalloc(size_t size);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 size_t			ft_strlen(const char *s);
 int				ft_max(int a, int b);
+int				ft_min(int a, int b);
 
 typedef struct	s_list
 {

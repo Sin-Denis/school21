@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nparker <nparker@student.42.fr>            +#+  +:+       +#+         #
+#    By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/26 13:24:28 by nparker           #+#    #+#              #
-#    Updated: 2019/04/30 13:54:25 by nparker          ###   ########.fr        #
+#    Updated: 2019/07/03 11:19:19 by jblue-da         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ LIBFT_SRC :=	ft_memset.c\
 				ft_abs.c\
 				ft_choice_sort.c\
 				ft_assert.c\
+				ft_min.c\
 				get_next_line.c
 
 LIBFT_OBJ := $(addprefix $(LIBFT_DIR)/obj/,$(LIBFT_SRC:.c=.o))
@@ -176,7 +177,7 @@ SRC :=	cust_str_ops.c\
 		ft_isalpha.c\
 		ft_isdigit.c \
 		ft_ltoa.c\
-		ft_max.c \
+		ft_max.c\
 		ft_pow.c\
 		ft_rev_str.c \
 		ft_strcat.c\

@@ -74,7 +74,8 @@ SRCS :=	ft_memset.c\
 		ft_choice_sort.c\
 		ft_assert.c\
 		get_next_line.c\
-		ft_max.c
+		ft_max.c\
+		ft_min.c
 
 SOURCES := $(addprefix $(SRC_DIR)/,$(SRCS))
 OBJECTS := $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
