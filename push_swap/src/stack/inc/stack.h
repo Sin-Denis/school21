@@ -40,5 +40,6 @@ int					stack_simultaneous_reverse_rotate(t_stack *a, t_stack *b);
 void				stack_print(t_stack *s);
 void				stack_clean(t_stack *s);
 t_node				*stack_top(t_stack *s);
+int					stack_is_sort(t_stack *s);
 
 #endif

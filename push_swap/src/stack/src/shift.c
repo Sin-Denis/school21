@@ -14,7 +14,7 @@ int			stack_shift(t_stack *dst, t_stack *src)
 		node->prev = dst->barrier;
 		dst->barrier->prev = node;
 		dst->barrier->next = node;
-		node->prev = dst->barrier;
+		node->next = dst->barrier;
 	}
 	else
 	{
