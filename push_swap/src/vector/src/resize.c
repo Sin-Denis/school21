@@ -1,10 +1,5 @@
 #include "../inc/vector.h"
 
-static int		abs_val(int num)
-{
-	return (num < 0) ? -num : num;
-}
-
 static int		min_val(int l, int r)
 {
 	return (l < r) ? l : r;

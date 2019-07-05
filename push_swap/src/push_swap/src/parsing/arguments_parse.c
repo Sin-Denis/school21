@@ -3,7 +3,7 @@
 static int		is_integer_number(char *str)
 {
 	long long	res;
-	int			i;
+	size_t		i;
 	int 		sign;
 	size_t		len;
 

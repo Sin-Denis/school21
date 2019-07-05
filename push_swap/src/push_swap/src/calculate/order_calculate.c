@@ -36,7 +36,6 @@ static int		bin_search(t_vector *v, int key)
 static void		set_order(t_stack *s, t_vector *v)
 {
 	int			i;
-	int			val;
 	t_node		*iter;
 
 	i = -1;

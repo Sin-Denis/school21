@@ -93,5 +93,4 @@ void			sort(t_stack *a, t_stack *b)
 		choose_elem(a, b);
     }
 	elements_return(a);
-	state_print(a, b);
 }

@@ -3,7 +3,7 @@
 static int		is_integer_number(char *str)
 {
 	long long	res;
-	int			i;
+	size_t		i;
 	int 		sign;
 	size_t		len;
 
@@ -72,9 +72,6 @@ int				arguments_parse(t_stack *a, int argc, char **argv)
 	i = (ft_strcmp(argv[1], "-v") == 0 || ft_strcmp(argv[1], "-c") == 0) ? 1 : 0;
 	flag = 0;
 	v = vector_create(0);
-	if (ft_strcmp(argv[1], "-v") != 0 && ft_strcmp(argv[1], "-c") != 0 &&
-	!is_integer_number(argv[1]))
-		return (-1);
 	while (++i < argc && flag == 0)
 	{
 		args = ft_strsplit(argv[i], ' ');
