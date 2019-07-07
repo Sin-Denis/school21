@@ -80,18 +80,16 @@ SRCS :=	ft_memset.c\
 SOURCES := $(addprefix $(SRC_DIR)/,$(SRCS))
 OBJECTS := $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
-all: directory $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJECTS)
+$(NAME): directory $(OBJ_DIR) $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
 	ranlib $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c $(FLAGS) -I $(INC_DIR) $^ -o $@
 
-directory: $(OBJ_DIR)
-
-$(OBJ_DIR):
+directory:
 	mkdir -p $(OBJ_DIR)
 
 clean:

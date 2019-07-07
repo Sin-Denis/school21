@@ -204,10 +204,12 @@ OBJECTS := $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 all: directory $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJECTS) $(LIBFT_OBJ)
-	make -C $(LIBFT_DIR)
+$(NAME): $(LIBFT_OBJ) $(OBJ_DIR) $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS) $(LIBFT_OBJ)
 	ranlib $(NAME)
+
+$(LIBFT_OBJ):
+	make -C $(LIBFT_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c $(FLAGS) -I $(INC_DIR) $^ -o $@
@@ -218,9 +220,11 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
+	make clean -C $(LIBFT_DIR)
 	rm -rf $(OBJ_DIR)
 
 fclean:	clean
+	make clean -C $(LIBFT_DIR)
 	rm -rf $(NAME)
 
 re:

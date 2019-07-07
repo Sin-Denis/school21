@@ -2,7 +2,14 @@ CC := gcc
 
 FLAGS := -Wall -Wextra -Werror
 
-LIB := src/Libftprintf/libftprintf.a
+LIB_DIR := src/Libftprintf
+LIB := $(LIB_DIR)/libftprintf.a
+LIB_LINK := -L$(LIB_DIR) -lftprintf
+
+STACK_INC := src/stack/inc/stack.h
+VECTOR_INC := src/vector/inc/vector.h
+PUSH_SWAP_INC := src/push_swap/inc/push_swap.h
+CHECKER_INC := src/checker/inc/checker.h
 
 PUSH_SWAP := push_swap
 
@@ -30,10 +37,6 @@ STACK_FILES := 	clean.c\
 				swap.c\
 				top.c\
 
-STACK_DIR := src/stack/src
-
-STACK_SRC := $(addprefix $(STACK_DIR)/,$(STACK_FILES))
-
 VECTOR_FILES :=	create.c\
 				destroy.c\
 				get_elem.c\
@@ -43,49 +46,85 @@ VECTOR_FILES :=	create.c\
 				set_elem.c\
 				sort.c\
 
-VECTOR_DIR := src/vector/src
-
-VECTOR_SRC := $(addprefix $(VECTOR_DIR)/,$(VECTOR_FILES))
-
-PUSH_SWAP_FILES := 	calculate/operations_calculate.c\
-					calculate/order_calculate.c\
-					error_control/error_exit.c\
-					handlers/handler1.c\
-					handlers/handler2.c\
-					handlers/handler3.c\
-					handlers/handler4.c\
-					handlers/handler5.c\
-					handlers/handler6.c\
-					handlers/handler7.c\
-					parsing/arguments_parse.c\
-					sort/sort.c\
-					sort/sort_three_elem.c\
-					sort/state_print.c\
+PUSH_SWAP_FILES := 	operations_calculate.c\
+					order_calculate.c\
+					error_exit.c\
+					handler1.c\
+					handler2.c\
+					handler3.c\
+					handler4.c\
+					handler5.c\
+					handler6.c\
+					handler7.c\
+					arguments_parse.c\
+					sort.c\
+					sort_three_elem.c\
+					state_print.c\
 					main.c\
 
-PUSH_SWAP_DIR := src/push_swap/src
-
-PUSH_SWAP_SRC := $(addprefix $(PUSH_SWAP_DIR)/,$(PUSH_SWAP_FILES))
-
-CHECKER_FILES :=	mode_debug/mode_debug.c\
-					mode_default/mode_default.c\
-					parsing/arguments_parse.c\
-					support_functions/checker_support_functions.c\
+CHECKER_FILES :=	mode_debug.c\
+					mode_default.c\
+					arguments_parse.c\
+					checker_support_functions.c\
 					main.c\
 
-CHECKER_DIR := src/checker/src
+STACK_SRC_DIR := src/stack/src
+VECTOR_SRC_DIR := src/vector/src
+PUSH_SWAP_SRC_DIR := src/push_swap/src
+CHECKER_SRC_DIR := src/checker/src
 
-CHECKER_SRC := $(addprefix $(CHECKER_DIR)/,$(CHECKER_FILES))
+STACK_SRC := $(addprefix $(STACK_SRC_DIR)/,$(STACK_FILES))
+VECTOR_SRC := $(addprefix $(VECTOR_SRC_DIR)/,$(VECTOR_FILES))
+PUSH_SWAP_SRC := $(addprefix $(PUSH_SWAP_SRC_DIR)/,$(PUSH_SWAP_FILES))
+CHECKER_SRC := $(addprefix $(CHECKER_SRC_DIR)/,$(CHECKER_FILES))
+
+STACK_OBJ_DIR := src/stack/obj
+VECTOR_OBJ_DIR := src/vector/obj
+PUSH_SWAP_OBJ_DIR := src/push_swap/obj
+CHECKER_OBJ_DIR := src/checker/obj
+
+STACK_OBJ := $(addprefix $(STACK_OBJ_DIR)/,$(STACK_FILES:.c=.o))
+VECTOR_OBJ := $(addprefix $(VECTOR_OBJ_DIR)/,$(VECTOR_FILES:.c=.o))
+PUSH_SWAP_OBJ := $(addprefix $(PUSH_SWAP_OBJ_DIR)/,$(PUSH_SWAP_FILES:.c=.o))
+CHECKER_OBJ := $(addprefix $(CHECKER_OBJ_DIR)/,$(CHECKER_FILES:.c=.o))
 
 all: $(PUSH_SWAP) $(CHECKER)
 
-$(PUSH_SWAP):
-	$(CC) $(FLAGS) $(STACK_SRC) $(VECTOR_SRC) $(LIB) $(PUSH_SWAP_SRC) -o $(PUSH_SWAP)
+$(PUSH_SWAP): directory $(LIB) $(PUSH_SWAP_OBJ) $(STACK_OBJ) $(VECTOR_OBJ)
+	$(CC) $(FLAGS) $(STACK_OBJ) $(VECTOR_OBJ) $(PUSH_SWAP_OBJ) $(LIB_LINK) -o $@
 
-$(CHECKER):
-	$(CC) $(FLAGS) $(STACK_SRC) $(VECTOR_SRC) $(LIB) $(CHECKER_SRC) -o $(CHECKER)
+$(CHECKER): directory $(LIB) $(CHECKER_OBJ) $(STACK_OBJ) $(VECTOR_OBJ)
+	$(CC) $(FLAGS) $(STACK_OBJ) $(VECTOR_OBJ) $(CHECKER_OBJ) $(LIB_LINK) -o $@
 
-fclean:
+$(STACK_OBJ_DIR)/%.o: $(STACK_SRC_DIR)/%.c
+	$(CC) $(FLAGS) -c $^ -o $@
+
+$(VECTOR_OBJ_DIR)/%.o: $(VECTOR_SRC_DIR)/%.c
+	$(CC) $(FLAGS) -c $^ -o $@
+
+$(PUSH_SWAP_OBJ_DIR)/%.o: $(PUSH_SWAP_SRC_DIR)/%.c
+	$(CC) $(FLAGS) -c $^ -o $@
+
+$(CHECKER_OBJ_DIR)/%.o: $(CHECKER_SRC_DIR)/%.c
+	$(CC) $(FLAGS) -c $^ -o $@
+
+$(LIB):
+	make re -C $(LIB_DIR)
+
+directory:
+	mkdir -p src/push_swap/obj
+	mkdir -p src/checker/obj
+	mkdir -p src/stack/obj
+	mkdir -p src/vector/obj
+
+clean:
+	rm -rf $(STACK_OBJ_DIR) $(VECTOR_OBJ_DIR) $(PUSH_SWAP_OBJ_DIR) $(CHECKER_OBJ_DIR)
+	make -C $(LIB_DIR) clean
+
+fclean: clean
 	rm -rf $(PUSH_SWAP) $(CHECKER)
+	make -C $(LIB_DIR) clean
 
 re: fclean all
+
+.PHONY: all clean fclean re directory
