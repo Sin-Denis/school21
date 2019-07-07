@@ -16,6 +16,8 @@ static int		is_integer_number(char *str)
 		++i;
 		sign = -1;
 	}
+	if (str[0] == '+')
+		++i;
 	while (++i < len)
 	{
 		if (!ft_isdigit(str[i]) ||
