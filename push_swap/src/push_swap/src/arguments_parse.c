@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:36:57 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 11:19:41 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/08 11:42:31 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static int		is_integer_number(char *str)
 		++i;
 	while (++i < len)
 	{
-		if (!ft_isdigit(str[i]) ||
-		(sign == -1 && res > (long long)-MIN_INT) || (sign == 0 && res > MAX_INT))
+		if (!ft_isdigit(str[i]) || (sign == -1
+		&& res > (long long)-MIN_INT) || (sign == 0 && res > MAX_INT))
 			return (0);
 		res *= 10;
 		res += str[i] + '0';

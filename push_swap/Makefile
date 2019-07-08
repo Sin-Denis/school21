@@ -63,6 +63,7 @@ PUSH_SWAP_FILES := 	operations_calculate.c\
 					main.c\
 
 CHECKER_FILES :=	mode_debug.c\
+					mode_color.c\
 					mode_default.c\
 					arguments_parse.c\
 					checker_support_functions.c\

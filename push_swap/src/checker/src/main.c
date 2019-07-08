@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:57 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 09:43:43 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/08 11:33:50 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			main(int argc, char **argv)
 	if (ft_strcmp(argv[1], "-v") == 0)
 		mode_debug(stack_a, stack_b);
 	else if (ft_strcmp(argv[1], "-c") == 0)
-		ft_printf("Handler this flag\n");
+		mode_color(stack_a, stack_b);
 	else
 		mode_default(stack_a, stack_b);
 	stack_destroy(&stack_a);

@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:59 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 09:49:58 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/08 11:36:49 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	table_print(t_stack *a, t_stack *b, int size_a, int size_b)
 	}
 }
 
-void		state_print(t_stack *a, t_stack *b)
+static void	state_print(t_stack *a, t_stack *b)
 {
 	int		size_a;
 	int		size_b;

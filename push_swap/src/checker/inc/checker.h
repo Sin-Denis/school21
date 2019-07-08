@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:43:02 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 09:48:17 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/08 11:33:09 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 void	mode_debug(t_stack *a, t_stack *b);
 void	mode_default(t_stack *a, t_stack *b);
+void	mode_color(t_stack *a, t_stack *b);
 void	checker_error_exit(t_stack *a, t_stack *b, char *operation);
 void	error_handler_unary(t_stack *a, t_stack *b, char *operation,
 		int (*f)(t_stack *));
