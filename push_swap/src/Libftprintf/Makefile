@@ -6,7 +6,7 @@
 #    By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/26 13:24:28 by nparker           #+#    #+#              #
-#    Updated: 2019/07/03 11:19:19 by jblue-da         ###   ########.fr        #
+#    Updated: 2019/07/08 10:52:31 by jblue-da         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -205,30 +205,30 @@ OBJECTS := $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 all: directory $(NAME)
 
 $(NAME): $(LIBFT_OBJ) $(OBJ_DIR) $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS) $(LIBFT_OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJECTS) $(LIBFT_OBJ)
+	@ranlib $(NAME)
 
 $(LIBFT_OBJ):
-	make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) -c $(FLAGS) -I $(INC_DIR) $^ -o $@
+	@$(CC) -c $(FLAGS) -I $(INC_DIR) $^ -o $@
 
 directory: $(OBJ_DIR)
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	make clean -C $(LIBFT_DIR)
-	rm -rf $(OBJ_DIR)
+	@make clean -C $(LIBFT_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean:	clean
-	make clean -C $(LIBFT_DIR)
-	rm -rf $(NAME)
+	@make clean -C $(LIBFT_DIR)
+	@rm -rf $(NAME)
 
 re:
-	make fclean
-	make all
+	@make fclean
+	@make all
 
 .PHONY: all clean fclean re

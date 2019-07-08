@@ -1,12 +1,19 @@
-//
-// Created by Sin Denis on 2019-06-13.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:56:33 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 09:57:15 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
-#define LIBFTPRINTF_H
-
-#define MAX_INT 2147483647
-#define	MIN_INT -2147483648
+# define LIBFTPRINTF_H
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -91,4 +98,3 @@ int				get_next_line(int fd, char **line);
 int				ft_printf(char *format, ...);
 
 #endif
-

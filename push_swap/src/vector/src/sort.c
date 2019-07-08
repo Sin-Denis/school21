@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:39:45 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 10:32:18 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/vector.h"
 
-static void		swap(vector_type *a, vector_type *b)
+static void		swap(t_vector_type *a, t_vector_type *b)
 {
-	vector_type tmp;
+	t_vector_type tmp;
 
 	tmp = *a;
 	*a = *b;
@@ -11,9 +23,9 @@ static void		swap(vector_type *a, vector_type *b)
 
 static int		partition(t_vector *v, int l, int r)
 {
-	int 		i;
-	int 		j;
-	int 		p;
+	int			i;
+	int			j;
+	int			p;
 
 	i = l;
 	j = r;

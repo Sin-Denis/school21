@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mode_debug.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:37:59 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 09:49:58 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/checker.h"
 
 static void	table_print(t_stack *a, t_stack *b, int size_a, int size_b)
@@ -14,7 +26,8 @@ static void	table_print(t_stack *a, t_stack *b, int size_a, int size_b)
 		else if (size_b == 0)
 			ft_printf("|  %-10d  |||              |\n", iter_a->value);
 		else
-			ft_printf("|  %-10d  |||  %-10d  |\n", iter_a->value, iter_b->value);
+			ft_printf("|  %-10d  |||  %-10d  |\n",
+			iter_a->value, iter_b->value);
 		if (size_a != 0)
 		{
 			iter_a = iter_a->prev;
@@ -30,8 +43,8 @@ static void	table_print(t_stack *a, t_stack *b, int size_a, int size_b)
 
 void		state_print(t_stack *a, t_stack *b)
 {
-	int 	size_a;
-	int 	size_b;
+	int		size_a;
+	int		size_b;
 
 	size_a = a->size;
 	size_b = b->size;
@@ -39,7 +52,6 @@ void		state_print(t_stack *a, t_stack *b)
 	ft_printf("|    STACK A   |||    STACK B   |\n");
 	ft_printf("---------------------------------\n");
 	table_print(a, b, size_a, size_b);
-
 }
 
 void		mode_debug(t_stack *a, t_stack *b)

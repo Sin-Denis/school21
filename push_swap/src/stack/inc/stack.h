@@ -1,7 +1,19 @@
-#ifndef STACK_H_
-#define STACK_H_
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:38:13 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 10:26:33 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "../../Libftprintf/libftprintf.h"
+#ifndef STACK_H
+# define STACK_H
+
+# include "../../Libftprintf/libftprintf.h"
 
 typedef struct		s_node
 {

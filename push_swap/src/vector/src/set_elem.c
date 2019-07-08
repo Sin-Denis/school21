@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_elem.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:39:42 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 10:31:44 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/vector.h"
 
-void    vector_set_elem(t_vector *v, int idx, vector_type val)
+void	vector_set_elem(t_vector *v, int idx, t_vector_type val)
 {
-    v->data[idx] = val;
+	v->data[idx] = val;
 }

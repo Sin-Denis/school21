@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_support_functions.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:37:55 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 10:46:35 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/checker.h"
 
 void	checker_error_exit(t_stack *a, t_stack *b, char *operation)
@@ -9,13 +21,15 @@ void	checker_error_exit(t_stack *a, t_stack *b, char *operation)
 	exit(1);
 }
 
-void		error_handler_unary(t_stack *a, t_stack *b, char *operation, int (*f)(t_stack *))
+void	error_handler_unary(t_stack *a, t_stack *b,
+							char *operation, int (*f)(t_stack *))
 {
 	if ((*f)(a) == -1)
 		checker_error_exit(a, b, operation);
 }
 
-void		error_handler_binary(t_stack *a, t_stack *b, char *operation, int (*f)(t_stack *, t_stack *))
+void	error_handler_binary(t_stack *a, t_stack *b, char *operation,
+							int (*f)(t_stack *, t_stack *))
 {
 	if ((*f)(a, b) == -1)
 		checker_error_exit(a, b, operation);
@@ -44,10 +58,11 @@ void	operations_handler(t_stack *a, t_stack *b, char *operation)
 	else if (ft_strcmp("rrb", operation) == 0)
 		error_handler_unary(b, a, operation, stack_reverse_rotate);
 	else if (ft_strcmp("rrr", operation) == 0)
-		error_handler_binary(a, b, operation, stack_simultaneous_reverse_rotate);
+		error_handler_binary(a, b, operation,
+							stack_simultaneous_reverse_rotate);
 }
 
-int			operation_is_not_exist(char *op)
+int		operation_is_not_exist(char *op)
 {
 	if (ft_strcmp(op, "pa") == 0 ||
 	ft_strcmp(op, "pb") == 0 ||

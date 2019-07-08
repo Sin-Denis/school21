@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:37:45 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 11:12:55 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 static void		shift_all_without_three(t_stack *a, t_stack *b)
@@ -18,7 +30,7 @@ static void		shift_all_without_three(t_stack *a, t_stack *b)
 		{
 			stack_shift(b, a);
 			ft_printf("pb\n");
-		}	
+		}
 	}
 }
 
@@ -58,8 +70,8 @@ static void		choose_elem(t_stack *a, t_stack *b)
 	else if (elem_with_min_operations->appropriate_deep > 0 &&
 	elem_with_min_operations->self_deep < 0)
 		handler5(a, b, elem_with_min_operations);
-	else if (((elem_with_min_operations->appropriate_deep == -(a->size / 2) && a->size % 2 == 1) ||
-	elem_with_min_operations->appropriate_deep < 0) &&
+	else if (((elem_with_min_operations->appropriate_deep == -(a->size / 2) &&
+	a->size % 2 == 1) || elem_with_min_operations->appropriate_deep < 0) &&
 	elem_with_min_operations->self_deep < 0)
 		handler6(a, b, elem_with_min_operations);
 	else if (elem_with_min_operations->appropriate_deep < 0 &&
@@ -84,13 +96,13 @@ void			sort(t_stack *a, t_stack *b)
 {
 	if (stack_is_sort(a) && stack_is_empty(b))
 		return ;
-    shift_all_without_three(a, b);
+	shift_all_without_three(a, b);
 	sort_three_elem(a);
 	operations_calculate(a, b);
-    while (!stack_is_empty(b))
-    {
-        operations_calculate(a, b);
+	while (!stack_is_empty(b))
+	{
+		operations_calculate(a, b);
 		choose_elem(a, b);
-    }
+	}
 	elements_return(a);
 }

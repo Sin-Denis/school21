@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:39:27 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 10:31:56 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/vector.h"
 
 t_vector		*vector_create(int size)
@@ -9,13 +21,14 @@ t_vector		*vector_create(int size)
 	v = (t_vector *)malloc(sizeof(t_vector));
 	if (size == 0)
 	{
-		v->data = (vector_type *)malloc(sizeof(vector_type) * 10);
+		v->data = (t_vector_type *)malloc(sizeof(t_vector_type) * 10);
 		v->size = 0;
 		v->capacity = 10;
 	}
 	else
 	{
-		v->data = (vector_type *)malloc(sizeof(vector_type) * size * INCREASE_SIZE);
+		v->data = (t_vector_type *)malloc(sizeof(t_vector_type) *
+		size * INCREASE_SIZE);
 		v->size = size;
 		v->capacity = size * INCREASE_SIZE;
 	}

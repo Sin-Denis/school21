@@ -83,23 +83,23 @@ OBJECTS := $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 all: $(NAME)
 
 $(NAME): directory $(OBJ_DIR) $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) -c $(FLAGS) -I $(INC_DIR) $^ -o $@
+	@$(CC) -c $(FLAGS) -I $(INC_DIR) $^ -o $@
 
 directory:
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re:
-	make fclean
-	make all
+	@make fclean
+	@make all
 
 .PHONY: all clean fclean re directory

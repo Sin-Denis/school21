@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations_calculate.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:37:37 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 10:22:20 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 static void		deep_set(t_stack *s)
@@ -32,13 +44,14 @@ static t_node	*get_near_elem(t_stack *s, int order_idx)
 		{
 			near_elem = iter;
 			iter = iter->prev;
-			break;
+			break ;
 		}
 		iter = iter->prev;
 	}
 	while (++i < s->size)
 	{
-		if (iter->order_idx > order_idx && iter->order_idx < near_elem->order_idx)
+		if (iter->order_idx > order_idx &&
+		iter->order_idx < near_elem->order_idx)
 			near_elem = iter;
 		iter = iter->prev;
 	}
@@ -54,18 +67,20 @@ static void		operations_calculate_item(t_stack *a, t_node *iter_b)
 		iter_b->operations_amount = 2 + ft_abs(iter_b->self_deep);
 	else if (iter_a->self_deep == 0)
 		iter_b->operations_amount = 1 + ft_abs(iter_b->self_deep);
-	else if (iter_a->self_deep == -(a->size / 2) && a->size % 2 == 1 && iter_b->self_deep >= 0)
+	else if (iter_a->self_deep == -(a->size / 2) && a->size % 2 == 1 &&
+	iter_b->self_deep >= 0)
 		iter_b->operations_amount = ft_max(ft_abs(iter_a->self_deep),
-										   ft_abs(iter_b->self_deep)) + 2;
+											ft_abs(iter_b->self_deep)) + 2;
 	else if (iter_a->self_deep > 0 && iter_b->self_deep >= 0)
 		iter_b->operations_amount = ft_max(ft_abs(iter_b->self_deep),
-										   ft_abs(iter_a->self_deep) - 1) + 2;
+											ft_abs(iter_a->self_deep) - 1) + 2;
 	else if (iter_a->self_deep > 0 && iter_b->self_deep < 0)
-		iter_b->operations_amount = iter_a->self_deep - 1 + ft_abs(iter_b->self_deep) + 2;
-	else if (((iter_a->self_deep == -(a->size / 2) && a->size % 2 == 1) || iter_a->self_deep < 0) &&
-			 iter_b->self_deep < 0)
+		iter_b->operations_amount = iter_a->self_deep - 1 +
+		ft_abs(iter_b->self_deep) + 2;
+	else if (((iter_a->self_deep == -(a->size / 2) && a->size % 2 == 1) ||
+	iter_a->self_deep < 0) && iter_b->self_deep < 0)
 		iter_b->operations_amount = ft_max(ft_abs(iter_a->self_deep),
-										   ft_abs(iter_b->self_deep)) + 2;
+											ft_abs(iter_b->self_deep)) + 2;
 	else if (iter_a->self_deep < 0 && iter_b->self_deep > 0)
 		iter_b->operations_amount = ft_abs(iter_a->self_deep) +
 									ft_abs(iter_b->self_deep) + 2;

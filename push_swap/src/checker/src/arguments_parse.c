@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arguments_parse.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:37:52 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 11:27:05 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/checker.h"
 
 static int		is_integer_number(char *str)
 {
 	long long	res;
+	int			sign;
 	size_t		i;
-	int 		sign;
 	size_t		len;
 
 	res = 0;
 	sign = 0;
-	i =  -1;
+	i = -1;
 	len = ft_strlen(str);
 	if (str[0] == '-')
 	{
@@ -21,7 +33,7 @@ static int		is_integer_number(char *str)
 	while (++i < len)
 	{
 		if (!ft_isdigit(str[i]) ||
-			(sign == -1 && res < MIN_INT) || (sign == 0 && res > MAX_INT))
+			(sign == -1 && res > (long long)-MIN_INT) || (sign == 0 && res > MAX_INT))
 			return (0);
 		res *= 10;
 		res += str[i] + '0';
@@ -31,17 +43,23 @@ static int		is_integer_number(char *str)
 
 int				vector_has_duplicate(t_vector *v)
 {
+	int i;
+
+	i = 0;
 	vector_quick_sort(v);
-	for (int i = 0; i + 1 < vector_length(v); ++i) {
+	while (i + 1 < vector_length(v))
+	{
 		if (vector_get_elem(v, i) == vector_get_elem(v, i + 1))
 			return (1);
+		++i;
 	}
 	return (0);
 }
 
-void			arguments_parse_body(t_stack *s, t_vector *v, char **args, int *flag)
+void			arguments_parse_body(t_stack *s, t_vector *v,
+									char **args, int *flag)
 {
-	int 		j;
+	int			j;
 
 	j = -1;
 	while (args[++j] != NULL)
@@ -71,7 +89,8 @@ int				arguments_parse(t_stack *a, int argc, char **argv)
 	t_vector	*v;
 	char		**args;
 
-	i = (ft_strcmp(argv[1], "-v") == 0 || ft_strcmp(argv[1], "-c") == 0) ? 1 : 0;
+	i = (ft_strcmp(argv[1], "-v") == 0 ||
+	ft_strcmp(argv[1], "-c") == 0) ? 1 : 0;
 	flag = 0;
 	v = vector_create(0);
 	while (++i < argc && flag == 0)

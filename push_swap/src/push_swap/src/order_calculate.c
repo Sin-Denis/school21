@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   order_calculate.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:37:40 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 10:13:18 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 static void		transform_to_vector(t_vector *v, t_stack *s)
@@ -30,7 +42,7 @@ static int		bin_search(t_vector *v, int key)
 		else
 			r = m;
 	}
-	return (r); 
+	return (r);
 }
 
 static void		set_order(t_stack *s, t_vector *v)
@@ -49,7 +61,7 @@ static void		set_order(t_stack *s, t_vector *v)
 
 void			order_calculate(t_stack *s)
 {
-    t_vector	*v;
+	t_vector	*v;
 
 	v = vector_create(0);
 	transform_to_vector(v, s);

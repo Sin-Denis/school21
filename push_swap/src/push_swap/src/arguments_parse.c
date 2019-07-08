@@ -1,27 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arguments_parse.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:36:57 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 11:19:41 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 static int		is_integer_number(char *str)
 {
 	long long	res;
+	int			sign;
 	size_t		i;
-	int 		sign;
 	size_t		len;
 
 	res = 0;
 	sign = 0;
-	i =  -1;
+	i = -1;
 	len = ft_strlen(str);
 	if (str[0] == '-')
 	{
 		++i;
 		sign = -1;
 	}
-	if (str[0] == '+')
+	else if (str[0] == '+')
 		++i;
 	while (++i < len)
 	{
 		if (!ft_isdigit(str[i]) ||
-		(sign == -1 && res < MIN_INT) || (sign == 0 && res > MAX_INT))
+		(sign == -1 && res > (long long)-MIN_INT) || (sign == 0 && res > MAX_INT))
 			return (0);
 		res *= 10;
 		res += str[i] + '0';
@@ -29,19 +41,25 @@ static int		is_integer_number(char *str)
 	return (1);
 }
 
-static int		vector_has_duplicate(t_vector *v)
+int				vector_has_duplicate(t_vector *v)
 {
+	int			i;
+
+	i = 0;
 	vector_quick_sort(v);
-	for (int i = 0; i + 1 < vector_length(v); ++i) {
+	while (i + 1 < vector_length(v))
+	{
 		if (vector_get_elem(v, i) == vector_get_elem(v, i + 1))
 			return (1);
+		++i;
 	}
 	return (0);
 }
 
-static void		arguments_parse_body(t_stack *s, t_vector *v, char **args, int *flag)
+static void		arguments_parse_body(t_stack *s, t_vector *v,
+									char **args, int *flag)
 {
-	int 		j;
+	int			j;
 
 	j = -1;
 	while (args[++j] != NULL)
@@ -68,7 +86,7 @@ int				arguments_parse(t_stack *a, int argc, char **argv)
 {
 	int			i;
 	int			flag;
-	char 		**args;
+	char		**args;
 	t_vector	*v;
 
 	i = 0;
@@ -89,4 +107,3 @@ int				arguments_parse(t_stack *a, int argc, char **argv)
 	vector_destroy(&v);
 	return (0);
 }
-

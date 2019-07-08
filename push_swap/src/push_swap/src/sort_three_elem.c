@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three_elem.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 09:37:42 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/08 10:18:00 by jblue-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 static void		sort_three_elem_sup_func(t_stack *a)
@@ -7,7 +19,8 @@ static void		sort_three_elem_sup_func(t_stack *a)
 	ft_printf("ra\nsa\n");
 }
 
-static void		sort_three_elem_body(t_stack *a, t_node *n1, t_node *n2, t_node *n3)
+static void		sort_three_elem_body(t_stack *a, t_node *n1,
+									t_node *n2, t_node *n3)
 {
 	if (n1->order_idx == 0 && n2->order_idx > n3->order_idx)
 	{
@@ -48,9 +61,8 @@ void			sort_three_elem(t_stack *a)
 		return ;
 	}
 	sort_three_elem_body(
-			a,
-			a->barrier->prev,
-			a->barrier->prev->prev,
-			a->barrier->prev->prev->prev
-			);
+		a,
+		a->barrier->prev,
+		a->barrier->prev->prev,
+		a->barrier->prev->prev->prev);
 }

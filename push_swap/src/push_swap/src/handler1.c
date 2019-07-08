@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 09:47:08 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/03 10:21:22 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/08 10:01:47 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	handler1(t_stack *a, t_stack *b, t_node *node)
 {
-    int	deep;
+	int	deep;
 
 	deep = node->self_deep;
-    while (deep > 0)
-    {
-        stack_rotate(b);
-        ft_printf("rb\n");
+	while (deep > 0)
+	{
+		stack_rotate(b);
+		ft_printf("rb\n");
 		deep--;
-    }
-    while (deep < 0)
+	}
+	while (deep < 0)
 	{
 		stack_reverse_rotate(b);
 		ft_printf("rrb\n");

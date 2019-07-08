@@ -88,42 +88,50 @@ VECTOR_OBJ := $(addprefix $(VECTOR_OBJ_DIR)/,$(VECTOR_FILES:.c=.o))
 PUSH_SWAP_OBJ := $(addprefix $(PUSH_SWAP_OBJ_DIR)/,$(PUSH_SWAP_FILES:.c=.o))
 CHECKER_OBJ := $(addprefix $(CHECKER_OBJ_DIR)/,$(CHECKER_FILES:.c=.o))
 
-all: $(PUSH_SWAP) $(CHECKER)
+all: directory $(PUSH_SWAP) $(CHECKER)
 
-$(PUSH_SWAP): directory $(LIB) $(PUSH_SWAP_OBJ) $(STACK_OBJ) $(VECTOR_OBJ)
-	$(CC) $(FLAGS) $(STACK_OBJ) $(VECTOR_OBJ) $(PUSH_SWAP_OBJ) $(LIB_LINK) -o $@
+$(PUSH_SWAP): $(LIB) $(PUSH_SWAP_OBJ) $(STACK_OBJ) $(VECTOR_OBJ)
+	@$(CC) $(FLAGS) $(STACK_OBJ) $(VECTOR_OBJ) $(PUSH_SWAP_OBJ) $(LIB_LINK) -o $@
 
-$(CHECKER): directory $(LIB) $(CHECKER_OBJ) $(STACK_OBJ) $(VECTOR_OBJ)
-	$(CC) $(FLAGS) $(STACK_OBJ) $(VECTOR_OBJ) $(CHECKER_OBJ) $(LIB_LINK) -o $@
+$(CHECKER): $(LIB) $(CHECKER_OBJ) $(STACK_OBJ) $(VECTOR_OBJ)
+	@$(CC) $(FLAGS) $(STACK_OBJ) $(VECTOR_OBJ) $(CHECKER_OBJ) $(LIB_LINK) -o $@
 
 $(STACK_OBJ_DIR)/%.o: $(STACK_SRC_DIR)/%.c
-	$(CC) $(FLAGS) -c $^ -o $@
+	@$(CC) $(FLAGS) -c $^ -o $@
 
 $(VECTOR_OBJ_DIR)/%.o: $(VECTOR_SRC_DIR)/%.c
-	$(CC) $(FLAGS) -c $^ -o $@
+	@$(CC) $(FLAGS) -c $^ -o $@
 
 $(PUSH_SWAP_OBJ_DIR)/%.o: $(PUSH_SWAP_SRC_DIR)/%.c
-	$(CC) $(FLAGS) -c $^ -o $@
+	@$(CC) $(FLAGS) -c $^ -o $@
 
 $(CHECKER_OBJ_DIR)/%.o: $(CHECKER_SRC_DIR)/%.c
-	$(CC) $(FLAGS) -c $^ -o $@
+	@$(CC) $(FLAGS) -c $^ -o $@
 
 $(LIB):
-	make re -C $(LIB_DIR)
+	@make re -C $(LIB_DIR)
 
-directory:
-	mkdir -p src/push_swap/obj
-	mkdir -p src/checker/obj
-	mkdir -p src/stack/obj
-	mkdir -p src/vector/obj
+directory: $(STACK_OBJ_DIR) $(VECTOR_OBJ_DIR) $(PUSH_SWAP_OBJ_DIR) $(CHECKER_OBJ_DIR)
+
+$(STACK_OBJ_DIR):
+	@mkdir -p $(STACK_OBJ_DIR)
+
+$(VECTOR_OBJ_DIR):
+	@mkdir -p $(VECTOR_OBJ_DIR)
+
+$(PUSH_SWAP_OBJ_DIR):
+	@mkdir -p $(PUSH_SWAP_OBJ_DIR)
+
+$(CHECKER_OBJ_DIR):
+	@mkdir -p $(CHECKER_OBJ_DIR)
 
 clean:
-	rm -rf $(STACK_OBJ_DIR) $(VECTOR_OBJ_DIR) $(PUSH_SWAP_OBJ_DIR) $(CHECKER_OBJ_DIR)
-	make -C $(LIB_DIR) clean
+	@rm -rf $(STACK_OBJ_DIR) $(VECTOR_OBJ_DIR) $(PUSH_SWAP_OBJ_DIR) $(CHECKER_OBJ_DIR)
+	@make -C $(LIB_DIR) clean
 
 fclean: clean
-	rm -rf $(PUSH_SWAP) $(CHECKER)
-	make -C $(LIB_DIR) clean
+	@rm -rf $(PUSH_SWAP) $(CHECKER)
+	@make -C $(LIB_DIR) fclean
 
 re: fclean all
 
