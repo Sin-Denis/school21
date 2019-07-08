@@ -6,11 +6,32 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:30:24 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 11:43:38 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/08 12:47:59 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/checker.h"
+
+static void	table_print_body(int size_a, int size_b,
+							t_node *iter_a, t_node *iter_b)
+{
+	if (size_a == 0)
+	{
+		ft_printf(
+			"\033[31;1m|              |||  \033[34;1m%-10d  \033[31;1m|\n",
+			iter_b->value);
+	}
+	else if (size_b == 0)
+	{
+		ft_printf("|  \033[34;1m%-10d  \033[31;1m|||              |\n",
+			iter_a->value);
+	}
+	else
+	{
+		ft_printf("\033[31;1m|  \033[34;1m%-10d  \033[31;1m|||", iter_a->value);
+		ft_printf("  \033[34;1m%-10d  \033[31;1m|\n", iter_b->value);
+	}
+}
 
 static void	table_print(t_stack *a, t_stack *b, int size_a, int size_b)
 {
@@ -21,14 +42,8 @@ static void	table_print(t_stack *a, t_stack *b, int size_a, int size_b)
 	iter_b = b->barrier->prev;
 	while (size_a > 0 || size_b > 0)
 	{
-		if (size_a == 0)
-			ft_printf("\033[31;1m|              \033[31;1m|||  \033[34;1m%-10d  \033[31;1m|\n", iter_b->value);
-		else if (size_b == 0)
-			ft_printf("\033[31;1m|  \033[34;1m%-10d  \033[31;1m|||              \033[31;1m|\n", iter_a->value);
-		else
-			ft_printf("\033[31;1m|  \033[34;1m%-10d  \033[31;1m|||  \033[34;1m%-10d  \033[31;1m|\n",
-			iter_a->value, iter_b->value);
-		if (size_a != 0)
+		table_print_body(size_a, size_b, iter_a, iter_b);
+		if (size_a-- != 0)
 		{
 			iter_a = iter_a->prev;
 			size_a--;
@@ -49,8 +64,9 @@ static void	state_print(t_stack *a, t_stack *b)
 	size_a = a->size;
 	size_b = b->size;
 	ft_printf("\033[31;1m---------------------------------\n");
-	ft_printf("|    \033[32;1mSTACK A\033[31;1m   |||    \033[32;1mSTACK B\033[31;1m   |\n");
-	ft_printf("---------------------------------\033[0m\n");
+	ft_printf("|    \033[32;1mSTACK A\033[31;1m   |||");
+	ft_printf("    \033[32;1mSTACK B\033[31;1m   |\n");
+	ft_printf("---------------------------------\n");
 	table_print(a, b, size_a, size_b);
 }
 

@@ -6,7 +6,7 @@
 #    By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/26 13:24:28 by nparker           #+#    #+#              #
-#    Updated: 2019/07/08 10:52:31 by jblue-da         ###   ########.fr        #
+#    Updated: 2019/07/08 12:49:17 by jblue-da         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -224,7 +224,7 @@ clean:
 	@rm -rf $(OBJ_DIR)
 
 fclean:	clean
-	@make clean -C $(LIBFT_DIR)
+	@make fclean -C $(LIBFT_DIR)
 	@rm -rf $(NAME)
 
 re:
