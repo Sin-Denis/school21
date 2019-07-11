@@ -97,17 +97,17 @@ $(PUSH_SWAP): $(LIB) $(PUSH_SWAP_OBJ) $(STACK_OBJ) $(VECTOR_OBJ)
 $(CHECKER): $(LIB) $(CHECKER_OBJ) $(STACK_OBJ) $(VECTOR_OBJ)
 	@$(CC) $(FLAGS) $(STACK_OBJ) $(VECTOR_OBJ) $(CHECKER_OBJ) $(LIB_LINK) -o $@
 
-$(STACK_OBJ_DIR)/%.o: $(STACK_SRC_DIR)/%.c
-	@$(CC) $(FLAGS) -c $^ -o $@
+$(STACK_OBJ_DIR)/%.o: $(STACK_SRC_DIR)/%.c $(STACK_INC)
+	@$(CC) $(FLAGS) -c $< -o $@
 
-$(VECTOR_OBJ_DIR)/%.o: $(VECTOR_SRC_DIR)/%.c
-	@$(CC) $(FLAGS) -c $^ -o $@
+$(VECTOR_OBJ_DIR)/%.o: $(VECTOR_SRC_DIR)/%.c $(VECTOR_INC)
+	@$(CC) $(FLAGS) -c $< -o $@
 
-$(PUSH_SWAP_OBJ_DIR)/%.o: $(PUSH_SWAP_SRC_DIR)/%.c
-	@$(CC) $(FLAGS) -c $^ -o $@
+$(PUSH_SWAP_OBJ_DIR)/%.o: $(PUSH_SWAP_SRC_DIR)/%.c $(PUSH_SWAP_INC)
+	@$(CC) $(FLAGS) -c $< -o $@
 
-$(CHECKER_OBJ_DIR)/%.o: $(CHECKER_SRC_DIR)/%.c
-	@$(CC) $(FLAGS) -c $^ -o $@
+$(CHECKER_OBJ_DIR)/%.o: $(CHECKER_SRC_DIR)/%.c $(CHECKER_INC)
+	@$(CC) $(FLAGS) -c $< -o $@
 
 $(LIB):
 	@make re -C $(LIB_DIR)
