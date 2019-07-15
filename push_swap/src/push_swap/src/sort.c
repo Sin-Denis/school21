@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:45 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 10:26:35 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/15 17:27:17 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,17 @@ static void		shift_all_without_three(t_stack *a, t_stack *b)
 	begin_size = a->size;
 	while (a->size > 3)
 	{
-		stack_shift(b, a);
-		ft_printf("pb\n");
+		if (stack_top(a)->order_idx == 0 ||
+		stack_top(a)->order_idx == begin_size - 1)
+		{
+			stack_rotate(a);
+			ft_printf("ra\n");
+		}
+		else
+		{
+			stack_shift(b, a);
+			ft_printf("pb\n");
+		}
 	}
 }
 
