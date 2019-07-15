@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:30:24 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 12:47:59 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/15 09:35:55 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	table_print_body(int size_a, int size_b,
 							t_node *iter_a, t_node *iter_b)
 {
-	if (size_a == 0)
+	if (size_a == 0 && size_b != 0)
 	{
 		ft_printf(
 			"\033[31;1m|              |||  \033[34;1m%-10d  \033[31;1m|\n",
 			iter_b->value);
 	}
-	else if (size_b == 0)
+	else if (size_b == 0 && size_a != 0)
 	{
 		ft_printf("|  \033[34;1m%-10d  \033[31;1m|||              |\n",
 			iter_a->value);
@@ -43,7 +43,7 @@ static void	table_print(t_stack *a, t_stack *b, int size_a, int size_b)
 	while (size_a > 0 || size_b > 0)
 	{
 		table_print_body(size_a, size_b, iter_a, iter_b);
-		if (size_a-- != 0)
+		if (size_a != 0)
 		{
 			iter_a = iter_a->prev;
 			size_a--;

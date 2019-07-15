@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:39:11 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/11 13:37:44 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/15 09:49:32 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int				stack_swap(t_stack *s)
 	t_node		*top;
 	t_node		*prev_top;
 
-	if (s->size < 1)
-		return (-1);
-	if (s->size == 1)
+	if (s->size <= 1)
 		return (0);
 	top = s->barrier->prev;
 	prev_top = top->prev;
