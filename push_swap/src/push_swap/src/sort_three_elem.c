@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:42 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 09:19:12 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/15 10:30:42 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,18 @@ static int		get_min_idx(t_stack *s)
 	return (min_idx);
 }
 
-static void		sort_three_elem_sup_func(t_stack *a)
+static void		sort_three_elem_sup_func1(t_stack *a)
 {
 	stack_rotate(a);
 	stack_swap(a);
 	ft_printf("ra\nsa\n");
+}
+
+static void		sort_three_elem_sup_func2(t_stack *a)
+{
+	stack_reverse_rotate(a);
+	stack_swap(a);
+	ft_printf("rra\nsa\n");
 }
 
 static void		sort_three_elem_body(t_stack *a, t_node *n1,
@@ -44,11 +51,7 @@ static void		sort_three_elem_body(t_stack *a, t_node *n1,
 
 	min_idx = get_min_idx(a);
 	if (n1->order_idx == min_idx && n2->order_idx > n3->order_idx)
-	{
-		stack_reverse_rotate(a);
-		stack_swap(a);
-		ft_printf("rra\nsa\n");
-	}
+		sort_three_elem_sup_func2(a);
 	else if (n2->order_idx == min_idx && n1->order_idx < n3->order_idx)
 	{
 		stack_swap(a);
@@ -65,7 +68,7 @@ static void		sort_three_elem_body(t_stack *a, t_node *n1,
 		ft_printf("rra\n");
 	}
 	else if (n3->order_idx == min_idx)
-		sort_three_elem_sup_func(a);
+		sort_three_elem_sup_func1(a);
 }
 
 void			sort_three_elem(t_stack *a)

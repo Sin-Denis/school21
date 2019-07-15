@@ -6,28 +6,11 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:37 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 10:22:20 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/15 10:27:39 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-static void		deep_set(t_stack *s)
-{
-	int			i;
-	t_node		*iter;
-
-	i = -1;
-	iter = s->barrier->prev;
-	while (++i < s->size)
-	{
-		if (i <= s->size / 2)
-			iter->self_deep = i;
-		else
-			iter->self_deep = -(s->size - i);
-		iter = iter->prev;
-	}
-}
 
 static t_node	*get_near_elem(t_stack *s, int order_idx)
 {

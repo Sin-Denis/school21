@@ -46,7 +46,8 @@ VECTOR_FILES :=	create.c\
 				set_elem.c\
 				sort.c\
 
-PUSH_SWAP_FILES := 	operations_calculate.c\
+PUSH_SWAP_FILES := 	ps_sup_functions.c\
+					operations_calculate.c\
 					order_calculate.c\
 					error_exit.c\
 					handler1.c\

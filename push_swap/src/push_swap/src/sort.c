@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:45 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 09:22:55 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/15 10:26:35 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,14 @@ static void		choose_elem(t_stack *a, t_stack *b)
 
 static void		elements_return(t_stack *a)
 {
-	t_node		*iter;
+	t_node		*first_idx_node;
 
-	iter = a->barrier->prev;
-	while (iter->order_idx != 0)
-	{
-		stack_reverse_rotate(a);
-		ft_printf("rra\n");
-		iter = a->barrier->prev;
-	}
+	deep_set(a);
+	first_idx_node = get_first_idx_node(a);
+	if (first_idx_node->self_deep > 0)
+		come_back(a);
+	else
+		come_back_rev(a);
 }
 
 void			sort(t_stack *a, t_stack *b)
