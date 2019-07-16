@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 12:18:13 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 17:33:59 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/16 09:03:11 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ void		handler6(t_stack *a, t_stack *b, t_node *node)
 	else
 		single_ops_handler(b, single_ops, 'b');
 	stack_shift(a, b);
-	stack_rotate(a);
-	ft_printf("pa\nra\n");
+	ft_printf("pa\n");
 }

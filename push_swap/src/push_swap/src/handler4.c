@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 11:40:30 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 10:07:00 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/16 09:01:22 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,13 @@ void		handler4(t_stack *a, t_stack *b, t_node *node)
 	int		common_ops;
 	int		single_ops;
 
-	common_ops = ft_min(ft_abs(node->appropriate_deep) - 1, node->self_deep);
-	single_ops = ft_abs(ft_abs(node->appropriate_deep) - 1 - node->self_deep);
+	common_ops = ft_min(ft_abs(node->appropriate_deep), node->self_deep);
+	single_ops = ft_abs(ft_abs(node->appropriate_deep) - node->self_deep);
 	common_ops_handler(a, b, common_ops);
-	if (ft_abs(node->appropriate_deep) - 1 > node->self_deep)
+	if (ft_abs(node->appropriate_deep) > node->self_deep)
 		single_ops_handler(a, single_ops, 'a');
 	else
 		single_ops_handler(b, single_ops, 'b');
 	stack_shift(a, b);
-	stack_swap(a);
-	ft_printf("pa\nsa\n");
+	ft_printf("pa\n");
 }

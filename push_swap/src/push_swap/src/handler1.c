@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 09:47:08 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 10:01:47 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/16 08:59:20 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ void	handler1(t_stack *a, t_stack *b, t_node *node)
 		deep++;
 	}
 	stack_shift(a, b);
-	stack_rotate(a);
-	ft_printf("pa\nra\n");
+	ft_printf("pa\n");
 }

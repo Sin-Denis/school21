@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:45 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 17:27:17 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/16 09:04:00 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,13 @@ static void		choose_elem(t_stack *a, t_stack *b)
 		handler1(a, b, elem_with_min_operations);
 	else if (elem_with_min_operations->appropriate_deep == 0)
 		handler2(a, b, elem_with_min_operations);
-	else if (elem_with_min_operations->appropriate_deep == -(a->size / 2) &&
-	a->size % 2 == 1 && elem_with_min_operations->self_deep >= 0)
-		handler3(a, b, elem_with_min_operations);
 	else if (elem_with_min_operations->appropriate_deep > 0 &&
 	elem_with_min_operations->self_deep >= 0)
 		handler4(a, b, elem_with_min_operations);
 	else if (elem_with_min_operations->appropriate_deep > 0 &&
 	elem_with_min_operations->self_deep < 0)
 		handler5(a, b, elem_with_min_operations);
-	else if (((elem_with_min_operations->appropriate_deep == -(a->size / 2) &&
-	a->size % 2 == 1) || elem_with_min_operations->appropriate_deep < 0) &&
+	else if (elem_with_min_operations->appropriate_deep < 0 &&
 	elem_with_min_operations->self_deep < 0)
 		handler6(a, b, elem_with_min_operations);
 	else if (elem_with_min_operations->appropriate_deep < 0 &&

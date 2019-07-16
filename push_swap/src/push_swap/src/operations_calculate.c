@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:37 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 17:34:52 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/16 09:19:33 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,21 @@ static void		operations_calculate_item(t_stack *a, t_node *iter_b)
 
 	iter_a = get_near_elem(a, iter_b->order_idx);
 	if (iter_a == NULL)
-		iter_b->operations_amount = 2 + ft_abs(iter_b->self_deep);
+		iter_b->operations_amount = 1 + ft_abs(iter_b->self_deep);
 	else if (iter_a->self_deep == 0)
 		iter_b->operations_amount = 1 + ft_abs(iter_b->self_deep);
-	else if (iter_a->self_deep == -(a->size / 2) && a->size % 2 == 1 &&
-	iter_b->self_deep >= 0)
-		iter_b->operations_amount = ft_max(ft_abs(iter_a->self_deep),
-											ft_abs(iter_b->self_deep)) + 2;
 	else if (iter_a->self_deep > 0 && iter_b->self_deep >= 0)
 		iter_b->operations_amount = ft_max(ft_abs(iter_b->self_deep),
-											ft_abs(iter_a->self_deep) - 1) + 2;
+		ft_abs(iter_a->self_deep)) + 1;
 	else if (iter_a->self_deep > 0 && iter_b->self_deep < 0)
-		iter_b->operations_amount = iter_a->self_deep - 1 +
-		ft_abs(iter_b->self_deep) + 2;
-	else if (((iter_a->self_deep == -(a->size / 2) && a->size % 2 == 1) ||
-	iter_a->self_deep < 0) && iter_b->self_deep < 0)
+		iter_b->operations_amount = iter_a->self_deep +
+		ft_abs(iter_b->self_deep) + 1;
+	else if (iter_a->self_deep < 0 && iter_b->self_deep < 0)
 		iter_b->operations_amount = ft_max(ft_abs(iter_a->self_deep),
-											ft_abs(iter_b->self_deep)) + 2;
-	else if (iter_a->self_deep < 0 && iter_b->self_deep > 0)
+		ft_abs(iter_b->self_deep)) + 1;
+	else if (iter_a->self_deep < 0 && iter_b->self_deep >= 0)
 		iter_b->operations_amount = ft_abs(iter_a->self_deep) +
-									ft_abs(iter_b->self_deep) + 2;
+		ft_abs(iter_b->self_deep) + 1;
 	iter_b->appropriate_deep = (iter_a == NULL) ? a->size : iter_a->self_deep;
 }
 

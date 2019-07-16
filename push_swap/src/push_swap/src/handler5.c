@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 12:03:12 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 17:34:03 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/16 09:11:09 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		stack_a_ops_handler(t_stack *a, int stack_a_ops)
 {
 	int			i;
 
-	i = 0;
+	i = -1;
 	while (++i < stack_a_ops)
 	{
 		stack_rotate(a);
@@ -41,6 +41,5 @@ void			handler5(t_stack *a, t_stack *b, t_node *node)
 	stack_a_ops_handler(a, node->appropriate_deep);
 	stack_b_ops_handler(b, ft_abs(node->self_deep));
 	stack_shift(a, b);
-	stack_swap(a);
-	ft_printf("pa\nsa\n");
+	ft_printf("pa\n");
 }
