@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create.c                                           :+:      :+:    :+:   */
+/*   hash.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/15 15:04:44 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 15:35:55 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/16 12:14:38 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/16 14:51:41 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/graph.h"
+#include "../../include/graph.h"
 
-void    graph_create(t_graph **g)
+size_t	hash(char *key, int m, int k)
 {
-    
+    int i;
+    int a;
+    size_t hash_val;
+    size_t len;
+
+    i = -1;
+    a = 17;
+    hash_val = 0;
+    len = ft_strlen(key);
+    while (++i < len)
+    {
+        hash_val *= a;
+        hash_val += key[i]; 
+    }
+    hash_val %= m;
+    hash_val += k;
+    return (hash_val);
 }

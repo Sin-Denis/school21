@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   set_elem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/15 15:21:06 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/15 15:33:16 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/08 09:39:42 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/16 09:57:46 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/graph.h"
+#include "../include/vector.h"
 
-void        graph_destroy(t_graph **g)
+void	vector_set_elem(t_vector *v, int idx, t_vector_type val)
 {
-    int i;
-
-    i = -1;
-    while (++i < (*g)->vert.size)
-    {
-        free((*g)->vert.data[i].adj);
-    }
-    free((*g)->vert.data);
+	v->data[idx] = val;
 }
