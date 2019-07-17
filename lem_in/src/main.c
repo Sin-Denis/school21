@@ -6,13 +6,13 @@
 /*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/17 12:25:19 by sindenis         ###   ########.fr       */
+/*   Updated: 2019/07/17 12:28:31 by sindenis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/lem_in.h"
 
-int					main(void)
+int			main(void)
 {
 	t_Graph	*g;
 

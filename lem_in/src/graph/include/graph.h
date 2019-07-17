@@ -6,7 +6,7 @@
 /*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/17 11:52:49 by sindenis         ###   ########.fr       */
+/*   Updated: 2019/07/17 13:24:42 by sindenis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ void				Graph_add_start_vert(t_Graph *g, char *name);
 void				Graph_add_end_vert(t_Graph *g, char *name);
 void				Graph_add_edge(t_Graph *g, char *name1, char *name2);
 void				Graph_print(t_Graph *g);
+
+/* Algorithms for Graph */
 
 #endif
