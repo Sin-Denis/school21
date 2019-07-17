@@ -1,32 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   delete.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 15:44:15 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/16 16:03:11 by jblue-da         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../include/graph.h"
 
-int		key_delete(t_Hash_table *t, char *key)
+void			Hash_table_key_delete(t_Hash_table *t, char *key)
 {
-	int		i;
-	size_t	hash_val;
+	int			i;
+	t_Vertex	*v;
+	size_t		hash_val;
 
 	i = -1;
-	while (++i < t->size)
+	while (++i < t->capacity)
 	{
-		hash_val = hash(key, t->size, i);
-		if (Vert_vector_at(t->data, hash_val)->status == BLANK)
-			return (0);
-		if (Vert_vector_at(t->data, hash_val)->status == DELETE)
+		hash_val = hash(key, t->capacity, i);
+		v = Vert_vector_at(t->data, hash_val);
+		if (v->status == BLANK)
+			return ;
+		if (v->status == DELETE)
 			continue ;
-		if (ft_strcmp(Vert_vector_at(t->data, hash_val)->id, key) == 0)
-			return (1);
+		if (ft_strcmp(v->id, key) == 0)
+		{
+			v->status = DELETE;
+			ft_strdel(&v->id);
+			vector_destroy(&v->adj);
+		}
 	}
-	return (0);
 }

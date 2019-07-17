@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:27:05 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/16 15:36:37 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/17 12:04:58 by sindenis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void    Vert_vector_destroy(t_Vert_vector **v)
 {
+    int i;
+
+    i = -1;
+    while (++i < (*v)->size)
+    {
+        if ((*v)->data[i].adj != NULL)
+            vector_destroy(&(*v)->data[i].adj);
+    }
     free((*v)->data);
     free((*v));
     *v = NULL;

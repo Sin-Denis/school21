@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 10:06:28 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/16 15:38:36 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/17 11:44:45 by sindenis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ void static	init(t_Vertex *data, size_t size)
 
 	i = -1;
 	while (++i < size)
+	{
 		data[i].status = BLANK;
+		data[i].id = NULL;
+		data[i].adj = NULL;
+	}
 }
 
 void		Vert_vector_create(t_Vert_vector **v)

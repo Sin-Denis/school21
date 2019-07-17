@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/16 15:39:02 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/17 12:25:19 by sindenis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 
 int					main(void)
 {
-	t_Hash_table	*t;
+	t_Graph	*g;
 
-	Hash_table_create(&t);
-	key_add(t, "start");
-	key_add(t, "end");
-	key_add(t, "234");
-	key_add(t, "1");
-	Vert_vector_print(t->data);
-	ft_printf("%d\n", key_has(t, "start"));
-	Hash_table_destroy(&t);
+	Graph_create(&g);
+
+	Graph_add_start_vert(g, "start");
+	Graph_add_end_vert(g, "end");
+	Graph_add_vert(g, "12");
+
+	Graph_add_edge(g, "start", "12");
+	Graph_add_edge(g, "start", "end");
+	Graph_add_edge(g, "start", "start");
+	Graph_add_edge(g, "12", "start");
+
+	Graph_print(g);
+	
+	Graph_destroy(&g);
 	return (0);
 }
