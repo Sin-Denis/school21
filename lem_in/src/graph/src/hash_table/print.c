@@ -1,12 +1,12 @@
 #include "../../include/graph.h"
 
-void	Hash_table_print(t_Hash_table *t)
+void			Hash_table_print(t_Hash_table *t)
 {
-	int i;
-	t_Vertex *v;
+	size_t		i;
+	t_Vertex 	*v;
 
-	i = -1;
-	while (++i < t->capacity)
+	i = 0;
+	while (i < t->capacity)
 	{
 		v = Vert_vector_at(t->data, i);
 		if (v->status == EXIST)
@@ -15,5 +15,6 @@ void	Hash_table_print(t_Hash_table *t)
 			vector_print(v->adj);
 			ft_printf("\n");
 		}
+		++i;
 	}
 }

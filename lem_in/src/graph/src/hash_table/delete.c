@@ -2,12 +2,12 @@
 
 void			Hash_table_key_delete(t_Hash_table *t, char *key)
 {
-	int			i;
+	size_t		i;
 	t_Vertex	*v;
 	size_t		hash_val;
 
-	i = -1;
-	while (++i < t->capacity)
+	i = 0;
+	while (i < t->capacity)
 	{
 		hash_val = hash(key, t->capacity, i);
 		v = Vert_vector_at(t->data, hash_val);
@@ -21,5 +21,6 @@ void			Hash_table_key_delete(t_Hash_table *t, char *key)
 			ft_strdel(&v->id);
 			vector_destroy(&v->adj);
 		}
+		++i;
 	}
 }

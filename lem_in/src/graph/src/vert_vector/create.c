@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 10:06:28 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/17 11:44:45 by sindenis         ###   ########.fr       */
+/*   Updated: 2019/07/18 09:50:35 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void static	init(t_Vertex *data, size_t size)
 {
-	int		i;
+	size_t	i;
 
-	i = -1;
-	while (++i < size)
+	i = 0;
+	while (i < size)
 	{
 		data[i].status = BLANK;
 		data[i].id = NULL;
 		data[i].adj = NULL;
+		++i;
 	}
 }
 

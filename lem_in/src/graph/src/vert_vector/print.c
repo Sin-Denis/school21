@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:49:42 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/17 09:36:08 by sindenis         ###   ########.fr       */
+/*   Updated: 2019/07/18 09:51:24 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	Vert_vector_print(t_Vert_vector *v)
 {
-    int	i;
+    size_t	i;
 
-    i = -1;
-	while (++i < v->size)
-		ft_printf("Vert_id: %s\n", v->data[i].id);
+    i = 0;
+	while (i < v->size)
+    {
+        ft_printf("Vert_id: %s\n", v->data[i].id);
+        ++i;
+    }
 }

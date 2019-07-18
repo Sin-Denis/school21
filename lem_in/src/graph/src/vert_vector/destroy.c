@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:27:05 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/17 12:04:58 by sindenis         ###   ########.fr       */
+/*   Updated: 2019/07/18 09:50:57 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void    Vert_vector_destroy(t_Vert_vector **v)
+void        Vert_vector_destroy(t_Vert_vector **v)
 {
-    int i;
+    size_t  i;
 
-    i = -1;
-    while (++i < (*v)->size)
+    i = 0;
+    while (i < (*v)->size)
     {
         if ((*v)->data[i].adj != NULL)
             vector_destroy(&(*v)->data[i].adj);
+        ++i;
     }
     free((*v)->data);
     free((*v));
