@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:27:05 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/22 11:18:46 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/22 10:50:00 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/22 10:54:54 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/graph.h"
+#include "../include/vector_pair.h"
 
-void        Vert_vector_destroy(t_Vert_vector **v)
+void	vector_pair_create(t_vector_pair **v, int size)
 {
-    size_t  i;
+	int	i;
 
-    i = 0;
-    while (i < (*v)->size)
-    {
-        if ((*v)->data[i].adj != NULL)
-            vector_pair_destroy(&(*v)->data[i].adj);
-        ++i;
-    }
-    free((*v)->data);
-    free((*v));
-    *v = NULL;
+	i = 0;
+	*v = (t_vector_pair *)malloc(sizeof(t_vector_pair));
+	if (size == 0)
+	{
+		(*v)->data = (t_pair *)malloc(sizeof(t_pair) * 10);
+		(*v)->size = 0;
+		(*v)->capacity = 10;
+	}
+	else
+	{
+		(*v)->data = (t_pair *)malloc(sizeof(t_pair) * size * 2);
+		(*v)->size = size;
+		(*v)->capacity = size * 2;
+	}
 }

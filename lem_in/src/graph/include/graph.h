@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graph.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/17 13:24:42 by sindenis         ###   ########.fr       */
+/*   Updated: 2019/07/22 11:27:30 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GRAPH_H
 
 # include <stdlib.h>
-# include "../../vector/include/vector.h"
+# include "../../vector_pair/include/vector_pair.h"
 # define HASH_TABLE_INIT_SIZE 50
 
 typedef enum		e_status
@@ -28,7 +28,7 @@ typedef struct		s_Vertex
 {
 	char			*id;
 	int				pow;
-	t_vector		*adj;
+	t_vector_pair	*adj;
 	t_status		status;
 }					t_Vertex;
 
@@ -84,8 +84,10 @@ void				Graph_add_vert(t_Graph *g, char *name);
 void				Graph_add_start_vert(t_Graph *g, char *name);
 void				Graph_add_end_vert(t_Graph *g, char *name);
 void				Graph_add_edge(t_Graph *g, char *name1, char *name2);
+void				Graph_set_weight(t_Graph *g, char *name1, char *name2, int weight);
 void				Graph_print(t_Graph *g);
 
 /* Algorithms for Graph */
+
 
 #endif

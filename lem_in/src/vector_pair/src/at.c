@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   at.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:27:05 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/22 11:18:46 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/22 11:04:55 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/22 11:07:36 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/graph.h"
+#include "../include/vector_pair.h"
 
-void        Vert_vector_destroy(t_Vert_vector **v)
+t_pair	vector_pair_at(t_vector_pair *v, int idx)
 {
-    size_t  i;
+	return (v->data[idx]);
+}
 
-    i = 0;
-    while (i < (*v)->size)
-    {
-        if ((*v)->data[i].adj != NULL)
-            vector_pair_destroy(&(*v)->data[i].adj);
-        ++i;
-    }
-    free((*v)->data);
-    free((*v));
-    *v = NULL;
+int		vector_pair_first(t_vector_pair *v, int idx)
+{
+	return (v->data[idx].first);
+}
+
+int		vector_pair_second(t_vector_pair *v, int idx)
+{
+	return (v->data[idx].second);
 }

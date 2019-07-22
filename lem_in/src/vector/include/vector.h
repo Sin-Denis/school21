@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sindenis <sindenis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:39:23 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/17 11:58:48 by sindenis         ###   ########.fr       */
+/*   Updated: 2019/07/22 10:47:03 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_vector
 	int				capacity;
 }					t_vector;
 
+/* t_vector */
 t_vector			*vector_create(int size);
 void				vector_destroy(t_vector **v);
 void				vector_resize(t_vector *v, int size);

@@ -19,7 +19,7 @@ void			Hash_table_key_delete(t_Hash_table *t, char *key)
 		{
 			v->status = DELETE;
 			ft_strdel(&v->id);
-			vector_destroy(&v->adj);
+			vector_pair_destroy(&v->adj);
 		}
 		++i;
 	}

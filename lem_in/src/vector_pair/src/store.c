@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:27:05 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/22 11:18:46 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/22 11:08:00 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/22 11:08:49 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/graph.h"
+#include "../include/vector_pair.h"
 
-void        Vert_vector_destroy(t_Vert_vector **v)
+void	vector_pair_store(t_vector_pair *v, int idx, int first, int second)
 {
-    size_t  i;
-
-    i = 0;
-    while (i < (*v)->size)
-    {
-        if ((*v)->data[i].adj != NULL)
-            vector_pair_destroy(&(*v)->data[i].adj);
-        ++i;
-    }
-    free((*v)->data);
-    free((*v));
-    *v = NULL;
+	v->data[idx].first = first;
+	v->data[idx].second = second;	
 }

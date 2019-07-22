@@ -12,8 +12,7 @@ void			Hash_table_print(t_Hash_table *t)
 		if (v->status == EXIST)
 		{
 			ft_printf("id: %10s status: %d power: %5d adj: ", v->id, v->status, v->pow);
-			vector_print(v->adj);
-			ft_printf("\n");
+			vector_pair_print(v->adj);
 		}
 		++i;
 	}

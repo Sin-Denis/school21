@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:27:05 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/22 11:18:46 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/22 11:12:02 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/22 11:16:19 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/graph.h"
+#include "../include/vector_pair.h"
 
-void        Vert_vector_destroy(t_Vert_vector **v)
+void	vector_pair_print(t_vector_pair *v)
 {
-    size_t  i;
+	int i;
 
-    i = 0;
-    while (i < (*v)->size)
-    {
-        if ((*v)->data[i].adj != NULL)
-            vector_pair_destroy(&(*v)->data[i].adj);
-        ++i;
-    }
-    free((*v)->data);
-    free((*v));
-    *v = NULL;
+	i = -1;
+	while (++i < v->size)
+	{
+		if (i + 1 == v->size)
+			ft_printf("%d: %d\n", v->data[i].first, v->data[i].second);
+		else
+			ft_printf("%d: %d ", v->data[i].first, v->data[i].second);
+	}
 }
