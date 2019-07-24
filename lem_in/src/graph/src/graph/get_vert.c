@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   get_vert.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 10:27:29 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 10:42:20 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/24 13:24:30 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/24 15:59:21 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	Roads_destroy(t_Roads **r)
+t_Vertex	*Graph_get_vert(t_Graph *g, size_t id)
 {
-	int	i;
+	return (Hash_table_at_num(g->table, id));
+}
 
-	i = -1;
-	while ((size_t)++i < (*r)->size)
-		vector_destroy(&(*r)->roads[i]);
-	free((*r)->roads);
-	free(*r);
-	*r = NULL;
+int			Graph_get_idx(t_Graph *g, char *key)
+{
+	return (Hash_table_idx(g->table, key));
 }

@@ -43,3 +43,8 @@ int				Hash_table_idx(t_Hash_table *t, char *key)
 	}
 	return (-1);
 }
+
+t_Vertex		*Hash_table_at_num(t_Hash_table *t, size_t num)
+{
+	return (Vert_vector_at(t->data, num));
+}

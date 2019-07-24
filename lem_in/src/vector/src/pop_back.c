@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   del.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 10:27:29 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 10:42:20 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/24 15:45:16 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/24 15:47:32 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/graph.h"
+#include "../include/vector.h"
 
-void	Roads_destroy(t_Roads **r)
+void	vector_pop_back(t_vector *v)
 {
-	int	i;
-
-	i = -1;
-	while ((size_t)++i < (*r)->size)
-		vector_destroy(&(*r)->roads[i]);
-	free((*r)->roads);
-	free(*r);
-	*r = NULL;
+    --v->size;
 }

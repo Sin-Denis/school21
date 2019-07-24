@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   min.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 10:27:29 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 10:42:20 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/24 15:08:03 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/24 15:50:32 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	Roads_destroy(t_Roads **r)
+int		Pq_min(t_Priority_queue *q)
 {
-	int	i;
+	return (q->arr->data[0]);
+}
 
-	i = -1;
-	while ((size_t)++i < (*r)->size)
-		vector_destroy(&(*r)->roads[i]);
-	free((*r)->roads);
-	free(*r);
-	*r = NULL;
+void	Pq_extract_min(t_Priority_queue *q, t_Graph *g)
+{
+	q->arr->data[0] = q->arr->data[q->arr->size];
+	vector_pop_back(q->arr);
+	if (q->arr->size != 0)
+		Pq_sift_down(q, g, 0);
 }

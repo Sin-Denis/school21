@@ -11,7 +11,7 @@ void			Hash_table_print(t_Hash_table *t)
 		v = Vert_vector_at(t->data, i);
 		if (v->status == EXIST)
 		{
-			ft_printf("id: %10s status: %d power: %5d adj: ", v->id, v->status, v->pow);
+			ft_printf("id: %10s status: %d power: %5d adj: ", v->id, v->status, v->dist);
 			vector_pair_print(v->adj);
 		}
 		++i;

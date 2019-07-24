@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 10:27:29 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 10:42:20 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/24 10:45:14 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/24 10:53:22 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	Roads_destroy(t_Roads **r)
+void	Roads_print(t_Roads *r)
 {
-	int	i;
+	int i;
 
 	i = -1;
-	while ((size_t)++i < (*r)->size)
-		vector_destroy(&(*r)->roads[i]);
-	free((*r)->roads);
-	free(*r);
-	*r = NULL;
+	while ((size_t)++i < r->size)
+	{
+		ft_printf("Road %d: ", i);
+		vector_print(r->roads[i]);
+		ft_printf("\n");
+	}
 }

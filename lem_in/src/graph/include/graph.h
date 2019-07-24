@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/23 11:02:29 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/24 16:27:22 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct		s_Vertex
 {
 	char			*id;
 	int				prev;
-	int				pow;
+	int				dist;
 	t_vector_pair	*adj;
 	t_status		status;
 }					t_Vertex;
@@ -58,11 +58,15 @@ typedef struct		s_Graph
 
 typedef struct		s_Roads
 {
-	t_vector		*roads;
+	t_vector		**roads;
 	size_t			size;
 	size_t			capacity;
 }					t_Roads;
 
+typedef struct		s_Priority_queue
+{
+	t_vector		*arr;
+}					t_Priority_queue;
 
 /* Functions t_Vector */
 void				Vert_vector_create(t_Vert_vector **v);
@@ -84,6 +88,7 @@ void				Hash_table_key_add(t_Hash_table *t, char *key);
 void				Hash_table_key_delete(t_Hash_table *t, char *key);
 size_t				Hash_table_size(t_Hash_table *t);
 t_Vertex			*Hash_table_at(t_Hash_table *t, char *key);
+t_Vertex			*Hash_table_at_num(t_Hash_table *t, size_t num);
 int					Hash_table_idx(t_Hash_table *t, char *key);
 void				Hash_table_print(t_Hash_table *t);
 
@@ -95,15 +100,31 @@ void				Graph_add_start_vert(t_Graph *g, char *name);
 void				Graph_add_end_vert(t_Graph *g, char *name);
 void				Graph_add_edge(t_Graph *g, char *name1, char *name2);
 void				Graph_set_weight(t_Graph *g, size_t id1, size_t id2, int weight);
+int					Graph_get_idx(t_Graph *g, char *key);
+t_Vertex			*Graph_get_vert(t_Graph *g, size_t id);
 void				Graph_print(t_Graph *g);
 
 /* Functions t_Roads */
 void				Roads_create(t_Roads **r);
 void				Roads_destroy(t_Roads **r);
-void				Roads_add_point(t_Roads *r, int idx, int vertex);
-void				Roads_len(t_Roads *r);
+void				Roads_add_road(t_Roads *r, int idx, t_vector *v);
+void				Roads_push_road(t_Roads *r, t_vector *v);
+void				Roads_print(t_Roads *r);
+size_t				Roads_len(t_Roads *r);
+
+/* Functions t_Priority_Queue */
+void				Pq_create(t_Priority_queue **q);
+void				Pq_destroy(t_Priority_queue **q);
+void				Pq_insert(t_Priority_queue *q, t_Graph *g, int key);
+int					Pq_min(t_Priority_queue *q);
+void				Pq_extract_min(t_Priority_queue *q, t_Graph *g);
+void				Pq_sift_down(t_Priority_queue *q, t_Graph *g, int idx);
+void				Pq_sift_up(t_Priority_queue *q, t_Graph *g, int idx);
+void				Pq_decrease(t_Priority_queue *q, t_Graph *g, int val, int new_val);
+void				Pq_build(t_Priority_queue *q, t_Graph *g);
 
 /* Algorithms for Graph */
-
+void				dijkstra(t_Graph *g);
+void				Graph_get_not_intersecting_roads(t_Graph *g, t_Roads *r, int num);
 
 #endif

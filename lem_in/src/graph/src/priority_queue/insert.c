@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   insert.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 10:27:29 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 10:42:20 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/24 15:06:17 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/24 15:07:38 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	Roads_destroy(t_Roads **r)
+void	Pq_insert(t_Priority_queue *q, t_Graph *g, int key)
 {
-	int	i;
-
-	i = -1;
-	while ((size_t)++i < (*r)->size)
-		vector_destroy(&(*r)->roads[i]);
-	free((*r)->roads);
-	free(*r);
-	*r = NULL;
+	vector_push_back(q->arr, key);
+	Pq_sift_up(q, g, key);
 }

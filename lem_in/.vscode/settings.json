@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "graph.h": "c",
-        "vector_pair.h": "c"
+        "vector_pair.h": "c",
+        "priority_queue.h": "c"
     }
 }
