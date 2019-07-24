@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/18 10:56:07 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/23 09:25:37 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			main(void)
 	Graph_add_edge(g, "1", "2");
 	Graph_add_edge(g, "2", "end");
 	Graph_add_edge(g, "3", "start");
+	Graph_set_weight(g, 49, 3, 2);
 
 	Graph_print(g);
 	Graph_destroy(&g);

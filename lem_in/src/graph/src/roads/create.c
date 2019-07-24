@@ -1,21 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/08 09:37:02 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/22 16:54:05 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/23 10:18:33 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/23 10:23:33 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
-
-void	error_exit(t_stack *a, t_stack *b)
-{
-	stack_destroy(&a);
-	stack_destroy(&b);
-	write(2, "Error\n", 6);
-	exit(1);
-}
+#include "../../include/graph.h"

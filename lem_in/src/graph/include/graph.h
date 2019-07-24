@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/22 11:27:30 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/23 11:02:29 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "../../vector_pair/include/vector_pair.h"
+# include "../../vector/include/vector.h"
 # define HASH_TABLE_INIT_SIZE 50
 
 typedef enum		e_status
@@ -27,6 +28,7 @@ typedef enum		e_status
 typedef struct		s_Vertex
 {
 	char			*id;
+	int				prev;
 	int				pow;
 	t_vector_pair	*adj;
 	t_status		status;
@@ -53,6 +55,14 @@ typedef struct		s_Graph
 	char			*end_id;
 	size_t			size;
 }					t_Graph;
+
+typedef struct		s_Roads
+{
+	t_vector		*roads;
+	size_t			size;
+	size_t			capacity;
+}					t_Roads;
+
 
 /* Functions t_Vector */
 void				Vert_vector_create(t_Vert_vector **v);
@@ -84,8 +94,14 @@ void				Graph_add_vert(t_Graph *g, char *name);
 void				Graph_add_start_vert(t_Graph *g, char *name);
 void				Graph_add_end_vert(t_Graph *g, char *name);
 void				Graph_add_edge(t_Graph *g, char *name1, char *name2);
-void				Graph_set_weight(t_Graph *g, char *name1, char *name2, int weight);
+void				Graph_set_weight(t_Graph *g, size_t id1, size_t id2, int weight);
 void				Graph_print(t_Graph *g);
+
+/* Functions t_Roads */
+void				Roads_create(t_Roads **r);
+void				Roads_destroy(t_Roads **r);
+void				Roads_add_point(t_Roads *r, int idx, int vertex);
+void				Roads_len(t_Roads *r);
 
 /* Algorithms for Graph */
 

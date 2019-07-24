@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:37:57 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/08 11:33:50 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/22 15:57:22 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int			main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		exit(1);
 	}
+	if (stack_is_empty(stack_a))
+		return (0);
 	if (ft_strcmp(argv[1], "-v") == 0)
 		mode_debug(stack_a, stack_b);
 	else if (ft_strcmp(argv[1], "-c") == 0)
