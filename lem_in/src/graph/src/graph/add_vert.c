@@ -5,29 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 13:24:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 13:24:46 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/30 15:15:47 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/30 15:54:05 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	Graph_add_vert(t_Graph *g, char *name)
+void	graph_add_vert(t_graph *g, char *name)
 {
-	Hash_table_key_add(g->table, name);
-	++g->size;
+	vert_vector_push_back(g->nodes, name);
 }
 
-void	Graph_add_start_vert(t_Graph *g, char *name)
+void	graph_add_start_vert(t_graph *g, char *name)
 {
-	Hash_table_key_add(g->table, name);
-	g->start_id = ft_strdup(name);
-	++g->size;
+	g->start_idx = vert_vector_size(g->nodes);
+	vert_vector_push_back(g->nodes, name);
 }
 
-void	Graph_add_end_vert(t_Graph *g, char *name)
+void	graph_add_end_vert(t_graph *g, char *name)
 {
-	Hash_table_key_add(g->table, name);
-	g->end_id = ft_strdup(name);
-	++g->size;
+	g->end_idx = vert_vector_size(g->nodes);
+	vert_vector_push_back(g->nodes, name);
 }

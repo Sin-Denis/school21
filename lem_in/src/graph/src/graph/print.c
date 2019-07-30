@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 13:24:57 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 13:24:57 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/30 15:16:36 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/30 17:05:25 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	Graph_print(t_Graph *g)
+void		graph_print(t_graph *g)
 {
-	Hash_table_print(g->table);
+	vert_vector_print(g->nodes);
 }

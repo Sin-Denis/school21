@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.h                                           :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:45:31 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 14:08:39 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/30 11:06:29 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/30 11:07:21 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM_IN_H
-# define LEM_IN_H
+#include "../../include/pair.h"
 
-# include "../src/Libftprintf/libftprintf.h"
-# include "../src/vector/include/vector.h"
-# include "../src/pair/include/pair.h"
-# include "../src/dictionary/include/dictionary.h"
-# include "../src/graph/include/graph.h"
+void		pair_swap(t_pair *first, t_pair *second)
+{
+	t_pair	tmp;
 
-#endif
+	tmp = *first;
+	*first = *second;
+	*second = tmp;
+}

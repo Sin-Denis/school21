@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.h                                           :+:      :+:    :+:   */
+/*   at.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:45:31 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 14:08:39 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/22 11:04:55 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/30 10:39:28 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM_IN_H
-# define LEM_IN_H
+#include "../../include/pair.h"
 
-# include "../src/Libftprintf/libftprintf.h"
-# include "../src/vector/include/vector.h"
-# include "../src/pair/include/pair.h"
-# include "../src/dictionary/include/dictionary.h"
-# include "../src/graph/include/graph.h"
+t_pair	*vector_pair_at(t_vector_pair *v, int idx)
+{
+	return (&v->data[idx]);
+}
 
-#endif
+int		vector_pair_first(t_vector_pair *v, int idx)
+{
+	return (v->data[idx].first);
+}
+
+int		vector_pair_second(t_vector_pair *v, int idx)
+{
+	return (v->data[idx].second);
+}

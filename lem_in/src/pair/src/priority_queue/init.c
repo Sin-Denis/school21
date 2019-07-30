@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.h                                           :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:45:31 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 14:08:39 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/30 10:48:37 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/30 10:53:03 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM_IN_H
-# define LEM_IN_H
+#include "../../include/pair.h"
 
-# include "../src/Libftprintf/libftprintf.h"
-# include "../src/vector/include/vector.h"
-# include "../src/pair/include/pair.h"
-# include "../src/dictionary/include/dictionary.h"
-# include "../src/graph/include/graph.h"
+t_priority_queue		*pq_create(void)
+{
+	t_priority_queue	*q;
 
-#endif
+	q = (t_priority_queue *)malloc(sizeof(t_priority_queue));
+	q->v = vector_pair_create(0);
+	return (q);
+}
+
+void					destroy(t_priority_queue **q)
+{
+	vector_pair_destroy(&(*q)->v);
+	free(*q);
+	(*q) = NULL;
+}

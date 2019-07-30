@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.h                                           :+:      :+:    :+:   */
+/*   min.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:45:31 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 14:08:39 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/30 11:02:17 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/30 11:08:46 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM_IN_H
-# define LEM_IN_H
+#include "../../include/pair.h"
 
-# include "../src/Libftprintf/libftprintf.h"
-# include "../src/vector/include/vector.h"
-# include "../src/pair/include/pair.h"
-# include "../src/dictionary/include/dictionary.h"
-# include "../src/graph/include/graph.h"
-
-#endif
+int		pq_min(t_priority_queue *q)
+{
+	return (vector_pair_first(q->v, 0));
+}
+void	pq_extract_min(t_priority_queue *q)
+{
+	pair_swap(
+			vector_pair_at(q->v, 0),
+			vector_pair_at(q->v, vector_pair_len(q->v) - 1));
+	vector_pair_pop_back(q->v);
+	pq_sift_dawn(q, 0);	
+}

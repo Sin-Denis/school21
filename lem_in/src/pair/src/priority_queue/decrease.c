@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   decrease.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 13:58:09 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 15:32:33 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/30 11:08:54 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/30 16:51:54 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/graph.h"
+#include "../../include/pair.h"
 
-void		vert_vector_print(t_vert_vector *v)
+void		pq_decrease(t_priority_queue *q, int first, int second)
 {
+	t_pair	*p;
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	while (i < v->size)
+	while (i < vector_pair_len(q->v))
 	{
-		ft_printf("(Name: %10s Prev: %5d Dist: %5d Adj: ", v->data[i].name, v->data[i].prev, v->data[i].dist);
-		j = 0;
-		while (v->data[i].adj != NULL && j < v->data[i].adj->size)
-		{
-			ft_printf("(%d: %d) ", v->data[i].adj->data[j].first, v->data[i].adj->data[j].second);
-			++j;
-		}
-		ft_printf(")\n");
+		p = vector_pair_at(q->v, i);
+		if (p->first == first)
+			break;
 		++i;
 	}
+	p->second = second;
+	pq_sift_up(q, i);
 }

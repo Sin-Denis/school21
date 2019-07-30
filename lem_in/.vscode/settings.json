@@ -1,7 +1,9 @@
 {
     "files.associations": {
+        "lem_in.h": "c",
         "graph.h": "c",
-        "vector_pair.h": "c",
-        "priority_queue.h": "c"
+        "pair.h": "c",
+        "dictionary.h": "c",
+        "libftprintf.h": "c"
     }
 }

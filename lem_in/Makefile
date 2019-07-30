@@ -1,2 +1,23 @@
+CC := gcc
+
+NAME := lem-in
+
+FLAGS := -Wall -Wextra -Werror
+
+CFILES :=	src/vector/src/*.c\
+			src/main.c\
+			src/pair/src/vector_pair/*.c\
+			src/pair/src/priority_queue/*.c\
+			src/dictionary/src/*.c\
+			src/graph/src/vert_vector/*.c\
+			src/graph/src/graph/*.c
+
+LIB := 	src/Libftprintf/libftprintf.a;
+
 all:
-	gcc src/vector/src/*.c src/vector_pair/src/*.c src/Libftprintf/libftprintf.a src/graph/src/graph/*.c src/graph/src/hash_table/*.c src/graph/src/roads/*.c src/graph/src/vert_vector/*.c src/graph/src/priority_queue/*.c src/main.c -o lem-in
+	$(CC) -o $(NAME) $(FLAGS) $(CFILES) $(LIB) 
+
+leak: all
+	valgrind --leak-check=full ./$(NAME)
+
+.PHONY: all leak

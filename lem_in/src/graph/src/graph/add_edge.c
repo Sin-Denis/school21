@@ -5,29 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 13:24:43 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 13:24:44 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/30 15:16:53 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/30 16:41:52 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void			Graph_add_edge(t_Graph *g, char *name1, char *name2)
+void	graph_add_edge(t_graph *g, int id1, int id2)
 {
-	t_Vertex	*v1;
-	t_Vertex	*v2;
-	int			idx1;
-	int			idx2;
+	t_vertex *v1;
+	t_vertex *v2;
 
-	v1 = Hash_table_at(g->table, name1);
-	v2 = Hash_table_at(g->table, name2);
-	idx1 = Hash_table_idx(g->table, name1);
-	idx2 = Hash_table_idx(g->table, name2);
-
+	v1 = vert_vector_at(g->nodes, id1);
+	v2 = vert_vector_at(g->nodes, id2);
 	if (v1->adj == NULL)
-		vector_pair_create(&v1->adj, 0);
+		v1->adj = vector_pair_create(0);
 	if (v2->adj == NULL)
-		vector_pair_create(&v2->adj, 0);
-	vector_pair_push_back(v1->adj, idx2, 1);
-	vector_pair_push_back(v2->adj, idx1, 1);
+		v2->adj = vector_pair_create(0);
+	vector_pair_push_back(v1->adj, id2, 1);
+	if (id1 != g->start_idx && id1 != g->end_idx)
+		vector_pair_push_back(v2->adj, id1, 1);
 }

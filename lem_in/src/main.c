@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/24 16:04:05 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/30 17:26:37 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,23 @@
 
 int			main(void)
 {
-	t_Graph	*g;
-	t_Roads *r;
+	t_graph *g;
 
-	Graph_create(&g);
-
-	Graph_add_vert(g, "3");
-	Graph_add_start_vert(g, "start");
-	Graph_add_end_vert(g, "end");
-	Graph_add_vert(g, "4");
-	Graph_add_vert(g, "1");
-	Graph_add_vert(g, "2");
-	Graph_add_vert(g, "5");
-	Graph_add_vert(g, "6");
-
-	Graph_add_edge(g, "start", "1");
-	Graph_add_edge(g, "3", "4");
-	Graph_add_edge(g, "2", "4");
-	Graph_add_edge(g, "1", "5");
-	Graph_add_edge(g, "6", "5");
-	Graph_add_edge(g, "end", "6");
-	Graph_add_edge(g, "1", "2");
-	Graph_add_edge(g, "2", "end");
-	Graph_add_edge(g, "3", "start");
-	Graph_set_weight(g, 49, 3, 2);
-	Graph_print(g);
-
-	t_Priority_queue *q;
-	Pq_create(&q);
-
-	Pq_insert(q, g, Hash_table_idx(g->table, "start"));
-	Pq_insert(q, g, Hash_table_idx(g->table, "end"));
-	Pq_insert(q, g, Hash_table_idx(g->table, "1"));
-	Pq_insert(q, g, Hash_table_idx(g->table, "6"));
-	
-	ft_printf("%d\n", Pq_min(q));
-
-	Pq_destroy(&q);
-	Graph_destroy(&g);
+	g = graph_create();
+	graph_add_vert(g, "3");
+	graph_add_start_vert(g, "start");
+	graph_add_end_vert(g, "end");
+	graph_add_vert(g, "4");
+	graph_add_vert(g, "1");
+	graph_add_vert(g, "2");
+	graph_add_vert(g, "5");
+	graph_add_vert(g, "6");
+	graph_add_edge(g, 1, 4);
+	graph_add_edge(g, 0, 3);
+	graph_add_edge(g, 5, 3);
+	graph_add_edge(g, 4, 6);
+	graph_add_edge(g, 7, 6);
+	graph_print(g);
+	graph_destroy(&g);
 	return (0);
 }
