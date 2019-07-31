@@ -6,13 +6,13 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:35:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 15:12:08 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 09:51:35 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	vertex_init(t_vertex *vertex, char *name, int prev, int dist)
+void	vertex_init(t_vertex *vertex, char *name, int prev, long long dist)
 {
 	vertex->name = name == NULL ? NULL : ft_strdup(name);
 	vertex->prev = prev;
@@ -33,7 +33,7 @@ void		vertexes_init(t_vertex *vertexes, size_t size)
 	i = 0;
 	while (i < size)
 	{
-		vertex_init(&vertexes[i], NULL, -1, -1);
+		vertex_init(&vertexes[i], NULL, -1, 2147483648L);
 		++i;
 	}
 }

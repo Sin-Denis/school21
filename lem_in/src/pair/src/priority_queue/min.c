@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:02:17 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 11:08:46 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 10:48:28 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		pq_min(t_priority_queue *q)
 {
 	return (vector_pair_first(q->v, 0));
 }
+
 void	pq_extract_min(t_priority_queue *q)
 {
 	pair_swap(

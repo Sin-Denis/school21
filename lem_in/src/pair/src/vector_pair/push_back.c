@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:57:18 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 10:40:10 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 10:28:58 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void grow(t_vector_pair *v)
 	v->data = new_data;
 }
 
-void vector_pair_push_back(t_vector_pair *v, int first, int second)
+void vector_pair_push_back(t_vector_pair *v, int first, long long second)
 {
 	if (v->size == v->capacity)
 		grow(v);

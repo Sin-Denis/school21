@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 15:48:56 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 09:48:13 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct		s_vertex
 {
 	char			*name;
 	int				prev;
-	int				dist;
+	long long		dist;
 	t_vector_pair	*adj;
 }					t_vertex;
 
@@ -40,7 +40,7 @@ typedef struct		s_graph
 }					t_graph;
 
 /* Functions t_vertex */
-void				vertex_init(t_vertex *vertex, char *name, int prev, int dist);
+void				vertex_init(t_vertex *vertex, char *name, int prev, long long dist);
 void				vertex_destroy(t_vertex *vertex);
 void				vertexes_init(t_vertex *vertex, size_t size);
 void				vertexes_destroy(t_vertex **vertex, size_t size);
@@ -65,5 +65,8 @@ void				graph_add_edge(t_graph *g, int id1, int id2);
 void				graph_set_weight(t_graph *g, int id1, int id2, int weight);
 t_vertex			*graph_get_vert(t_graph *g, int id);
 void				graph_print(t_graph *g);
+
+/* Flgorithms */
+void				dijkstra(t_graph *g);
 
 #endif

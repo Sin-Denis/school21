@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:31:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 15:13:59 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 09:50:09 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void		vert_vector_push_back(t_vert_vector *v, char *name)
 {
 	if (v->size == v->capacity)
 		grow(v);
-	vertex_init(&v->data[v->size], name, -1, -1);
+	vertex_init(&v->data[v->size], name, -1, 2147483648);
 	++v->size;
 }

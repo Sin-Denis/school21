@@ -6,7 +6,13 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 15:16:41 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 15:16:45 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 09:38:26 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/graph.h"
+
+t_vertex    *graph_get_vert(t_graph *g, int id)
+{
+    return (vert_vector_at(g->nodes, id));
+}

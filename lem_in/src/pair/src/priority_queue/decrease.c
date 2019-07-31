@@ -6,13 +6,13 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:08:54 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 16:51:54 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 10:55:20 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pair.h"
 
-void		pq_decrease(t_priority_queue *q, int first, int second)
+void		pq_decrease(t_priority_queue *q, int first, long long second)
 {
 	t_pair	*p;
 	size_t	i;

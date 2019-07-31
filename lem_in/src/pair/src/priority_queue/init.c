@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 10:48:37 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 10:53:03 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 11:16:56 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_priority_queue		*pq_create(void)
 	return (q);
 }
 
-void					destroy(t_priority_queue **q)
+void					pq_destroy(t_priority_queue **q)
 {
 	vector_pair_destroy(&(*q)->v);
 	free(*q);
