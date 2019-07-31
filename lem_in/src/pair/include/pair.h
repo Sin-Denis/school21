@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:46:08 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 11:04:15 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 13:45:10 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ long long			vector_pair_second(t_vector_pair *v, int idx);
 void				vector_pair_store(t_vector_pair *v, int idx, int first, long long second);
 size_t				vector_pair_len(t_vector_pair *v);
 void				vector_pair_print(t_vector_pair *v);
+void				vector_pair_del(t_vector_pair *v, int key);
 
 /* t_priority_queue */
 t_priority_queue	*pq_create(void);

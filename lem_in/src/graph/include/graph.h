@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 09:48:13 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/07/31 15:32:04 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,13 @@ void				graph_add_vert(t_graph *g, char *name);
 void				graph_add_start_vert(t_graph *g, char *name);
 void				graph_add_end_vert(t_graph *g, char *name);
 void				graph_add_edge(t_graph *g, int id1, int id2);
-void				graph_set_weight(t_graph *g, int id1, int id2, int weight);
+void				graph_del_edge(t_graph *g, int id1, int id2);
+void				graph_set_weight(t_graph *g, int id1, int id2, long long weight);
 t_vertex			*graph_get_vert(t_graph *g, int id);
 void				graph_print(t_graph *g);
 
-/* Flgorithms */
+/* Algorithms */
 void				dijkstra(t_graph *g);
+void				suurballe(t_graph *g, int num_path);
 
 #endif

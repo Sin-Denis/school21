@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_weight.c                                       :+:      :+:    :+:   */
+/*   delete.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 15:16:47 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 15:32:16 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/31 13:14:17 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/07/31 13:46:45 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/graph.h"
+#include "../../include/pair.h"
 
-void	graph_set_weight(t_graph *g, int id1, int id2, long long weight)
+void		vector_pair_del(t_vector_pair *v, int key)
 {
-	size_t		i;
-	t_vertex	*v;
+	size_t	i;
 
-	v = vert_vector_at(g->nodes, id1);
 	i = 0;
-	while (i < vector_pair_len(v->adj))
+	while (v->data[i].first != key)
+		++i;
+	while (i + 1 < v->size)
 	{
-		if (vector_pair_first(v->adj, i) == id2)
-			break ;
+		v->data[i] = v->data[i + 1];
 		++i;
 	}
-	vector_pair_store(v->adj, i, id2, weight);
+	--v->size;
 }
