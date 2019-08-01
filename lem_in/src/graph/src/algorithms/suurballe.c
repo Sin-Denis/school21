@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:20:04 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 15:47:46 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/01 10:41:38 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ static void		revrse_road(t_graph *g)
 	v = vert_vector_at(g->nodes, idx);
 	while (v->prev != g->start_idx)
 	{
-		graph_del_edge(g, v->prev, idx);
+		graph_del_dir_edge(g, v->prev, idx);
+		graph_set_weight(g, idx, v->prev, 0);
 		idx = v->prev;
 		v = vert_vector_at(g->nodes, v->prev);
 	}
-	graph_del_edge(g, v->prev, idx);
+	graph_del_dir_edge(g, v->prev, idx);
+	graph_set_weight(g, idx, v->prev, 0);
 }
 
 void		suurballe(t_graph *g, int num_path)

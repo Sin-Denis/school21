@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 09:40:13 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 15:47:42 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/01 10:41:49 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,18 @@
 static void				graph_init(t_graph *g)
 {
 	t_vertex			*v;
+	size_t				i;
 
+	i = 0;
+	while (i < vert_vector_size(g->nodes))
+	{
+		g->nodes->data[i].dist = 2147483648;
+		g->nodes->data[i].prev = -1;
+		++i;
+	}
 	v = vert_vector_at(g->nodes, g->start_idx);
 	v->dist = 0;
+
 }
 
 static t_priority_queue	*queue_build(t_graph *g)
@@ -45,7 +54,7 @@ static void				relax(t_graph *g, t_priority_queue *q, t_vector *visited, int idx
 
 	i = 0;
 	v = vert_vector_at(g->nodes, idx);
-	while (i < vector_pair_len(v->adj))
+	while (v->adj != NULL && i < vector_pair_len(v->adj))
 	{
 		if (vector_get_elem(visited, vector_pair_first(v->adj, i)))
 		{
