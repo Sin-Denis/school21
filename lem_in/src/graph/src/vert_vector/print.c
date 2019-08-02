@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:58:09 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 15:34:30 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/02 13:38:46 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		vert_vector_print(t_vert_vector *v)
 			s = NULL;
 		else
 			s = v->data[v->data[i].prev].name;
-		ft_printf("(Name: %10s Prev: %10s Dist: %5ld Adj: ", v->data[i].name, s, v->data[i].dist);
+		ft_printf("(Name: %10s Prev: %10s Dist: %5ld Adj: ", v->data[i].name, s, v->data[i].weight);
 		j = 0;
 		while (v->data[i].adj != NULL && j < v->data[i].adj->size)
 		{

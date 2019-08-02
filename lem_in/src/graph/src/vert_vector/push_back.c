@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:31:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 09:50:09 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/02 13:39:28 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void vertex_copy(t_vertex *v1, t_vertex *v2)
 	i = 0;
 	v1->name = ft_strdup(v2->name);
 	v1->prev = v2->prev;
-	v1->dist = v2->dist;
+	v1->weight = v2->weight;
 	while (v2->adj != NULL && i < v2->adj->size)
 	{
 		vector_pair_push_back(v1->adj, v2->adj->data[i].first, v2->adj->data[i].second);

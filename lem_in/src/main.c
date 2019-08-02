@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/01 10:44:54 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/02 15:11:07 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int			main(void)
 {
-	
-	t_graph *g;
-
+	t_graph	*g;
 	g = graph_create();
 	graph_add_start_vert(g, "start");
 	graph_add_end_vert(g, "end");
@@ -32,10 +30,32 @@ int			main(void)
 	graph_add_vert(g, "10");
 	graph_add_vert(g, "11");
 	graph_add_vert(g, "12");
-	graph_print(g);
-	dijkstra(g);
-	// suurballe(g, 1);
-	ft_printf("\n\n");
+	graph_add_vert(g, "ad");
+
+
+
+
+	
+	graph_add_edge(g, 0, 14);
+	graph_add_edge(g, 14, 1);
+	graph_add_edge(g, 0, 2);
+	graph_add_edge(g, 2, 3);
+	graph_add_edge(g, 3, 4);
+	graph_add_edge(g, 4, 9);
+	graph_add_edge(g, 9, 1);
+	graph_add_edge(g, 0, 5);
+	graph_add_edge(g, 5, 6);
+	graph_add_edge(g, 6, 8);
+	graph_add_edge(g, 0, 7);
+	graph_add_edge(g, 7, 8);
+	graph_add_edge(g, 8, 9);
+	graph_add_edge(g, 7, 10);
+	graph_add_edge(g, 10, 11);
+	graph_add_edge(g, 11, 12);
+	graph_add_edge(g, 12, 1);
+	graph_add_edge(g, 8, 13);
+	graph_add_edge(g, 13, 1);
+	admonds_carp(g, 4);
 	graph_print(g);
 	graph_destroy(&g);
 	return (0);

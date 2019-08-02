@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   node_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 12:53:39 by nparker           #+#    #+#             */
-/*   Updated: 2019/08/02 14:10:05 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/08/02 13:20:49 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/02 13:38:13 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../include/queue.h"
 
-void		ft_bzero(void *s, size_t n)
+t_qnode		*qnode_create(int key)
 {
-	size_t	i;
-	char	*ptr;
+	t_qnode	*node;
 
-	ptr = s;
-	i = 0;
-	if (!n)
-		return ;
-	while (i < n)
-		*(ptr + i++) = 0;
+	node = (t_qnode *)malloc(sizeof(t_qnode));
+	node->key = key;
+	node->prev = NULL;
+	node->next = NULL;
+	return (node);
+}
+
+void		qnode_destroy(t_qnode **node)
+{
+	free(*node);
+	*node = NULL;
 }

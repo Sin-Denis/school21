@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 09:40:13 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/01 10:41:49 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/02 13:39:05 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static void				graph_init(t_graph *g)
 	i = 0;
 	while (i < vert_vector_size(g->nodes))
 	{
-		g->nodes->data[i].dist = 2147483648;
+		g->nodes->data[i].weight = 2147483648;
 		g->nodes->data[i].prev = -1;
 		++i;
 	}
 	v = vert_vector_at(g->nodes, g->start_idx);
-	v->dist = 0;
+	v->weight = 0;
 
 }
 
@@ -40,7 +40,7 @@ static t_priority_queue	*queue_build(t_graph *g)
 	while (i < vert_vector_size(g->nodes))
 	{
 		v = vert_vector_at(g->nodes, i);
-		pq_insert(q, i, v->dist);
+		pq_insert(q, i, v->weight);
 		++i;
 	}
 	return (q);
@@ -62,11 +62,11 @@ static void				relax(t_graph *g, t_priority_queue *q, t_vector *visited, int idx
 			continue ;
 		}
 		u = vert_vector_at(g->nodes, vector_pair_first(v->adj, i));
-		if ((long long)(v->dist + vector_pair_second(v->adj, i)) < u->dist)
+		if ((long long)(v->weight + vector_pair_second(v->adj, i)) < u->weight)
 		{
-			u->dist = v->dist + vector_pair_second(v->adj, i);
+			u->weight = v->weight + vector_pair_second(v->adj, i);
 			u->prev = idx;
-			pq_decrease(q, vector_pair_first(v->adj, i), u->dist);
+			pq_decrease(q, vector_pair_first(v->adj, i), u->weight);
 		}
 		++i;
 	}

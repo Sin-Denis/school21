@@ -6,17 +6,17 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:35:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 09:51:35 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/02 13:39:46 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	vertex_init(t_vertex *vertex, char *name, int prev, long long dist)
+void	vertex_init(t_vertex *vertex, char *name, int prev, long long weight)
 {
 	vertex->name = name == NULL ? NULL : ft_strdup(name);
 	vertex->prev = prev;
-	vertex->dist = dist;
+	vertex->weight = weight;
 	vertex->adj = NULL;
 }
 

@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/01 10:40:53 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/02 14:56:48 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 # include <stdlib.h>
 # include "../../pair/include/pair.h"
 # include "../../vector/include/vector.h"
+# include "../../queue/include/queue.h"
 
 typedef struct		s_vertex
 {
 	char			*name;
 	int				prev;
-	long long		dist;
+	long long		weight;
+	int				color;
 	t_vector_pair	*adj;
 }					t_vertex;
 
@@ -71,5 +73,6 @@ void				graph_print(t_graph *g);
 /* Algorithms */
 void				dijkstra(t_graph *g);
 void				suurballe(t_graph *g, int num_path);
+void				admonds_carp(t_graph *g, int num_path);
 
 #endif
