@@ -19,7 +19,10 @@ LIB := 	src/Libftprintf/libftprintf.a
 all:
 	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES)
 
-leak: all
+$(NAME): $(LIB) $(CFILES)
+	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES)
+
+leak: $(NAME)
 	valgrind --leak-check=full ./$(NAME)
 
 .PHONY: all leak
