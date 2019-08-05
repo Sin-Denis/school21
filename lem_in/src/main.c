@@ -6,15 +6,18 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/05 12:02:22 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:52:18 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/lem_in.h"
 
-int			main(void)
+int				main(void)
 {
-	t_graph	*g;
+	t_graph		*g;
+	t_vector	**roads;
+	t_vector	*distribution;
+	
 	g = graph_create();
 	graph_add_start_vert(g, "start");
 	graph_add_end_vert(g, "end");
@@ -56,13 +59,15 @@ int			main(void)
 	graph_add_edge(g, 1, 15);
 	graph_print(g);
 	admonds_carp(g, 3);
-	t_vector **roads = get_all_roads(g, 3);
+	roads = get_all_roads(g, 3);
+	distribution = get_distribution(roads, 2, 3);
 	
 	for (int i = 0; roads[i] != NULL; ++i) {
 		vector_print(roads[i]);
 		ft_printf("\n");
 	}
-	
+	vector_print(distribution);
+	ft_printf("\n");	
 	graph_print(g);
 	graph_destroy(&g);
 	return (0);
