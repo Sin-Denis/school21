@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 09:23:44 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/05 13:38:44 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/06 15:59:08 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void		put_roads(t_graph *g, t_vector **roads, int idx, int vertex_idx)
 		}
 		++i;
 	}
-	if (vertex_idx != g->end_idx)
+	if (vertex_idx != g->end_idx && vertex_idx != g->start_idx)
 		vector_push_back(roads[idx], vertex_idx);
 }
 

@@ -12,7 +12,8 @@ CFILES :=	src/main.c\
 			src/dictionary/src/*.c\
 			src/graph/src/vert_vector/*.c\
 			src/graph/src/graph/*.c\
-			src/graph/src/algorithms/*.c
+			src/graph/src/algorithms/*.c\
+			src/output/src/*.c
 
 LIB := 	src/Libftprintf/libftprintf.a
 

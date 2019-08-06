@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/05 13:52:18 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/06 17:51:48 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,16 @@ int				main(void)
 	graph_add_edge(g, 14, 1);
 	graph_add_edge(g, 13, 15);
 	graph_add_edge(g, 1, 15);
-	graph_print(g);
 	admonds_carp(g, 3);
 	roads = get_all_roads(g, 3);
-	distribution = get_distribution(roads, 2, 3);
-	
-	for (int i = 0; roads[i] != NULL; ++i) {
+	g->num_ants = 3;
+	distribution = get_distribution(roads, g->num_ants, 3);
+	for (int i = 0; i < 3; ++i) {
 		vector_print(roads[i]);
 		ft_printf("\n");
 	}
-	vector_print(distribution);
-	ft_printf("\n");	
-	graph_print(g);
+	ft_printf("\n");
+	output(g, roads, distribution, 3);
 	graph_destroy(&g);
 	return (0);
 }

@@ -6,11 +6,24 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:50:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 13:25:44 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/06 11:07:17 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pair.h"
+
+static void			zero_vector(t_vector_pair *v)
+{
+	size_t			i;
+
+	i = 0;
+	while (i < v->size)
+	{
+		v->data[i].first = 0;
+		v->data[i].second = 0;
+		++i;
+	}
+}
 
 t_vector_pair		*vector_pair_create(int size)
 {
@@ -29,5 +42,6 @@ t_vector_pair		*vector_pair_create(int size)
 		v->size = size;
 		v->capacity = size * 2;
 	}
+	zero_vector(v);
 	return (v);
 }

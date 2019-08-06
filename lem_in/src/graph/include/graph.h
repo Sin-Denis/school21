@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/05 13:26:32 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/06 13:56:30 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct		s_graph
 	t_vert_vector	*nodes;
 	int				start_idx;
 	int				end_idx;
+	int				num_ants;
 }					t_graph;
 
 /* Functions t_vertex */
