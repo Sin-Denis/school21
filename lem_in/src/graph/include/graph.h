@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/06 13:56:30 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 10:43:37 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ t_vertex			*graph_get_vert(t_graph *g, int id);
 void				graph_print(t_graph *g);
 
 /* Algorithms */
+int					get_num_roads(t_graph *g);
 void				dijkstra(t_graph *g);
-void				suurballe(t_graph *g, int num_path);
-void				admonds_carp(t_graph *g, int num_path);
+void				suurballe(t_graph *g);
+void				admonds_carp(t_graph *g);
 t_vector			**get_all_roads(t_graph *g, int num_roads);
 t_vector			*get_distribution(t_vector **roads, int num_ants, int num_roads);
 

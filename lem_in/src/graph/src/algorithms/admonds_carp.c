@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 13:01:55 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/02 15:15:30 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 10:26:31 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,13 @@ static void	change_weight(t_graph *g)
 	}
 }
 
-void		admonds_carp(t_graph *g, int num_path)
+void		admonds_carp(t_graph *g)
 {
-	while (num_path > 0)
+	while (1)
 	{
 		bfs(g);
+		if (vert_vector_at(g->nodes, g->end_idx)->weight == 2147483648)
+			break ;
 		change_weight(g);
-		--num_path;
 	}
 }

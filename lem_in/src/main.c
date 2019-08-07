@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/06 17:51:48 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 10:55:20 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 int				main(void)
 {
+	// int			num_roads;
 	t_graph		*g;
-	t_vector	**roads;
-	t_vector	*distribution;
-	
+	// t_vector	**roads;
+	// t_vector	*distribution;
+
 	g = graph_create();
+	g->num_ants = 198;
 	graph_add_start_vert(g, "start");
 	graph_add_end_vert(g, "end");
 	graph_add_vert(g, "1");
@@ -57,16 +59,15 @@ int				main(void)
 	graph_add_edge(g, 14, 1);
 	graph_add_edge(g, 13, 15);
 	graph_add_edge(g, 1, 15);
-	admonds_carp(g, 3);
-	roads = get_all_roads(g, 3);
-	g->num_ants = 3;
-	distribution = get_distribution(roads, g->num_ants, 3);
-	for (int i = 0; i < 3; ++i) {
-		vector_print(roads[i]);
-		ft_printf("\n");
-	}
-	ft_printf("\n");
-	output(g, roads, distribution, 3);
+	
+	suurballe(g);
+	graph_print(g);
+	
+	// admonds_carp(g);
+	// num_roads = get_num_roads(g);
+	// roads = get_all_roads(g, num_roads);
+	// distribution = get_distribution(roads, g->num_ants, num_roads);
+	// output(g, roads, distribution, num_roads);
 	graph_destroy(&g);
 	return (0);
 }
