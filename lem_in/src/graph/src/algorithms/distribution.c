@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   distribution.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 12:11:35 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/06 10:41:22 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 16:58:24 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ t_vector	*get_distribution(t_vector **roads, int num_ants, int num_roads)
 	distribution = vector_create(num_roads);
 	get_attitude_roads(roads, attitude_roads, num_roads);
 	get_distribution_vals(distribution, attitude_roads, num_ants);
+	vector_destroy(&attitude_roads);
 	return (distribution);
 }

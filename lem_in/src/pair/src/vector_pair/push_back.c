@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:57:18 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 10:28:58 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 14:28:41 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void grow(t_vector_pair *v)
 	t_pair	*new_data;
 
 	new_data = (t_pair *)malloc(sizeof(t_pair) * v->capacity * 2);
-	copy(new_data, v->data, v->capacity);
+	copy(new_data, v->data, v->size);
 	v->capacity *= 2;
 	free(v->data);
 	v->data = new_data;

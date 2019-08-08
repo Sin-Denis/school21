@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   at.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:15:44 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 12:20:09 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 13:53:21 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		dict_at(t_dict *dict, const char *key)
 			return (-2147483648);
 		if (dict->data[hash_val].status == DELETE)
 			continue ;
-		if (ft_strcmp(dict->data[hash_val].key, key) == 0)
+		if (dict->data[hash_val].status == EXIST && ft_strcmp(dict->data[hash_val].key, key) == 0)
 			return (dict->data[hash_val].val);
 	}
 	return (-2147483648);

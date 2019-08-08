@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 11:01:35 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 10:41:59 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 14:39:34 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,6 @@ void	output(t_graph *g, t_vector **roads, t_vector *distribution, int num_roads)
 		}
 		ft_printf("\n");
 	}
+	vector_destroy(&offsets);
+	vector_pair_destroy(&indexes);
 }

@@ -1,9 +1,12 @@
 {
     "files.associations": {
-        "lem_in.h": "c",
-        "graph.h": "c",
-        "pair.h": "c",
-        "dictionary.h": "c",
-        "libftprintf.h": "c"
-    }
+		"lem_in.h": "c",
+		"graph.h": "c",
+		"pair.h": "c",
+		"dictionary.h": "c",
+		"libftprintf.h": "c",
+		"queue.h": "c",
+		"vector.h": "c",
+		"parse.h": "c"
+	}
 }

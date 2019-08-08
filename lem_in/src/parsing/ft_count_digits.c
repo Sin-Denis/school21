@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fs_destroy.c                                       :+:      :+:    :+:   */
+/*   ft_count_digits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/21 21:51:30 by sindenis          #+#    #+#             */
-/*   Updated: 2019/08/06 16:51:09 by vice-wra         ###   ########.fr       */
+/*   Created: 2019/08/06 18:18:25 by vice-wra          #+#    #+#             */
+/*   Updated: 2019/08/06 18:18:41 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../include/lem_in.h"
 
-void	fs_destroy(t_fs *form_string)
+int		ft_count_digits(int n)
 {
-	ft_strdel(&form_string->flags);
-	ft_strdel(&form_string->size);
+	int i;
+
+	i = 1;
+	while ((n = n / 10) != 0)
+		i++;
+	return (i);
 }

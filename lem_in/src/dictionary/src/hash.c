@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:34:03 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 12:26:02 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 13:21:58 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	hash(const char *key, int m, int k)
         hash_val *= a;
         hash_val += key[i++];
     }
-    hash_val %= m;
     hash_val += k;
+	hash_val %= m;
     return (hash_val);
 }

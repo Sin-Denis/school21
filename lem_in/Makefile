@@ -13,12 +13,13 @@ CFILES :=	src/main.c\
 			src/graph/src/vert_vector/*.c\
 			src/graph/src/graph/*.c\
 			src/graph/src/algorithms/*.c\
-			src/output/src/*.c
+			src/output/src/*.c\
+			src/parsing/*.c
 
 LIB := 	src/Libftprintf/libftprintf.a
 
 all:
-	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES)
+	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES) -g
 
 $(NAME): $(LIB) $(CFILES)
 	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES)
