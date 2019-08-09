@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:39:23 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 11:24:46 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/09 14:45:32 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void				vector_print(t_vector *v);
 void				vector_quick_sort(t_vector *v);
 void				vector_copy(t_vector *dst, t_vector *src);
 void				vector_pop_back(t_vector *v);
+int					vector_get_sum(t_vector *v, int start, int end);
 
 #endif

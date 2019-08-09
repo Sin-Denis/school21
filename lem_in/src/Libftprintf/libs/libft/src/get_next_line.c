@@ -6,78 +6,75 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 18:40:14 by nparker           #+#    #+#             */
-/*   Updated: 2019/08/08 15:41:11 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 13:03:50 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			read_line(const int fd, char **str, char *buff, int read_fd)
+static int	read_line(int fd, char *str[fd])
 {
-	char			*temp;
+	char	*temp;
+	int		ret;
+	char	buff[BUFF_SIZE + 1];
 
-	while ((read_fd = read(fd, buff, BUFF_SIZE)) > 0)
+	ret = 0;
+	while (!ft_strchr(str[fd], '\n') && (ret = read(fd, buff, BUFF_SIZE)) > 0)
 	{
-		buff[read_fd] = '\0';
-		if (!(temp = ft_strjoin(str[fd], buff)))
+		buff[ret] = '\0';
+		temp = str[fd];
+		if (!(str[fd] = ft_strjoin(str[fd], buff)))
 			return (-1);
-		free(str[fd]);
-		str[fd] = temp;
-		if (ft_strchr(buff, '\n'))
-			break ;
+		free(temp);
 	}
-	return (read_fd);
+	return (ret);
 }
 
-static int			create_line(char **str, char **line, int fd)
+static int	parse_str(int fd, char **line, char *str[fd], int flag)
 {
-	char			*tmp;
-	int				len;
+	char	*temp;
 
-	len = 0;
-	while (str[fd][len] != '\n' && str[fd][len] != '\0')
-		len++;
-	if (str[fd][len] == '\n')
+	temp = str[fd];
+	if (ft_strchr(temp, '\n'))
 	{
-		if (!(*line = ft_strsub(str[fd], 0, len)))
+		if (!(*line = ft_strsub(temp, 0, ft_strchr(temp, '\n') - temp)))
 			return (-1);
-		if (!(tmp = ft_strdup(str[fd] + len + 1)))
-			return (-1);
-		free(str[fd]);
-		str[fd] = tmp;
-		if (str[fd][0] == '\0')
-			ft_strdel(&str[fd]);
 	}
+	else if (!(*line = ft_strdup(temp)))
+		return (-1);
+	if ((str[fd] = ft_strchr(str[fd], '\n')) == NULL)
+		ft_bzero(str[fd], 0);
 	else
 	{
-		if (!(*line = ft_strdup(str[fd])))
-			return (-1);
-		ft_strdel(&str[fd]);
+		str[fd]++;
+		flag++;
 	}
-	return (1);
+	if (str[fd] != NULL)
+		if (!(str[fd] = ft_strdup(str[fd])))
+			return (-1);
+	free(temp);
+	return (flag);
 }
 
-int					get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
+	int				ret;
 	static char		*str[65536];
-	char			buff[BUFF_SIZE + 1];
-	int				read_fd;
+	int				flag;
 
-	read_fd = 0;
-	if (fd < 0 || read(fd, buff, 0) < 0 || line == NULL)
+	if (fd < 0 || fd >= 65536 || !line || BUFF_SIZE <= 0)
 		return (-1);
-	if (str[fd] == NULL)
-	{
+	flag = 0;
+	if (!str[fd])
 		if (!(str[fd] = ft_strnew(0)))
 			return (-1);
-	}
-	if (read_line(fd, str, buff, read_fd) < 0)
+	ret = read_line(fd, str);
+	if (ret == -1)
 		return (-1);
-	if (read_fd < 0)
-		return (-1);
-	if (read_fd == 0 && (str[fd] == NULL || str[fd][0] == '\0'))
+	if (str[fd][0] != '\0')
+		if ((flag = parse_str(fd, line, str, flag)) == -1)
+			return (-1);
+	if (str[fd] && !ret && flag == 0)
 		return (0);
-	if (create_line(str, line, fd) == -1)
-		return (-1);
 	return (1);
 }

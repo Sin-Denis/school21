@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 10:11:27 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:19:55 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_vertex			*vert_vector_at(t_vert_vector *v, size_t idx);
 void				vert_vector_store(t_vert_vector *v, size_t idx, char *name);
 size_t				vert_vector_size(t_vert_vector *v);
 void				vert_vector_print(t_vert_vector *v);
+t_vert_vector		*vert_vector_copy(t_vert_vector *v);
 
 /* Fucntions t_graph */
 t_graph				*graph_create(void);
@@ -70,13 +71,13 @@ void				graph_del_dir_edge(t_graph *g, int id1, int id2);
 void				graph_set_weight(t_graph *g, int id1, int id2, long long weight);
 t_vertex			*graph_get_vert(t_graph *g, int id);
 void				graph_print(t_graph *g);
+t_graph				*graph_copy(t_graph *g);
 
 /* Algorithms */
 int					get_num_roads(t_graph *g);
-void				dijkstra(t_graph *g);
-void				suurballe(t_graph *g);
 void				admonds_carp(t_graph *g, int num_path);
 t_vector			**get_all_roads(t_graph *g, int num_roads);
 t_vector			*get_distribution(t_vector **roads, int num_ants, int num_roads);
+int					analysis(t_graph *g);
 
 #endif

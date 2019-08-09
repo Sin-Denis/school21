@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 13:01:55 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 12:33:46 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:10:08 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,68 +93,93 @@ static void	change_weight(t_graph *g, t_vector *p)
 	}
 }
 
-// static void	get_roads_len(t_vector *lens, t_graph *g)
-// {
+static void	get_roads_len(t_vector *lens, t_graph *g, int counter, int vertex_idx)
+{
+	t_vertex	*v;
+	size_t		i;
+
+	if (vertex_idx == g->start_idx)
+	{
+		vector_push_back(lens, counter);
+		return ;
+	}
+	i = 0;
+	v = vert_vector_at(g->nodes, vertex_idx);
+	while (i < vector_pair_len(v->adj))
+	{
+		if (vector_pair_second(v->adj, i) == -1)
+			get_roads_len(lens, g, counter + 1, vector_pair_first(v->adj, i));
+		++i;
+	}
+}
+
+static void		get_attitude_roads(t_vector *lens, t_vector *attitude_roads, int num_roads)
+{
+	int		i;
+	int		len_big_road;
+
+	i = num_roads - 1;
+	len_big_road = vector_get_elem(lens, i);
+	vector_set_elem(attitude_roads, i, 1);
+	while (--i >= 0)
+		vector_set_elem(attitude_roads, i, len_big_road - vector_get_elem(lens, i) + 1);
+}
+
+static int		get_num_lines(t_vector *attitude_roads, t_vector *lens, int num_ants)
+{
+	int			distribution;
+	int			add_val;
+	int			rem_val;
+
+	distribution = num_ants >= attitude_roads->data[0] ? attitude_roads->data[0] : num_ants;
 	
-// }
+	num_ants -= vector_get_sum(attitude_roads, 0, attitude_roads->size);
+	add_val = num_ants / attitude_roads->size;
+	rem_val = num_ants % attitude_roads->size;
+	distribution += add_val;
+	if (rem_val > 0)
+		distribution += rem_val;
+	return (distribution + lens->data[0] - 1);
+}
 
-// static void		get_attitude_roads(t_vector *lens, t_vector *attitude_roads, int num_roads)
-// {
-// 	int		i;
-// 	int		len_big_road;
-
-// 	i = num_roads - 1;
-// 	len_big_road = vector_get_elem(lens, 0);
-// 	vector_set_elem(attitude_roads, i, 1);
-// 	while (--i >= 0)
-// 		vector_set_elem(attitude_roads, i, len_big_road - vector_get_elem(lens, i) + 1);
-// }
-
-// static int		get_num_lens(t_vector *attitude_roads, t_vector *lens, int num_ants)
-// {
-// 	int			i;
-// 	int			first_road_distribution;
-// 	int			num_lines;
-// 	int			add_val;
-// 	int			rem_val;
-
-// 	i = -1;
-// 	first_road_distribution = num_ants > vector_get_elem(attitude_roads, 0) ? vector_get_elem(attitude_roads, 0) : num_ants;
-// 	add_val = num_ants / attitude_roads->size;
-// 	rem_val = num_ants % attitude_roads->size;
-// 	while (num_ants > 0 && ++i < distribution->size)
-// 	{
-// 		distribution->data[i] += add_val;
-// 		if (i < rem_val)
-// 			++distribution->data[i];
-// 	}
-// }
-
-// int analysis(t_graph *g, t_vector *attitude_roads)
-// {
-// 	int			min_num_path;
-// 	id_t		num_lens;
-// 	int			num_path;
-// 	t_vector	*p;
-// 	t_vector	*roads_len;
-
-// 	p = vector_create(vert_vector_size(g->nodes));
-// 	roads_len = vector_create(0);
-// 	num_path = 0;
-// 	while (1)
-// 	{
-// 		++num_path;
-// 		bfs(g, p);
-// 		if (vert_vector_at(g->nodes, g->end_idx)->weight == 2147483648)
-// 			break ;
-// 		change_weight(g, p);
-// 		get_roads_len(roads_len, g);
-// 		get_attitude_roads(roads_len, attitude_roads, num_path);
-		
-// 	}
-// 	vector_destroy(&p);
-// 	vector_destroy(&roads_len);
-// }
+int analysis(t_graph *g)
+{
+	int			min_num_path;
+	int			num_lines;
+	int			tmp;
+	int			num_path;
+	t_vector	*p;
+	t_vector	*roads_len;
+	t_vector 	*attitude_roads;
+	p = vector_create(vert_vector_size(g->nodes));
+	num_lines = 2000000000;
+	min_num_path = 10;
+	num_path = 0;
+	while (1)
+	{
+		++num_path;
+		attitude_roads = vector_create(num_path);
+		roads_len = vector_create(0);
+		bfs(g, p);
+		if (vert_vector_at(g->nodes, g->end_idx)->weight == 2147483648)
+			break ;
+		change_weight(g, p);
+		get_roads_len(roads_len, g, 0, g->end_idx);
+		vector_quick_sort(roads_len);
+		get_attitude_roads(roads_len, attitude_roads, num_path);
+		tmp = get_num_lines(attitude_roads, roads_len, g->num_ants);
+		if (tmp < num_lines)
+		{
+			num_lines = tmp;
+			min_num_path = num_path;
+		}
+		vector_destroy(&roads_len);
+		vector_destroy(&attitude_roads);
+	}
+	vector_destroy(&p);
+	vector_destroy(&roads_len);
+	return (min_num_path);
+}
 
 
 void		admonds_carp(t_graph *g, int num_path)

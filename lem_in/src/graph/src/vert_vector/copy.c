@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_back.c                                        :+:      :+:    :+:   */
+/*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 13:31:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 16:58:03 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/08/09 16:21:13 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/09 17:12:27 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void vertex_copy(t_vertex *v1, t_vertex *v2)
 	size_t	i;
 
 	i = 0;
-	v1->name = ft_strdup(v2->name);
+	v1->name = v2->name == NULL ? NULL : ft_strdup(v2->name);
 	v1->prev = v2->prev;
 	v1->weight = v2->weight;
 	while (i < v2->adj->size)
@@ -38,22 +38,21 @@ static void copy(t_vertex *dst, t_vertex *src, int size)
 		vertex_copy(&dst[i], &src[i]);
 }
 
-static void grow(t_vert_vector *v)
+t_vert_vector		*vert_vector_copy(t_vert_vector *v)
 {
-	t_vertex	*new_data;
+	t_vert_vector	*new_vector;
+	size_t			i;
 
-	new_data = (t_vertex *)malloc(sizeof(t_vertex) * v->capacity * 2);
-	copy(new_data, v->data, v->size);
-	v->capacity *= 2;
-	vertexes_destroy(&v->data, v->size);
-	free(v->data);
-	v->data = new_data;
-}
-
-void		vert_vector_push_back(t_vert_vector *v, char *name)
-{
-	if (v->size == v->capacity)
-		grow(v);
-	vertex_init(&v->data[v->size], name, -1, 2147483648);
-	++v->size;
+	i = 0;
+	new_vector = (t_vert_vector *)malloc(sizeof(t_vert_vector));
+	new_vector->capacity = v->capacity;
+	new_vector->size = v->size;
+	new_vector->data = (t_vertex *)malloc(sizeof(t_vertex) * v->capacity);
+	while (i < v->capacity)
+	{
+		new_vector->data[i].adj = vector_pair_create(0);
+		++i;
+	}
+	copy(new_vector->data, v->data, v->size);
+	return (new_vector);
 }
