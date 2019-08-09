@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:35:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 14:27:27 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/08 16:45:37 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	vertex_init(t_vertex *vertex, char *name, int prev, long long weight)
 	vertex->name = name == NULL ? NULL : ft_strdup(name);
 	vertex->prev = prev;
 	vertex->weight = weight;
-	vertex->adj = NULL;
+	vertex->adj = vector_pair_create(0);
 }
 
 void	vertex_destroy(t_vertex *vertex)

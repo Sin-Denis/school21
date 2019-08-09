@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:31:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/02 13:39:28 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/08 16:24:12 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void grow(t_vert_vector *v)
 	t_vertex	*new_data;
 
 	new_data = (t_vertex *)malloc(sizeof(t_vertex) * v->capacity * 2);
-	copy(new_data, v->data, v->capacity);
+	copy(new_data, v->data, v->size);
 	v->capacity *= 2;
 	vertexes_destroy(&v->data, v->size);
 	free(v->data);

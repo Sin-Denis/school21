@@ -19,7 +19,7 @@ CFILES :=	src/main.c\
 LIB := 	src/Libftprintf/libftprintf.a
 
 all:
-	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES) -g
+	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES) -g 
 
 $(NAME): $(LIB) $(CFILES)
 	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES)
