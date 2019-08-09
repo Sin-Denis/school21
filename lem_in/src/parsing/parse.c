@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 17:20:59 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/08 16:02:57 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 14:09:50 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void parse_rooms_into_graph(t_graph *graph, char *line, int flag, int *ma
 	}
 	else if (flag != 7)
 		graph_add_vert(graph, str[0]);
-	free_string_array(&str);
+	free_string_array(&str); // etot
 }
 
 static int parse_links(t_graph *graph, t_dict *rooms, char *line, int *links_count)
@@ -50,7 +50,7 @@ static int parse_links(t_graph *graph, t_dict *rooms, char *line, int *links_cou
 	str = ft_strsplit(line, '-');
 	if (str[1] == NULL)
 	{
-		free_string_array(&str);
+		// free_string_array(&str); //etot
 		return (0);
 	}
 	idx0 = dict_at(rooms, str[0]);
@@ -133,6 +133,7 @@ int parse_main(t_graph *graph)
 		parse_links(graph, rooms, line, &LINKS_COUNT) == -1 ? error_exit("Error") : 0;
 		IDX++;
 		ft_strdel(&line);
+
 	}
 	ft_strdel(&line);
 	dict_destroy(&rooms);

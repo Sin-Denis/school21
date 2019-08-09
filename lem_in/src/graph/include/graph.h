@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graph.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 14:24:31 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 10:11:27 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void				graph_print(t_graph *g);
 int					get_num_roads(t_graph *g);
 void				dijkstra(t_graph *g);
 void				suurballe(t_graph *g);
-void				admonds_carp(t_graph *g);
+void				admonds_carp(t_graph *g, int num_path);
 t_vector			**get_all_roads(t_graph *g, int num_roads);
 t_vector			*get_distribution(t_vector **roads, int num_ants, int num_roads);
 

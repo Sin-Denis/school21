@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/08 16:46:20 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 14:12:01 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int				main(void)
 	parse_main(g);
 	if (g->nodes->size == 0)
 		error_exit("Error");
-	admonds_carp(g);
+	// ft_printf("hello\n");
+	admonds_carp(g, 1);
+	graph_print(g);
 	num_roads = get_num_roads(g);
 	roads = get_all_roads(g, num_roads);
 	distribution = get_distribution(roads, g->num_ants, num_roads);
