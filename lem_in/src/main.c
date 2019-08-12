@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 17:09:03 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/10 12:56:50 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int				main(void)
 	new_g = graph_copy(g);
 	int a = analysis(new_g);
 	graph_destroy(&new_g);
-	graph_print(g);
 	admonds_carp(g, a);
 	num_roads = get_num_roads(g);
 	roads = get_all_roads(g, num_roads);

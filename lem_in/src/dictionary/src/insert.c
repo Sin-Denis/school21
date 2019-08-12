@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insert.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:35:09 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 13:19:10 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/12 10:03:28 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	grow(t_dict *dict)
 	t_field	*new_data;
 
 	new_data = (t_field *)malloc(sizeof(t_field) * dict->capacity * 2);
+	fields_init(new_data, dict->capacity * 2);
 	rehash(dict, new_data);
 	fields_destroy(&dict->data, dict->capacity);
 	dict->data = new_data;

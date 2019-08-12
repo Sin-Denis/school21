@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 17:20:59 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/09 14:25:15 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/10 12:51:25 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int parse_links(t_graph *graph, t_dict *rooms, char *line, int *links_cou
 	char **str;
 	int idx0;
 	int idx1;
-	
+
 	str = ft_strsplit(line, '-');
 	if (str[1] == NULL)
 	{
@@ -133,7 +133,6 @@ int parse_main(t_graph *graph)
 		parse_links(graph, rooms, line, &LINKS_COUNT) == -1 ? error_exit("Error") : 0;
 		IDX++;
 		ft_strdel(&line);
-
 	}
 	ft_strdel(&line);
 	dict_destroy(&rooms);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 23:45:19 by cmehay            #+#    #+#             */
-/*   Updated: 2019/08/07 14:36:35 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/10 13:03:25 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int			main(int argc, char **argv)
 	printf("start-");
 	printf("%d\n", rand() % node);
 	int k = -1;
-	while (++k < 5)
+	while (++k < 50)
 	{
 		printf("start-");
 		printf("%d\n", rand() % node);
@@ -102,7 +102,7 @@ int			main(int argc, char **argv)
 	printf("end-");
 	printf("%d\n", rand() % node);
 	k = -1;
-	while (++k < 5)
+	while (++k < 50)
 	{
 		printf("end-");
 		printf("%d\n", rand() % node);

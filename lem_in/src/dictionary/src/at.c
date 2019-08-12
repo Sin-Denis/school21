@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:15:44 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 13:18:12 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/09 18:35:59 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int		dict_at(t_dict *dict, const char *key)
 		if (dict->data[hash_val].status == BLANK)
 			return (-2147483648);
 		if (dict->data[hash_val].status == DELETE)
+			continue ;
+		if (dict->data[hash_val].key == NULL)
 			continue ;
 		if (dict->data[hash_val].status == EXIST && ft_strcmp(dict->data[hash_val].key, key) == 0)
 			return (dict->data[hash_val].val);
