@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/12 10:08:23 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/12 12:14:21 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void				vertex_init(t_vertex *vertex, char *name, int prev, long long dist);
 void				vertex_destroy(t_vertex *vertex);
 void				vertexes_init(t_vertex *vertex, size_t size);
 void				vertexes_destroy(t_vertex **vertex, size_t size);
+long long			vertex_get_weight(t_vertex *vertex1, int vertex2_idx);
 
 /* Functions t_vector */
 t_vert_vector		*vert_vector_create(int size);
@@ -78,6 +79,8 @@ int					get_num_roads(t_graph *g);
 void				admonds_carp(t_graph *g, int num_path);
 t_vector			**get_all_roads(t_graph *g, int num_roads);
 t_vector			*get_distribution(t_vector **roads, int num_ants, int num_roads);
+void				bfs(t_graph *g, t_vector *p);
+void				change_weight(t_graph *g, t_vector *p);
 int					analysis(t_graph *g);
 
 #endif
