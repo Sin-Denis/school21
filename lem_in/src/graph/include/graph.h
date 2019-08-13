@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/12 12:14:21 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/13 12:29:21 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct		s_graph
 void				vertex_init(t_vertex *vertex, char *name, int prev, long long dist);
 void				vertex_destroy(t_vertex *vertex);
 void				vertexes_init(t_vertex *vertex, size_t size);
-void				vertexes_destroy(t_vertex **vertex, size_t size);
+void				vertexes_destroy(t_vertex *vertex, size_t size);
 long long			vertex_get_weight(t_vertex *vertex1, int vertex2_idx);
 
 /* Functions t_vector */

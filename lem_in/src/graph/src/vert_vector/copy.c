@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:21:13 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 17:12:27 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/13 14:54:31 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void vertex_copy(t_vertex *v1, t_vertex *v2)
 		vector_pair_push_back(v1->adj, v2->adj->data[i].first, v2->adj->data[i].second);
 		++i;
 	}
-	if (v2->adj->size == 0)
-		v1->adj = vector_pair_create(0);
 }
 
 static void copy(t_vertex *dst, t_vertex *src, int size)
@@ -48,11 +46,7 @@ t_vert_vector		*vert_vector_copy(t_vert_vector *v)
 	new_vector->capacity = v->capacity;
 	new_vector->size = v->size;
 	new_vector->data = (t_vertex *)malloc(sizeof(t_vertex) * v->capacity);
-	while (i < v->capacity)
-	{
-		new_vector->data[i].adj = vector_pair_create(0);
-		++i;
-	}
+	vertexes_init(new_vector->data, v->capacity);
 	copy(new_vector->data, v->data, v->size);
 	return (new_vector);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:57:18 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 14:28:41 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/13 11:58:56 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pair.h"
+#include "../include/pair.h"
 
 static void copy(t_pair *dst, t_pair *src, int size)
 {

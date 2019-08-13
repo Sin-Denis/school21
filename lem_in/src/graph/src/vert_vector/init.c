@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:20:32 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/12 13:05:02 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/13 14:29:30 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,7 @@ t_vert_vector		*vert_vector_create(int size)
 
 void				vert_vector_destroy(t_vert_vector **v)
 {
-	size_t			i;
-
-	i = 0;
-	while (i < (*v)->size)
-	{
-		ft_strdel(&(*v)->data[i].name);
-		vector_pair_destroy(&(*v)->data[i].adj);
-		++i;
-	}
+	vertexes_destroy((*v)->data, (*v)->capacity);
 	free((*v)->data);
 	free(*v);
 	*v = NULL;

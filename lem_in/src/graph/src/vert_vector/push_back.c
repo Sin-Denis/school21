@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:31:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 16:58:03 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/13 14:39:11 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void vertex_copy(t_vertex *v1, t_vertex *v2)
 		vector_pair_push_back(v1->adj, v2->adj->data[i].first, v2->adj->data[i].second);
 		++i;
 	}
-	if (v2->adj->size == 0)
-		v1->adj = vector_pair_create(0);
 }
 
 static void copy(t_vertex *dst, t_vertex *src, int size)
@@ -43,10 +41,12 @@ static void grow(t_vert_vector *v)
 	t_vertex	*new_data;
 
 	new_data = (t_vertex *)malloc(sizeof(t_vertex) * v->capacity * 2);
+	vertexes_init(new_data, v->capacity * 2);
 	copy(new_data, v->data, v->size);
-	v->capacity *= 2;
-	vertexes_destroy(&v->data, v->size);
+	vertexes_destroy(v->data, v->size);
 	free(v->data);
+	v->data = NULL;
+	v->capacity *= 2;
 	v->data = new_data;
 }
 
@@ -54,6 +54,8 @@ void		vert_vector_push_back(t_vert_vector *v, char *name)
 {
 	if (v->size == v->capacity)
 		grow(v);
-	vertex_init(&v->data[v->size], name, -1, 2147483648);
+	v->data[v->size].name = ft_strdup(name);
+	v->data[v->size].prev = -1;
+	v->data[v->size].weight = 2147483648;
 	++v->size;
 }

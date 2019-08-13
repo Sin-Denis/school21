@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert.c                                           :+:      :+:    :+:   */
+/*   at.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 10:59:58 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 10:29:49 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/22 11:04:55 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/13 11:58:33 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pair.h"
+#include "../include/pair.h"
 
-void	pq_insert(t_priority_queue *q, int first, long long second)
+t_pair	*vector_pair_at(t_vector_pair *v, int idx)
 {
-	vector_pair_push_back(q->v, first, second);
-	pq_sift_up(q, vector_pair_len(q->v) - 1);
+	return (&v->data[idx]);
+}
+
+int		vector_pair_first(t_vector_pair *v, int idx)
+{
+	return (v->data[idx].first);
+}
+
+long long	vector_pair_second(t_vector_pair *v, int idx)
+{
+	return (v->data[idx].second);
 }

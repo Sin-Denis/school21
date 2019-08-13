@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destory.c                                          :+:      :+:    :+:   */
+/*   delete.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/22 10:55:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 14:25:55 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/31 13:14:17 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/13 11:58:40 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pair.h"
+#include "../include/pair.h"
 
-void	vector_pair_destroy(t_vector_pair **v)
+void		vector_pair_del(t_vector_pair *v, int key)
 {
-	if (*v == NULL)
-		return ;
-	free((*v)->data);
-	free(*v);
-	*v = NULL;
+	size_t	i;
+
+	i = 0;
+	while (v->data[i].first != key)
+		++i;
+	while (i + 1 < v->size)
+	{
+		v->data[i] = v->data[i + 1];
+		++i;
+	}
+	--v->size;
 }

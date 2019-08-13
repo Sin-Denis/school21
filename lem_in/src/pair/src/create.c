@@ -6,11 +6,11 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:50:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/06 11:07:17 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/13 13:56:23 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pair.h"
+#include "../include/pair.h"
 
 static void			zero_vector(t_vector_pair *v)
 {

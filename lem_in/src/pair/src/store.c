@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   length.c                                           :+:      :+:    :+:   */
+/*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/22 11:09:10 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/30 16:51:25 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/22 11:08:00 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/13 11:59:04 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pair.h"
+#include "../include/pair.h"
 
-size_t	vector_pair_len(t_vector_pair *v)
+void	vector_pair_store(t_vector_pair *v, int idx, int first, long long second)
 {
-	return (v->size);
+	v->data[idx].first = first;
+	v->data[idx].second = second;	
 }

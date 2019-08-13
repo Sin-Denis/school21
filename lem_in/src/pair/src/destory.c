@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   empty.c                                            :+:      :+:    :+:   */
+/*   destory.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/31 09:54:35 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 10:55:15 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/22 10:55:25 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/13 14:32:02 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pair.h"
+#include "../include/pair.h"
 
-char				pq_isempty(t_priority_queue *q)
+void	vector_pair_destroy(t_vector_pair **v)
 {
-	return (vector_pair_len(q->v) == 0);
+	free((*v)->data);
+	free(*v);
+	*v = NULL;
 }

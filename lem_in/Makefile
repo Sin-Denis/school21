@@ -7,8 +7,7 @@ FLAGS := -Wall -Wextra -Werror
 CFILES :=	src/main.c\
 			src/vector/src/*.c\
 			src/queue/src/*.c\
-			src/pair/src/vector_pair/*.c\
-			src/pair/src/priority_queue/*.c\
+			src/pair/src/*.c\
 			src/dictionary/src/*.c\
 			src/graph/src/vert_vector/*.c\
 			src/graph/src/graph/*.c\

@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store.c                                            :+:      :+:    :+:   */
+/*   pop_back.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/22 11:08:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/07/31 10:29:09 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/07/30 10:44:46 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/13 11:58:49 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pair.h"
+#include "../include/pair.h"
 
-void	vector_pair_store(t_vector_pair *v, int idx, int first, long long second)
+static void	decrease(t_vector_pair *v)
 {
-	v->data[idx].first = first;
-	v->data[idx].second = second;	
+	size_t	i;
+	t_pair 	*new_data;
+
+	i = 0;
+	new_data = (t_pair *)malloc(sizeof(t_pair) * v->size * 2);
+	while (i < v->size)
+	{
+		new_data[i] = v->data[i];
+		++i;
+	}
+	free(v->data);
+	v->data = new_data;
+	v->capacity = v->size * 2;
+}
+
+void		vector_pair_pop_back(t_vector_pair *v)
+{
+	--v->size;
+	if (v->size * 4 <= v->capacity)
+		decrease(v);
 }
