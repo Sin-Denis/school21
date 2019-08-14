@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 10:13:18 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/12 11:02:59 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/14 17:21:37 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,22 @@ int analysis(t_graph *g)
 	int			min_num_path;
 	int			min_num_lines;
 	int			num_path;
-	t_vector	*p;
+	t_vector	*visited;
 
-	p = vector_create(vert_vector_size(g->nodes));
+	visited = vector_create(vert_vector_size(g->nodes));
 	min_num_lines = 2000000000;
 	min_num_path = ft_min(g->nodes->data[g->start_idx].adj->size,
 										g->nodes->data[g->end_idx].adj->size) + 1;
-	num_path = 0;
+	num_path = 1;
 	while (1)
 	{
-		++num_path;
-		bfs(g, p);
+		bfs(g, visited);
 		if (vert_vector_at(g->nodes, g->end_idx)->weight == 2147483648)
 			break ;
-		change_weight(g, p);
+		change_weight(g, visited);
 		analysis_item(g, num_path, &min_num_lines, &min_num_path);
+		++num_path;
 	}
-	vector_destroy(&p);
-	return (min_num_path);
+	vector_destroy(&visited);
+	return (num_path == 1 ? 0 : min_num_path);
 }

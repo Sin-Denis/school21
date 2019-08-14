@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:22:18 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/07 17:01:18 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/13 17:31:23 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,18 @@ int get_size_lem(char **str)
 	return (i);
 }
 
-int get_ants_count()
+int get_ants_count(char *line)
 {
-	char *line;
 	int i;
 
 	i = 0;
-	if (get_next_line(0, &line) != 1)
-		return (-1);
 	while (line[i])
 	{
 		if (!ft_isdigit(line[i]))
-		{
-			ft_strdel(&line);
 			return -1;
-		}
 		i++;
 	}
 	i = ft_atoi(line);
-	ft_strdel(&line);
 	return (i);
 }
 

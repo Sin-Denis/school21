@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:19:02 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/07 17:05:35 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/13 17:43:54 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int check_each_char(char *line)
 {
 	while (*line)
 	{
-		if (!ft_isalnum(*line))
+		if (*line == '#' || *line == 'L')
 			return (-1);
 		line++;
 	}
@@ -56,7 +56,7 @@ int check_coors(char *first_coor, char *second_coor)
 	return (0);
 }
 
-int check_line(char *line)
+int check_line(char *line, t_graph *graph)
 {
 	char **str;
 
@@ -77,6 +77,8 @@ int check_line(char *line)
 		free_string_array(&str);		
 		return (3);
 	}
+	else if (graph->num_ants == -1 && (graph->num_ants = get_ants_count(line)) > 0)
+		return (4);
 	str = ft_strsplit(line, ' ');
 	if (get_size_lem(str) != 3 || check_room_name(str[0]) == -1 || check_coors(str[1], str[2]) == -1)
 	{

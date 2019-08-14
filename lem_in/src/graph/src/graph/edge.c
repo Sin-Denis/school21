@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edge.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 15:16:53 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 16:14:55 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/13 15:46:11 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void			graph_add_dir_edge(t_graph *g, int id1, int id2)
 	t_vertex	*v1;
 
 	v1 = vert_vector_at(g->nodes, id1);
-	if (v1->adj == NULL)
-		v1->adj = vector_pair_create(0);
 	vector_pair_push_back(v1->adj, id2, 1);
 }
 

@@ -23,4 +23,12 @@ all:
 $(NAME): $(LIB) $(CFILES)
 	$(CC) $(FLAGS) -o $(NAME) $(LIB) $(CFILES)
 
-.PHONY: all
+clean:
+	echo clean
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
