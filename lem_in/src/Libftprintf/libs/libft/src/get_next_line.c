@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 18:40:14 by nparker           #+#    #+#             */
-/*   Updated: 2019/08/15 20:47:31 by vice-wra         ###   ########.fr       */
+/*   Created: 2018/12/17 15:11:34 by vice-wra          #+#    #+#             */
+/*   Updated: 2019/08/16 17:45:59 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/libft.h"
 
 static int	read_line(int fd, char *str[fd])
 {
@@ -75,10 +75,6 @@ int			get_next_line(const int fd, char **line)
 		if ((flag = parse_str(fd, line, str, flag)) == -1)
 			return (-1);
 	if (str[fd] && !ret && flag == 0)
-	{
-		ft_strdel(&str[fd]);
 		return (0);
-	}
-	ft_strdel(&str[fd]);
 	return (1);
 }

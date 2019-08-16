@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_vert_vec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:58:09 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 17:07:07 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/16 19:55:25 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		vert_vector_print(t_vert_vector *v)
 			s = NULL;
 		else
 			s = v->data[v->data[i].prev].name;
-		ft_printf("(Name: %10s Prev: %10s Dist: %5lld Adj: ", v->data[i].name, s, v->data[i].weight);
+		ft_printf("(Name: %10s Prev: %10s Dist: %5lld Color: %d Adj: ", v->data[i].name, s, v->data[i].weight, v->data[i].color);
 		j = 0;
 		while (v->data[i].adj != NULL && j < v->data[i].adj->size)
 		{

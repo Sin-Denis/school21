@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 10:16:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/14 17:20:38 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/08/16 14:42:04 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/16 23:12:46 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,60 @@ static void		bfs_init(t_graph *g)
 	vert_vector_at(g->nodes, g->start_idx)->weight = 0;
 }
 
-static void		bfs_vert_handle(t_graph *g, t_int_queue *q, t_vector *f, t_vector *p)
+static void bfs_handler(t_graph *g, t_int_queue *q, t_vertex *v)
 {
-	int			curr;
-	int			i;
-	t_vertex	*v;
+	size_t		i;
 	t_vertex	*u;
 
-	curr = int_queue_pop(q);
-	v = vert_vector_at(g->nodes, curr);
-	i = -1;
-	while ((size_t)++i < vector_pair_len(v->adj))
+	i = 0;
+	while (i < vector_pair_len(v->adj))
 	{
-		u = vert_vector_at(g->nodes, vector_pair_first(v->adj, i));
-		if ((f->data[curr] == 0 && p->data[curr] == 1 && vector_pair_second(v->adj, i) != -1) || u->color != 0)
-			continue ;
-		u->color = 1;
-		u->weight = v->weight + 1;
-		u->prev = curr;
-		int_queue_push(q, vector_pair_first(v->adj, i));
-		if (vector_pair_second(v->adj, i) == -1)
-			f->data[vector_pair_first(v->adj, i)] = 1;
+		u = graph_get_vert(g, vector_pair_first(v->adj, i));
+		if (u->color == 0)
+		{
+			u->color = 1;
+			u->weight = v->weight + 1;
+			u->prev = v->idx;
+			int_queue_push(q, u->idx);
+		}
+		++i;
 	}
-	v->color = 2;
 }
 
-void			bfs(t_graph *g, t_vector *p)
+void bfs(t_graph *g)
 {
-	t_int_queue	*q;
-	t_vector	*f;
-
+	t_int_queue *q;
+	t_vertex	*v;
+	
 	q = int_queue_create();
-	f = vector_create(vert_vector_size(g->nodes));
 	bfs_init(g);
 	int_queue_push(q, g->start_idx);
 	while (!int_queue_isempty(q))
-		bfs_vert_handle(g, q, f, p);
+	{
+		v = graph_get_vert(g, int_queue_pop(q));
+		bfs_handler(g, q, v);
+		v->color = 2;
+	}
 	int_queue_destroy(&q);
-	vector_destroy(&f);
+}
+
+void change_path(t_graph *g)
+{
+	t_vertex *v;
+	t_vertex *u;
+
+	v = graph_get_vert(g, g->end_idx);
+	while (v->idx != g->start_idx)
+	{
+		u = graph_get_vert(g, v->prev);
+		if (vertex_get_weight(u, v->idx) == -1)
+			graph_del_dir_edge(g, u->idx, v->idx);
+		else
+		{
+			graph_del_dir_edge(g, u->idx, v->idx);
+			graph_add_dir_edge(g, v->idx, u->idx);
+			graph_set_weight(g, v->idx, u->idx , -1);	
+		}
+		v = u;
+	}
 }

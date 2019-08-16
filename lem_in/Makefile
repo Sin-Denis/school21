@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+         #
+#    By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 12:33:04 by nparker           #+#    #+#              #
-#    Updated: 2019/08/15 20:38:22 by vice-wra         ###   ########.fr        #
+#    Updated: 2019/08/16 16:47:37 by jblue-da         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC := gcc
 FLAGS := -Wall -Wextra -Werror -g
 
-NAME := lem_in
+NAME := lem-in
 
 LIB_DIR	:= src/Libftprintf
 LIBLINK	:= -L$(LIB_DIR) -lftprintf
@@ -53,13 +53,10 @@ DICT_FILES :=	at.c\
 				insert.c\
 				print.c\
 
-ALGORITHM_FILES :=	admonds_carp.c\
+ALGORITHM_FILES :=	optimized_solution.c\
 					analysis.c\
 					bfs.c\
-					change_weight.c\
-					distribution.c\
-					get_roads.c\
-					num_roads.c\
+					get_double_net.c\
 
 GRAPH_FILES :=		add_vert.c\
 					copy.c\
@@ -121,6 +118,8 @@ VECTOR_FILES :=	copy.c\
 				sum.c\
 
 OUTPUT_FILES := output.c\
+				distribution.c\
+				get_roads.c\
 
 OBJ_DIR := objects
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vert_vec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:20:32 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 20:10:09 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/16 21:42:02 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_vert_vector		*vert_vector_create(int size)
 	v = (t_vert_vector *)malloc(sizeof(t_vert_vector));
 	if (size == 0)
 	{
-		v->data = (t_vertex *)malloc(sizeof(t_vertex) * 10);
+		v->data = (t_vertex *)malloc(sizeof(t_vertex) * 5);
 		v->size = 0;
-		v->capacity = 10;
+		v->capacity = 5;
 	}
 	else
 	{

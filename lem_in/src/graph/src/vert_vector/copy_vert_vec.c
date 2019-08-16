@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_vert_vec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:21:13 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 17:05:23 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/16 22:40:45 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ static void vertex_copy(t_vertex *v1, t_vertex *v2)
 	v1->name = v2->name == NULL ? NULL : ft_strdup(v2->name);
 	v1->prev = v2->prev;
 	v1->weight = v2->weight;
+	v1->idx = v2->idx;
+	v1->pair_idx = v2->pair_idx;
+	v1->type = v2->type;
+	v1->color = v2->color;
+	v1->x = v2->x;
+	v1->y = v2->y;
 	while (i < v2->adj->size)
 	{
 		vector_pair_push_back(v1->adj, v2->adj->data[i].first, v2->adj->data[i].second);

@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/05 12:11:35 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 11:45:27 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/08/16 14:47:50 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/16 14:49:59 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/graph.h"
+#include "../include/output.h"
 
 static void		get_attitude_roads(t_vector **roads, t_vector *attitude_roads, int num_roads)
 {

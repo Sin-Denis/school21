@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graph.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 20:15:00 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/16 21:21:29 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,22 @@
 # include "../../vector/include/vector.h"
 # include "../../queue/include/queue.h"
 
+typedef enum		e_vert_type
+{
+	IN = 0,
+	OUT = 1,
+	DEF = 2
+}					t_vert_type;
+
 typedef struct		s_vertex
 {
+	int				idx;
 	char			*name;
 	int				prev;
 	long long		weight;
-	int				color;
+	char			color;
+	t_vert_type		type;
+	int				pair_idx;
 	int				x;
 	int				y;
 	t_vector_pair	*adj;
@@ -64,7 +74,7 @@ t_vert_vector		*vert_vector_copy(t_vert_vector *v);
 /* Fucntions t_graph */
 t_graph				*graph_create(void);
 void				graph_destroy(t_graph **g);
-void				graph_add_vert(t_graph *g, char *name, int x, int y);
+t_vertex			*graph_add_vert(t_graph *g, char *name, int x, int y);
 void				graph_add_start_vert(t_graph *g, char *name, int x, int y);
 void				graph_add_end_vert(t_graph *g, char *name, int x, int y);
 void				graph_add_edge(t_graph *g, int id1, int id2);
@@ -77,12 +87,13 @@ void				graph_print(t_graph *g);
 t_graph				*graph_copy(t_graph *g);
 
 /* Algorithms */
-int					get_num_roads(t_graph *g);
-void				admonds_carp(t_graph *g, int num_path);
-t_vector			**get_all_roads(t_graph *g, int num_roads);
-t_vector			*get_distribution(t_vector **roads, int num_ants, int num_roads);
-void				bfs(t_graph *g, t_vector *p);
-void				change_weight(t_graph *g, t_vector *p);
+// int					get_num_roads(t_graph *g);
+// t_vector			**get_all_roads(t_graph *g, int num_roads);
+// t_vector			*get_distribution(t_vector **roads, int num_ants, int num_roads);
+void				bfs(t_graph *g);
+void				change_path(t_graph *g);
 int					analysis(t_graph *g);
+t_graph				*get_double_net(t_graph *g);
+void				optimized_solution(t_graph *g, int num_path);
 
 #endif

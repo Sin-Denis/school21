@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 17:20:59 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/15 21:51:40 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/16 17:46:32 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,10 @@ static int read_line(char **line, t_graph *graph, t_string *output)
 
 void parse_line(t_dict *rooms, t_p_dict *coors, t_graph *graph, char *line)
 {
-	parse_into_dict(rooms, coors, line, IDX) == -1 ? error_exit("ERROR") : 0;
+	parse_into_dict(rooms, coors, line, IDX) == -1 ? error_exit("ERROR PARSELINE") : 0;
 	parse_rooms_into_graph(graph, line);
 	parse_links(graph, rooms, line, &LINKS_COUNT) == -1 ?
-	error_exit("ERROR") : 0;
+	error_exit("ERROR PARSELINKS") : 0;
 }
 
 int check_states(t_graph *graph)
@@ -168,5 +168,7 @@ int parse_main(t_graph *graph, t_string *output)
 	ft_strdel(&line);
 	dict_destroy(&rooms);
 	p_dict_destroy(&coors);
-	return(check_states(graph) == -1 ? -1 : 0);
+	if (check_states(graph) == -1)
+		return (-1);
+	return (0);
 }

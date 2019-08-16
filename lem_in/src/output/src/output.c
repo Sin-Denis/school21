@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 11:01:35 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 15:18:27 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/16 14:49:52 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,7 @@ void	output(t_graph *g, t_vector **roads, t_vector *distribution, int num_roads)
 		{
 			p.first = distribution->data[j];
 			p.second = vector_get_elem(offsets, j);
-			road_handler(
-				g,
-				roads[j],
-				vector_pair_at(indexes, j),
-				&p);
+			road_handler(g, roads[j], vector_pair_at(indexes, j), &p);
 		}
 		ft_printf("\n");
 	}

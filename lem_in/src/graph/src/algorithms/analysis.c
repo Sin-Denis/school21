@@ -5,16 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 10:13:18 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/14 17:21:37 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/08/16 12:59:41 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/16 23:14:29 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-static void		get_roads_len(t_vector *lens, t_graph *g, int counter, int vertex_idx)
+static void get_roads_len(t_vector *lens, t_graph *g, int counter, int vertex_idx)
 {
 	t_vertex	*v;
+	t_vertex	*u;
 	size_t		i;
 
 	if (vertex_idx == g->start_idx)
@@ -23,21 +24,27 @@ static void		get_roads_len(t_vector *lens, t_graph *g, int counter, int vertex_i
 		return ;
 	}
 	i = 0;
-	v = vert_vector_at(g->nodes, vertex_idx);
+	v = graph_get_vert(g, vertex_idx);
 	while (i < vector_pair_len(v->adj))
 	{
+		u = graph_get_vert(g, vector_pair_first(v->adj, i));
 		if (vector_pair_second(v->adj, i) == -1)
-			get_roads_len(lens, g, counter + 1, vector_pair_first(v->adj, i));
+		{
+			if (u->pair_idx == v->idx)
+				get_roads_len(lens, g, counter, vector_pair_first(v->adj, i));
+			else
+				get_roads_len(lens, g, counter + 1, vector_pair_first(v->adj, i));
+		}
 		++i;
 	}
 }
 
-static void		get_attitude_roads(t_vector *lens, t_vector *attitude_roads, int num_roads)
+static void get_attitude_roads(t_vector *lens, t_vector *attitude_roads, int num_path)
 {
 	int			i;
 	int			len_big_road;
 
-	i = num_roads - 1;
+	i = num_path - 1;
 	len_big_road = vector_get_elem(lens, i);
 	vector_set_elem(attitude_roads, i, 1);
 	while (--i >= 0)
@@ -71,6 +78,7 @@ static void analysis_item(t_graph *g, int num_path, int *min_num_lines, int *min
 	get_roads_len(roads_len, g, 0, g->end_idx);
 	vector_quick_sort(roads_len);
 	get_attitude_roads(roads_len, attitude_roads, num_path);
+	vector_print(roads_len);
 	new_num_lines = get_num_lines(attitude_roads, roads_len, g->num_ants);
 	if (new_num_lines < *min_num_lines)
 	{
@@ -86,22 +94,20 @@ int analysis(t_graph *g)
 	int			min_num_path;
 	int			min_num_lines;
 	int			num_path;
-	t_vector	*visited;
 
-	visited = vector_create(vert_vector_size(g->nodes));
 	min_num_lines = 2000000000;
-	min_num_path = ft_min(g->nodes->data[g->start_idx].adj->size,
-										g->nodes->data[g->end_idx].adj->size) + 1;
+	min_num_path = 2000000000;
 	num_path = 1;
 	while (1)
 	{
-		bfs(g, visited);
-		if (vert_vector_at(g->nodes, g->end_idx)->weight == 2147483648)
+		bfs(g);
+		graph_print(g);
+		ft_printf("\n");
+		if (graph_get_vert(g, g->end_idx)->weight == 2147483648)
 			break ;
-		change_weight(g, visited);
+		change_path(g);
 		analysis_item(g, num_path, &min_num_lines, &min_num_path);
 		++num_path;
 	}
-	vector_destroy(&visited);
-	return (num_path == 1 ? 0 : min_num_path);
+	return (min_num_path);
 }
