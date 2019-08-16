@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graph.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/13 12:29:21 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/15 20:15:00 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct		s_vertex
 	int				prev;
 	long long		weight;
 	int				color;
+	int				x;
+	int				y;
 	t_vector_pair	*adj;
 }					t_vertex;
 
@@ -52,7 +54,7 @@ long long			vertex_get_weight(t_vertex *vertex1, int vertex2_idx);
 /* Functions t_vector */
 t_vert_vector		*vert_vector_create(int size);
 void				vert_vector_destroy(t_vert_vector **v);
-void				vert_vector_push_back(t_vert_vector *v, char *name);
+void				vert_vector_push_back(t_vert_vector *v, char *name, int x, int y);
 t_vertex			*vert_vector_at(t_vert_vector *v, size_t idx);
 void				vert_vector_store(t_vert_vector *v, size_t idx, char *name);
 size_t				vert_vector_size(t_vert_vector *v);
@@ -62,9 +64,9 @@ t_vert_vector		*vert_vector_copy(t_vert_vector *v);
 /* Fucntions t_graph */
 t_graph				*graph_create(void);
 void				graph_destroy(t_graph **g);
-void				graph_add_vert(t_graph *g, char *name);
-void				graph_add_start_vert(t_graph *g, char *name);
-void				graph_add_end_vert(t_graph *g, char *name);
+void				graph_add_vert(t_graph *g, char *name, int x, int y);
+void				graph_add_start_vert(t_graph *g, char *name, int x, int y);
+void				graph_add_end_vert(t_graph *g, char *name, int x, int y);
 void				graph_add_edge(t_graph *g, int id1, int id2);
 void				graph_del_edge(t_graph *g, int id1, int id2);
 void				graph_add_dir_edge(t_graph *g, int id1, int id2);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertex_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:35:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/13 14:54:34 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/15 20:10:07 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	vertex_init(t_vertex *vertex, char *name, int prev, long long weight)
 	vertex->name = (name == NULL) ? NULL : ft_strdup(name);
 	vertex->prev = prev;
 	vertex->weight = weight;
+	vertex->x = 0;
+	vertex->y = 0;
 	vertex->adj = vector_pair_create(0);
 }
 

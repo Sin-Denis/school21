@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/14 14:09:15 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/15 20:54:48 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ int				main(void)
 	i = 0;
 	g = graph_create();
 	if (parse_main(g, &output_str) == -1)
-		error_exit("Error");
+	{
+		graph_destroy(&g);
+		error_exit("ERROR");
+	}
 	new_g = graph_copy(g);
 	int a = analysis(new_g);
 	graph_destroy(&new_g);
 	if (a == 0)
-		error_exit("Error");
+		error_exit("ERROR");
 	admonds_carp(g, a);
 	num_roads = get_num_roads(g);
 	roads = get_all_roads(g, num_roads);

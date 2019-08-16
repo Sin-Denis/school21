@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 18:40:14 by nparker           #+#    #+#             */
-/*   Updated: 2019/08/09 13:03:50 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/15 20:47:31 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ int			get_next_line(const int fd, char **line)
 		if ((flag = parse_str(fd, line, str, flag)) == -1)
 			return (-1);
 	if (str[fd] && !ret && flag == 0)
+	{
+		ft_strdel(&str[fd]);
 		return (0);
+	}
+	ft_strdel(&str[fd]);
 	return (1);
 }

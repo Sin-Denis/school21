@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:31:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/13 14:39:11 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/15 20:13:56 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ static void grow(t_vert_vector *v)
 	v->data = new_data;
 }
 
-void		vert_vector_push_back(t_vert_vector *v, char *name)
+void		vert_vector_push_back(t_vert_vector *v, char *name, int x, int y)
 {
 	if (v->size == v->capacity)
 		grow(v);
 	v->data[v->size].name = ft_strdup(name);
 	v->data[v->size].prev = -1;
 	v->data[v->size].weight = 2147483648;
+	v->data[v->size].x = x;
+	v->data[v->size].y = y;
 	++v->size;
 }

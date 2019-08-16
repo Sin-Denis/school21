@@ -87,7 +87,7 @@ $(NAME): directory $(OBJ_DIR) $(OBJECTS)
 	@ranlib $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@$(CC) -c $(FLAGS) -I $(INC_DIR) $^ -o $@
+	@$(CC) -c -g $(FLAGS) -I $(INC_DIR) $^ -o $@
 
 directory:
 	@mkdir -p $(OBJ_DIR)

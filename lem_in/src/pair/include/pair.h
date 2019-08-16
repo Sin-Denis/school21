@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pair.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:46:08 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/13 12:31:09 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/15 18:09:20 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void				vector_pair_store(t_vector_pair *v, int idx, int first, long long second
 size_t				vector_pair_len(t_vector_pair *v);
 void				vector_pair_print(t_vector_pair *v);
 void				vector_pair_del(t_vector_pair *v, int key);
+t_pair				*pair_create(int first, long long second);
 
 #endif
