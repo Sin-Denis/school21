@@ -6,6 +6,7 @@ public class Vertex {
     String name;
     int x;
     int y;
+    int frontWave;
     ArrayList<Integer> adj;
 
     public Vertex(String name) {
@@ -15,6 +16,11 @@ public class Vertex {
 
     public Vertex(String name, int x, int y) {
         this(name);
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setCor(int x, int y) {
         this.x = x;
         this.y = y;
     }
