@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/17 14:34:36 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 16:06:35 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int				main(void)
 {
 	t_graph		*g;
 	t_graph		*new_g;
-	t_string 	output_str;
-	int 		optimal_num_path;
+	t_string	output_str;
+	int			optimal_num_path;
 
 	g = graph_create();
 	if (parse_main(g, &output_str) == -1)

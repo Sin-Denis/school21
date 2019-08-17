@@ -6,16 +6,17 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 14:47:50 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/17 12:01:53 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:34:50 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/output.h"
 
-static void		get_attitude_roads(t_vector **roads, t_vector *attitude_roads, int num_roads)
+static void		get_attitude_roads(t_vector **roads,
+							t_vector *attitude_roads, int num_roads)
 {
-	int		i;
-	int		len_big_road;
+	int			i;
+	int			len_big_road;
 
 	i = num_roads - 1;
 	len_big_road = roads[i]->size;
@@ -24,7 +25,23 @@ static void		get_attitude_roads(t_vector **roads, t_vector *attitude_roads, int 
 		vector_set_elem(attitude_roads, i, len_big_road - roads[i]->size + 1);
 }
 
-static void		get_distribution_vals(t_vector *distribution, t_vector *attitude_roads, int num_ants)
+static void		distr_minus(t_vector *distribution,
+						t_vector *attitude_roads, int *num_ants, int i)
+{
+	if (*num_ants >= vector_get_elem(attitude_roads, i))
+	{
+		vector_set_elem(distribution, i, vector_get_elem(attitude_roads, i));
+		*num_ants -= vector_get_elem(attitude_roads, i);
+	}
+	else
+	{
+		vector_set_elem(distribution, i, *num_ants);
+		*num_ants = 0;
+	}
+}
+
+static void		get_distribution_vals(t_vector *distribution,
+							t_vector *attitude_roads, int num_ants)
 {
 	int			i;
 	int			add_val;
@@ -32,18 +49,7 @@ static void		get_distribution_vals(t_vector *distribution, t_vector *attitude_ro
 
 	i = -1;
 	while (num_ants > 0 && ++i < distribution->size)
-	{
-		if (num_ants >= vector_get_elem(attitude_roads, i))
-		{
-			vector_set_elem(distribution, i, vector_get_elem(attitude_roads, i));
-			num_ants -= vector_get_elem(attitude_roads, i);
-		}
-		else
-		{
-			vector_set_elem(distribution, i, num_ants);
-			num_ants = 0;
-		}
-	}
+		distr_minus(distribution, attitude_roads, &num_ants, i);
 	i = -1;
 	add_val = num_ants / attitude_roads->size;
 	rem_val = num_ants % attitude_roads->size;
@@ -55,7 +61,7 @@ static void		get_distribution_vals(t_vector *distribution, t_vector *attitude_ro
 	}
 }
 
-t_vector	*get_distribution(t_vector **roads, int num_ants, int num_roads)
+t_vector		*get_distribution(t_vector **roads, int num_ants, int num_roads)
 {
 	t_vector	*attitude_roads;
 	t_vector	*distribution;

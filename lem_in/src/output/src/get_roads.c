@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 14:45:20 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/17 11:16:41 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:36:22 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static int		partition(t_vector **roads, int l, int r)
 
 static void		quick_sort(t_vector **roads, int l, int r)
 {
-	int q;
+	int			q;
 
 	if (l < r)
 	{
 		q = partition(roads, l, r);
 		quick_sort(roads, l, q);
-		quick_sort(roads, q + 1, r);		
+		quick_sort(roads, q + 1, r);
 	}
 }
 
@@ -71,11 +71,12 @@ static void		put_roads(t_graph *g, t_vector **roads, int idx, int vertex_idx)
 		}
 		++i;
 	}
-	if (vertex_idx != g->end_idx && vertex_idx != g->start_idx && v->type != OUT)
+	if (vertex_idx != g->end_idx && vertex_idx != g->start_idx &&
+	v->type != OUT)
 		vector_push_back(roads[idx], vertex_idx);
 }
 
-int		get_num_roads(t_graph *g)
+int				get_num_roads(t_graph *g)
 {
 	int			res;
 	size_t		i;
@@ -107,4 +108,3 @@ t_vector		**get_all_roads(t_graph *g, int num_roads)
 	quick_sort(roads, 0, num_roads - 1);
 	return (roads);
 }
-

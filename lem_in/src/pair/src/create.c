@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:50:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 18:10:33 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:42:35 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ t_vector_pair		*vector_pair_create(int size)
 	return (v);
 }
 
-t_pair *pair_create(int first, long long second)
+t_pair				*pair_create(int first, long long second)
 {
-	t_pair *new_pair;
+	t_pair			*new_pair;
 
 	new_pair = (t_pair*)malloc(sizeof(t_pair));
 	new_pair->first = first;
 	new_pair->second = second;
-	return(new_pair);
+	return (new_pair);
 }

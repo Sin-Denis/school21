@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 13:06:38 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/02 14:16:16 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:59:45 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ t_int_queue		*int_queue_create(void)
 	return (q);
 }
 
-void		int_queue_destroy(t_int_queue **q)
+void			int_queue_destroy(t_int_queue **q)
 {
-	size_t	i;
-	t_qnode	*del_node;
-	t_qnode	*iter;
+	size_t		i;
+	t_qnode		*del_node;
+	t_qnode		*iter;
 
 	i = 0;
 	iter = (*q)->bar;

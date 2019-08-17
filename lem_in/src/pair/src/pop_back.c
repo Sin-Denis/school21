@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 10:44:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/13 11:58:49 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:43:25 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	decrease(t_vector_pair *v)
 {
 	size_t	i;
-	t_pair 	*new_data;
+	t_pair	*new_data;
 
 	i = 0;
 	new_data = (t_pair *)malloc(sizeof(t_pair) * v->size * 2);

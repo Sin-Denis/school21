@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   delete.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:09:27 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 20:00:20 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:45:14 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void		p_dict_delete(t_p_dict *dict, const t_pair *key)
 			return ;
 		if (dict->data[hash_val].status == DELETE)
 			continue ;
-		if (dict->data[hash_val].key->first == key->first && dict->data[hash_val].key->second == key->second)
+		if (dict->data[hash_val].key->first == key->first &&
+		dict->data[hash_val].key->second == key->second)
 		{
 			dict->data[hash_val].status = DELETE;
 			free(&dict->data[hash_val].key);

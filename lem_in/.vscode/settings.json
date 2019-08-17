@@ -9,6 +9,7 @@
 		"vector.h": "c",
 		"parse.h": "c",
 		"output.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"p_dict.h": "c"
 	}
 }

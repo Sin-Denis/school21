@@ -6,13 +6,14 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:35:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/16 21:33:34 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:25:30 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
-void	vertex_init(t_vertex *vertex, char *name, int prev, long long weight)
+void		vertex_init(t_vertex *vertex,
+char *name, int prev, long long weight)
 {
 	vertex->idx = -1;
 	vertex->name = (name == NULL) ? NULL : ft_strdup(name);
@@ -25,7 +26,7 @@ void	vertex_init(t_vertex *vertex, char *name, int prev, long long weight)
 	vertex->adj = vector_pair_create(0);
 }
 
-void	vertex_destroy(t_vertex *vertex)
+void		vertex_destroy(t_vertex *vertex)
 {
 	if (vertex->adj != NULL)
 		vector_pair_destroy(&vertex->adj);

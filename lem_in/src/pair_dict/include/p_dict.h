@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:12:37 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/17 14:30:58 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:44:51 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ typedef struct	s_p_dict
 	size_t		capacity;
 }				t_p_dict;
 
-/* t_field */
+/*
+**t_field
+*/
 void			p_field_init(t_p_field *field, const t_pair *key);
 void			p_fields_init(t_p_field *fields, size_t size);
 void			p_fields_destroy(t_p_field **data, size_t size);
 
-/* t_dict */
+/*
+**t_dict
+*/
 t_p_dict		*p_dict_create(void);
 t_p_dict		*p_dict_create_size(int cap);
 void			p_dict_destroy(t_p_dict **dict);

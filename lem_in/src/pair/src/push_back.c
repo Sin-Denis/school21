@@ -6,13 +6,13 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:57:18 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/13 11:58:56 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:43:52 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pair.h"
 
-static void copy(t_pair *dst, t_pair *src, int size)
+static void	copy(t_pair *dst, t_pair *src, int size)
 {
 	int		i;
 
@@ -21,7 +21,7 @@ static void copy(t_pair *dst, t_pair *src, int size)
 		dst[i] = src[i];
 }
 
-static void grow(t_vector_pair *v)
+static void	grow(t_vector_pair *v)
 {
 	t_pair	*new_data;
 
@@ -32,7 +32,7 @@ static void grow(t_vector_pair *v)
 	v->data = new_data;
 }
 
-void vector_pair_push_back(t_vector_pair *v, int first, long long second)
+void		vector_pair_push_back(t_vector_pair *v, int first, long long second)
 {
 	if (v->size == v->capacity)
 		grow(v);

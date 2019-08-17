@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:39:23 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 14:45:32 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 16:00:21 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ typedef struct		s_vector
 	int				capacity;
 }					t_vector;
 
-/* t_vector */
+/*
+**t_vector
+*/
 t_vector			*vector_create(int size);
 void				vector_destroy(t_vector **v);
 void				vector_resize(t_vector *v, int size);

@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:56:33 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/17 11:58:49 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:27:07 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,29 +97,29 @@ int				*ft_choice_sort(int *arr, size_t size);
 int				get_next_line(int fd, char **line);
 int				ft_printf(char *format, ...);
 
-typedef struct		s_string
+typedef struct	s_string
 {
-	char			*data;
-	int				size;
-	int				capacity;
-}					t_string;
+	char		*data;
+	int			size;
+	int			capacity;
+}				t_string;
 
-t_string			str_create_custstr(t_string *cs);
-t_string			str_create_str(char *s);
-t_string			str_create_size(int size);
-void				str_resize(t_string *s, int new_size);
-void				str_pushchar(t_string *s, char c);
-void				str_pushstr(t_string *s, char *str);
-int					str_len(t_string *s);
-void				str_destroy(t_string *s);
-void				str_print(t_string *s);
-void				str_rev(t_string *s);
-char				str_at(t_string *s, int idx);
-t_string			str_custjoin(t_string *l, t_string *r);
-t_string			str_cut(t_string *str, int start, int end);
-int					str_len(t_string *s);
-void				str_print(t_string *s);
-void				str_push_cs(t_string *l, t_string *r);
-char				*to_cstr(t_string *str);
+t_string		str_create_custstr(t_string *cs);
+t_string		str_create_str(char *s);
+t_string		str_create_size(int size);
+void			str_resize(t_string *s, int new_size);
+void			str_pushchar(t_string *s, char c);
+void			str_pushstr(t_string *s, char *str);
+int				str_len(t_string *s);
+void			str_destroy(t_string *s);
+void			str_print(t_string *s);
+void			str_rev(t_string *s);
+char			str_at(t_string *s, int idx);
+t_string		str_custjoin(t_string *l, t_string *r);
+t_string		str_cut(t_string *str, int start, int end);
+int				str_len(t_string *s);
+void			str_print(t_string *s);
+void			str_push_cs(t_string *l, t_string *r);
+char			*to_cstr(t_string *str);
 
 #endif

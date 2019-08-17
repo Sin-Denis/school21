@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   insert.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:35:09 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 17:55:33 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:56:28 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/p_dict.h"
 
-static void			p_probing(t_p_field *data, size_t cap, const t_pair *key)
+static void		p_probing(t_p_field *data, size_t cap, const t_pair *key)
 {
-	int				i;
-	size_t			hash_val;
+	int			i;
+	size_t		hash_val;
 
 	i = -1;
 	while ((size_t)++i < cap)
@@ -29,9 +29,9 @@ static void			p_probing(t_p_field *data, size_t cap, const t_pair *key)
 	}
 }
 
-static void	p_rehash(t_p_dict *dict, t_p_field *fields)
+static void		p_rehash(t_p_dict *dict, t_p_field *fields)
 {
-	int		i;
+	int			i;
 
 	i = -1;
 	while ((size_t)++i < dict->capacity)
@@ -39,7 +39,7 @@ static void	p_rehash(t_p_dict *dict, t_p_field *fields)
 			p_probing(fields, dict->capacity * 2, dict->data[i].key);
 }
 
-static void	p_grow(t_p_dict *dict)
+static void		p_grow(t_p_dict *dict)
 {
 	t_p_field	*new_data;
 
@@ -51,9 +51,9 @@ static void	p_grow(t_p_dict *dict)
 	dict->capacity *= 2;
 }
 
-void	p_dict_insert(t_p_dict *dict, const t_pair *key)
+void			p_dict_insert(t_p_dict *dict, const t_pair *key)
 {
-	if (dict->size * 3 >= 2 *dict->capacity)
+	if (dict->size * 3 >= 2 * dict->capacity)
 		p_grow(dict);
 	p_probing(dict->data, dict->capacity, key);
 	++dict->size;

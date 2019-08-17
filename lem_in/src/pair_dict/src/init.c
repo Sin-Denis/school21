@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:30:35 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 17:59:28 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 15:55:42 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			p_dict_destroy(t_p_dict **dict)
 	int			i;
 
 	i = -1;
-    p_fields_destroy(&(*dict)->data, (*dict)->capacity);
+	p_fields_destroy(&(*dict)->data, (*dict)->capacity);
 	free(*dict);
 	*dict = NULL;
 }
