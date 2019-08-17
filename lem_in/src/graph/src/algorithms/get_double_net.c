@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 11:35:31 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/16 22:41:11 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 12:33:08 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,11 @@ static void add_out_handler(t_graph *g, t_int_queue *q, int v_idx)
 	t_vertex *v;
 	t_vertex *w;
 	size_t	i;
+	char *str;
 
-	u = graph_add_vert(g, "***", -1, -1);
+	str = ft_strjoin("@", g->nodes->data[v_idx].name);
+	u = graph_add_vert(g, str, -1, -1);
+	free(str);
 	v = graph_get_vert(g, v_idx);
 	v->type = IN;
 	u->type = OUT;

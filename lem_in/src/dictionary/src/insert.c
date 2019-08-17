@@ -6,16 +6,16 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:35:09 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/12 10:03:28 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 12:22:57 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/dictionary.h"
 
-static void			probing(t_field *data, size_t cap, const char *key, int val)
+static void	probing(t_field *data, size_t cap, const char *key, int val)
 {
-	int				i;
-	size_t			hash_val;
+	int		i;
+	size_t	hash_val;
 
 	i = -1;
 	while ((size_t)++i < cap)
@@ -36,7 +36,8 @@ static void	rehash(t_dict *dict, t_field *fields)
 	i = -1;
 	while ((size_t)++i < dict->capacity)
 		if (dict->data[i].status == EXIST)
-			probing(fields, dict->capacity * 2, dict->data[i].key, dict->data[i].val);
+			probing(fields, dict->capacity * 2,
+			dict->data[i].key, dict->data[i].val);
 }
 
 static void	grow(t_dict *dict)
@@ -51,9 +52,9 @@ static void	grow(t_dict *dict)
 	dict->capacity *= 2;
 }
 
-void	dict_insert(t_dict *dict, const char *key, int val)
+void		dict_insert(t_dict *dict, const char *key, int val)
 {
-	if (dict->size * 3 >= 2 *dict->capacity)
+	if (dict->size * 3 >= 2 * dict->capacity)
 		grow(dict);
 	probing(dict->data, dict->capacity, key, val);
 	++dict->size;

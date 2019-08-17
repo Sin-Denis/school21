@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:31 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 21:51:39 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 14:40:06 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
-
-short toggle;
 
 # include "../src/Libftprintf/libftprintf.h"
 # include "../src/vector/include/vector.h"
@@ -23,6 +21,5 @@ short toggle;
 # include "../src/graph/include/graph.h"
 # include "../src/output/include/output.h"
 # include "../src/parsing/include/parse.h"
-# include "../src/pair_dict/include/p_dict.h"
 
 #endif

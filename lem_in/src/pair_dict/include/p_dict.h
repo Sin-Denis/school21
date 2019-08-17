@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_dict.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:12:37 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 20:00:58 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 14:30:58 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../../Libftprintf/libftprintf.h"
 # include "../../dictionary/include/dictionary.h"
 # include "../../pair/include/pair.h"
+
 # define DICT_INIT_SIZE 5
 
 typedef struct	s_p_field

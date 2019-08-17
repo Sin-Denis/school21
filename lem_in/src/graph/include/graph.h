@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 14:59:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/16 21:21:29 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 14:30:40 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,32 @@ typedef struct		s_graph
 	int				num_ants;
 }					t_graph;
 
-/* Functions t_vertex */
-void				vertex_init(t_vertex *vertex, char *name, int prev, long long dist);
+/*
+**Functions t_vertex
+*/
+void				vertex_init(t_vertex *vertex,
+								char *name, int prev, long long dist);
 void				vertex_destroy(t_vertex *vertex);
 void				vertexes_init(t_vertex *vertex, size_t size);
 void				vertexes_destroy(t_vertex *vertex, size_t size);
 long long			vertex_get_weight(t_vertex *vertex1, int vertex2_idx);
 
-/* Functions t_vector */
+/*
+**Functions t_vector
+*/
 t_vert_vector		*vert_vector_create(int size);
 void				vert_vector_destroy(t_vert_vector **v);
-void				vert_vector_push_back(t_vert_vector *v, char *name, int x, int y);
+void				vert_vector_push_back(t_vert_vector *v,
+											char *name, int x, int y);
 t_vertex			*vert_vector_at(t_vert_vector *v, size_t idx);
 void				vert_vector_store(t_vert_vector *v, size_t idx, char *name);
 size_t				vert_vector_size(t_vert_vector *v);
 void				vert_vector_print(t_vert_vector *v);
 t_vert_vector		*vert_vector_copy(t_vert_vector *v);
 
-/* Fucntions t_graph */
+/*
+**Fucntions t_graph
+*/
 t_graph				*graph_create(void);
 void				graph_destroy(t_graph **g);
 t_vertex			*graph_add_vert(t_graph *g, char *name, int x, int y);
@@ -81,15 +89,15 @@ void				graph_add_edge(t_graph *g, int id1, int id2);
 void				graph_del_edge(t_graph *g, int id1, int id2);
 void				graph_add_dir_edge(t_graph *g, int id1, int id2);
 void				graph_del_dir_edge(t_graph *g, int id1, int id2);
-void				graph_set_weight(t_graph *g, int id1, int id2, long long weight);
+void				graph_set_weight(t_graph *g, int id1, int id2,
+															long long weight);
 t_vertex			*graph_get_vert(t_graph *g, int id);
 void				graph_print(t_graph *g);
 t_graph				*graph_copy(t_graph *g);
 
-/* Algorithms */
-// int					get_num_roads(t_graph *g);
-// t_vector			**get_all_roads(t_graph *g, int num_roads);
-// t_vector			*get_distribution(t_vector **roads, int num_ants, int num_roads);
+/*
+**Algorithms
+*/
 void				bfs(t_graph *g);
 void				change_path(t_graph *g);
 int					analysis(t_graph *g);

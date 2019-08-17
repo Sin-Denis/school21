@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:30:35 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 12:55:25 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 12:20:48 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ t_dict		*dict_create_size(int cap)
 	return (dict);
 }
 
-void			dict_destroy(t_dict **dict)
+void		dict_destroy(t_dict **dict)
 {
-	int			i;
+	int		i;
 
 	i = -1;
-    fields_destroy(&(*dict)->data, (*dict)->capacity);
+	fields_destroy(&(*dict)->data, (*dict)->capacity);
 	free(*dict);
 	*dict = NULL;
 }

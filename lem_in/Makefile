@@ -6,7 +6,7 @@
 #    By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 12:33:04 by nparker           #+#    #+#              #
-#    Updated: 2019/08/16 16:47:37 by jblue-da         ###   ########.fr        #
+#    Updated: 2019/08/17 14:20:20 by jblue-da         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,8 @@ PARSING_FILES :=	ft_count_digits.c\
 					ft_isnum.c\
 					misc.c\
 					parse.c\
+					check_line.c\
+					parse_line.c\
 					validate.c\
 
 QUEUE_FILES :=	init.c\
@@ -120,6 +122,7 @@ VECTOR_FILES :=	copy.c\
 OUTPUT_FILES := output.c\
 				distribution.c\
 				get_roads.c\
+				output_road_handler.c\
 
 OBJ_DIR := objects
 

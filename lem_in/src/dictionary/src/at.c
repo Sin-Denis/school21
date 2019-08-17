@@ -6,15 +6,15 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:15:44 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 18:35:59 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 12:18:39 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/dictionary.h"
 
-int		dict_at(t_dict *dict, const char *key)
+int			dict_at(t_dict *dict, const char *key)
 {
-	int	i;
+	int		i;
 	size_t	hash_val;
 
 	i = -1;
@@ -27,7 +27,8 @@ int		dict_at(t_dict *dict, const char *key)
 			continue ;
 		if (dict->data[hash_val].key == NULL)
 			continue ;
-		if (dict->data[hash_val].status == EXIST && ft_strcmp(dict->data[hash_val].key, key) == 0)
+		if (dict->data[hash_val].status == EXIST &&
+		ft_strcmp(dict->data[hash_val].key, key) == 0)
 			return (dict->data[hash_val].val);
 	}
 	return (-2147483648);

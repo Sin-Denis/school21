@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   field_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:55:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 13:32:26 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 12:20:33 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/dictionary.h"
 
-void			field_init(t_field *field, const char *key, int val)
+void		field_init(t_field *field, const char *key, int val)
 {
 	field->key = ft_strdup(key);
 	field->val = val;
 	field->status = EXIST;
 }
 
-void fields_init(t_field *fields, size_t size)
+void		fields_init(t_field *fields, size_t size)
 {
 	int		i;
 
@@ -32,9 +32,9 @@ void fields_init(t_field *fields, size_t size)
 	}
 }
 
-void			fields_destroy(t_field **data, size_t size)
+void		fields_destroy(t_field **data, size_t size)
 {
-	int i;
+	int		i;
 
 	i = -1;
 	while ((size_t)++i < size)

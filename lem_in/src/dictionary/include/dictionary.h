@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   dictionary.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:12:37 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 17:21:07 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/17 12:18:07 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DICTIONARY_H
-#define DICTIONARY_H
+# define DICTIONARY_H
 
-#include "../../Libftprintf/libftprintf.h"
-#define DICT_INIT_SIZE 5
+# include "../../Libftprintf/libftprintf.h"
+# define DICT_INIT_SIZE 5
 
 typedef enum		e_status
 {
@@ -37,12 +37,16 @@ typedef struct	s_dict
 	size_t		capacity;
 }				t_dict;
 
-/* t_field */
+/*
+**t_field
+*/
 void			field_init(t_field *field, const char *key, int val);
 void			fields_init(t_field *fields, size_t size);
 void			fields_destroy(t_field **data, size_t size);
 
-/* t_dict */
+/*
+**t_dict
+*/
 t_dict			*dict_create(void);
 t_dict			*dict_create_size(int cap);
 void			dict_destroy(t_dict **dict);

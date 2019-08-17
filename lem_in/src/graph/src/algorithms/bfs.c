@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 14:42:04 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/16 23:12:46 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/17 12:33:51 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		bfs_init(t_graph *g)
 	vert_vector_at(g->nodes, g->start_idx)->weight = 0;
 }
 
-static void bfs_handler(t_graph *g, t_int_queue *q, t_vertex *v)
+static void		bfs_handler(t_graph *g, t_int_queue *q, t_vertex *v)
 {
 	size_t		i;
 	t_vertex	*u;
@@ -48,11 +48,11 @@ static void bfs_handler(t_graph *g, t_int_queue *q, t_vertex *v)
 	}
 }
 
-void bfs(t_graph *g)
+void			bfs(t_graph *g)
 {
-	t_int_queue *q;
+	t_int_queue	*q;
 	t_vertex	*v;
-	
+
 	q = int_queue_create();
 	bfs_init(g);
 	int_queue_push(q, g->start_idx);
@@ -65,10 +65,10 @@ void bfs(t_graph *g)
 	int_queue_destroy(&q);
 }
 
-void change_path(t_graph *g)
+void			change_path(t_graph *g)
 {
-	t_vertex *v;
-	t_vertex *u;
+	t_vertex	*v;
+	t_vertex	*u;
 
 	v = graph_get_vert(g, g->end_idx);
 	while (v->idx != g->start_idx)
@@ -80,7 +80,7 @@ void change_path(t_graph *g)
 		{
 			graph_del_dir_edge(g, u->idx, v->idx);
 			graph_add_dir_edge(g, v->idx, u->idx);
-			graph_set_weight(g, v->idx, u->idx , -1);	
+			graph_set_weight(g, v->idx, u->idx, -1);
 		}
 		v = u;
 	}
