@@ -18,8 +18,8 @@ public class GraphDraw extends JComponent {
 
     public GraphDraw(Graph graph) {
         this.graph = graph;
-        this.height = 900;
-        this.weight = 1500;
+        this.height = 600;
+        this.weight = 1200;
         this.stOffset = 100;
         this.waveOffset = 0;
         this.ants = new ArrayList<Ant>();
@@ -44,11 +44,23 @@ public class GraphDraw extends JComponent {
     }
 
     private void evenHandler(ArrayList<Integer> wave, int x) {
-
+        int beginY = 0;
+        int step = this.height / (wave.size() - 1);
+        for (int i = 0; i < wave.size(); ++i) {
+            Vertex v = this.graph.getVertex(wave.get(i));
+            v.x = x;
+            v.y = beginY + i * step;
+        }
     }
 
     private void oddHandler(ArrayList<Integer> wave, int x) {
-
+        int step = this.height / wave.size();
+        int beginY = this.height / (2 * wave.size());
+        for (int i = 0; i < wave.size(); ++i) {
+            Vertex v = this.graph.getVertex(wave.get(i));
+            v.x = x;
+            v.y = beginY + i * step;
+        }
     }
 
     private void setCoordinateItem(int num_wave, ArrayList<Integer> wave) {
@@ -70,7 +82,7 @@ public class GraphDraw extends JComponent {
     private void setCoordinateEnd() {
         Vertex v = this.graph.vertexes.get(this.graph.getEnd_idx());
         v.x = weight;
-        v.y = this.height / 2;
+        v.y = this.height / 2 + height / 3;
     }
 
     public void setCoordinates() {

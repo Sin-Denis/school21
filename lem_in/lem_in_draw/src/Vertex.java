@@ -7,6 +7,8 @@ public class Vertex {
     int x;
     int y;
     int frontWave;
+    int color;
+
     ArrayList<Integer> adj;
 
     public Vertex(String name) {

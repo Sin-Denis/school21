@@ -123,6 +123,37 @@ public class Graph extends JComponent {
       }
       return waves;
    }
+
+   public void paintComponent(Graphics g) {
+      Graphics2D g2 = (Graphics2D)g;
+      ArrayList<Integer> visited = new ArrayList<Integer>(Collections.nCopies(this.vertexes.size(), 0));
+      ArrayDeque<Integer> queue = new ArrayDeque<Integer>();
+
+      visited.set(this.start_idx, 1);
+      queue.addFirst(this.start_idx);
+      g2.setBackground(Color.BLACK);
+      g2.setRenderingHints(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
+      while(!queue.isEmpty()) {
+         int v_idx = queue.removeLast();
+         Vertex v = this.vertexes.get(v_idx);
+         if (v_idx == this.start_idx || v_idx == this.end_idx)
+            g2.setColor(Color.green);
+         else
+            g2.setColor(Color.blue);
+         g2.fillOval(v.x, v.y, 20, 20);
+         for (Integer u_idx : v.adj) {
+            Vertex u = this.vertexes.get(u_idx);
+            g2.setColor(Color.black);
+            g2.drawLine(v.x + 10, v.y + 10, u.x + 10, u.y + 10);
+            if (visited.get(u_idx) != 0) {
+               continue;
+            }
+            visited.set(u_idx, 1);
+            queue.addFirst(u_idx);
+         }
+         visited.set(v_idx, 2);
+      }
+   }
 }
 
 
