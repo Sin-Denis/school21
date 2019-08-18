@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:35:46 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/17 15:25:30 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/18 15:48:28 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char *name, int prev, long long weight)
 	vertex->weight = weight;
 	vertex->color = 0;
 	vertex->type = DEF;
+	vertex->pair_idx = -1;
 	vertex->x = 0;
 	vertex->y = 0;
 	vertex->adj = vector_pair_create(0);

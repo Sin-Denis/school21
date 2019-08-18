@@ -6,13 +6,13 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/17 16:06:35 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/18 16:48:34 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/lem_in.h"
 
-int				main(void)
+int	main(void)
 {
 	t_graph		*g;
 	t_graph		*new_g;
@@ -21,10 +21,7 @@ int				main(void)
 
 	g = graph_create();
 	if (parse_main(g, &output_str) == -1)
-	{
-		graph_destroy(&g);
 		error_exit("ERROR", &g);
-	}
 	new_g = get_double_net(g);
 	optimal_num_path = analysis(new_g);
 	graph_destroy(&new_g);

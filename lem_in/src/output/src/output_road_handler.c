@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 11:43:21 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/17 15:40:38 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/18 16:13:00 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void			road_handler(t_graph *g,
 t_vector *road, t_pair *indexes, t_pair *distr_offset)
 {
 	if (distr_offset->first == 0)
+	{
+		free(distr_offset);
 		return ;
+	}
 	if (indexes->second >= distr_offset->first)
 		road_handler1(g, road, indexes, distr_offset);
 	else if (indexes->second < road->size - 1)
