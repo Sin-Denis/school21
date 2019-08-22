@@ -1,0 +1,2 @@
+ifconfig | grep broadcast | rev | cut -d " " -f 1 | rev
+arp -a | sed '/^?/d' | awk -F "\(" '{print $2}' | awk -F "\)" '{print $1}'
