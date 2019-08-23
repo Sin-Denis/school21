@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 19:17:28 by dmorar            #+#    #+#             */
-/*   Updated: 2019/08/22 20:09:02 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/23 14:55:52 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define VM_H
 
 #include "../../include/op.h"
-#include "../../polymorf_vector/include/poly_vector.h"
+#include "../../pol_vector/include/pol_vector.h"
 
 typedef struct		s_players
 {
@@ -56,7 +56,16 @@ typedef struct		s_vm
     char            dump_exist;
 }					t_vm;
 
+/*
+** VM_FUNCTIONS
+*/
+t_bool				vm_cursor_exist(t_vm *vm);
+void				vm_init(t_vm *vm);
+void				vm_greating(t_vm *vm);
+void				vm_output(t_vm *vm);
+void				vm_end(t_vm *vm);
+void                vm_run_cycle(t_vm *vm);
+
 void                parsing(t_vm *vm, int argc, char **argv);
-void                execute_cycle(t_vm *vm);
 
 #endif
