@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   champions_declaration.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/22 19:42:23 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/26 13:31:49 by jblue-da         ###   ########.fr       */
+/*   Created: 2019/08/26 12:22:44 by jblue-da          #+#    #+#             */
+/*   Updated: 2019/08/26 12:27:56 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/vm.h"
+#include "../../include/vm.h"
 
-typedef struct	s_vector
+static void champion_declaration(t_player *plr)
 {
-	char		*name;
-	int			age;
-}				t_person;
-
-void			person_destroy(void *p)
-{
-	free(((t_person *)p)->name);
+	ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !",
+		plr->_id,
+		plr->_code_size,
+		plr->_name,
+		plr->_comment
+	);
 }
 
-int main(int argc, char **argv)
+void	vm_champions_declaration(t_vm *vm)
 {
-	t_vm vm;
+	size_t i;
 
-	vm_init(&vm);
-	parsing(&vm, argc, argv);
-	vm_start(&vm);
-	vm_champions_declaration(&vm);
-	while (vm_cursor_exist(&vm) > 0)
-		run_cycle(&vm);
-	vm_output(&vm);
-	vm_end(&vm);
-	return (0);
+	ft_printf("Introducing contestants...\n");
+	i = 0;
+	while (i < pol_vector_size(vm->_plrs))
+	{
+		champion_declaration(pol_vector_at(vm->_plrs, i));
+		++i;
+	}
 }
